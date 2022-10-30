@@ -1,0 +1,829 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.hideOver600 {
+  display: none!important;
+}
+
+.wholePicture {
+  display: flex;
+}
+
+/* left */
+.leftEmpty {
+  width: 255px;height: 100vh;
+  margin: 0px;
+  background-color: #0B184E;
+}
+
+.left {
+  width: 255px;height: 100vh;
+  margin: 0px;
+  background-color: #0B184E;
+  position: fixed;top: 0;left: 0;
+  z-index: 2000;
+}
+
+.imgNWTKTrading {
+  display: flex;
+  width: 100%;
+  margin-top: 45px;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.WTC-logo1{
+  width: 24px;height: 34px;
+  margin-left: 33px;
+}
+
+.WTKTrading {
+  margin-top: 5px;margin-left: 19px;
+  font-size: 19px;
+}
+
+.straightLine {
+  width: 4px;height: 56px;
+  margin-left: 0px;margin-right: 3px;
+  background-color: #5F77F1;
+}
+
+.straightLineDark {
+  width: 4px;height: 56px;
+  margin-left: 0px;margin-right: 3px;
+}
+
+.iconNMenu{
+  width: 231px;height: 56px;
+  display: flex;
+  background-color: #5B60DE;
+  align-items: center;
+}
+
+.iconNMenuDark{
+  display: flex;
+  width: 231px;height: 56px;
+  align-items: center;
+}
+
+.itemIcon {
+  width: 16px;height: 18px;
+  margin-left: 20px;
+  color: white !important;
+}
+
+.itemIconDark {
+  width: 16px;height: 18px;
+  margin-left: 18px;
+  color: #9FA2B4 !important;
+}
+
+.itemMenu {
+  margin-top: 13px!important;margin-left: 10px;
+  color: white ;
+}
+
+.itemMenuDark {
+  margin-top: 13px!important;margin-left: 10px;
+  color: #9FA2B4;
+}
+
+.item {
+  margin: 20px;
+  display: flex;
+}
+
+.itemDark {
+  margin: 20px;
+  display: flex;
+}
+
+.imgItem {
+  width: 5px;height: 10px;
+}
+
+.itemDetails {
+  height: 10px;line-height: 10px;
+  color: white;
+}
+
+.itemDetailsDark {
+  height: 10px;line-height: 10px;
+  color: grey;
+}
+/* right */
+.right {
+  height: 100vh;
+  background-color: #F7F8FC;
+  flex-grow: 1;
+}
+
+.order {
+  margin-top: 10px;margin-left: 10px;
+}
+
+.purchaseOrderList {
+  margin-top: 10px;margin-left: 10px;
+}
+
+.selectInput {
+  display: flex;
+}
+
+.selectList {
+  width: 100px;
+  margin-top: 10px;margin-left: 10px;
+}
+
+.customerCode {
+  font-size: 1px;
+}
+
+.inputList {
+  width: 100px;
+  margin-top: 10px;margin-left: 10px;
+}
+
+table{
+  margin: 20px;
+  border-collapse:collapse;
+}
+
+td {
+  border-bottom:1px solid #888888;padding:10px;
+}
+
+.listList {
+  margin: 20px;
+  border-bottom:1px solid #888888;
+}
+
+/* pageAddNewOrder */
+
+.rowInListForOrder {
+  width: 90%;height: 50px;
+  margin-left: 0px;
+  margin-top: 30px;
+  display: flex;
+}
+
+/* AddProduct彈出視窗 */
+.overlayAddProduct{width: 100%;height: 100%;position: fixed;z-index: 100;top: 0;left: 0;background: rgb(0,0,0,0.7);}
+.addProductblock{
+  width: 500px;
+  position: fixed;top: 80px;left: 50%;transform: translate(-250px,0px);
+  border-radius: 6px;background-color: white;                
+}
+
+.addProduct {
+  margin-top: 15px;margin-left: 20px;
+}
+
+#outlined-basic {
+  width: 400px;height: 10px;
+  align-items: center;
+}
+
+.textField{
+  margin-left: -30px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.firstRow {
+  height: 50px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.unitPrice {
+  height: 50px;
+  line-height: 50px;
+  align-items: center;
+}
+
+.css-1u3hnhx-MuiStack-root {
+  margin-top: 0px;
+}
+
+.incDec {
+  width: 100px;height: 30px;
+  margin-top: 10px! important;
+  background-color: rgb(233, 230, 230);
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.secondRow {
+  height: 50px;
+  display: flex;
+}
+
+.currency {
+  margin-left: 20px;
+  line-height: 50px;
+}
+
+.textField1on {
+  margin-left: 35px;
+}
+
+.textField1 {
+  width: 155px;height: 500px!important;
+}
+/* 先用在Product
+.buttons {
+  width: 209px;height: 48px;
+  margin-top: 30px! important;
+  border: 1px solid #0028CF;border-radius: 40px;
+} */
+
+/* Order */
+.order {
+  width: 100vh;
+  margin-top: 0px;
+  margin-left: 0px;
+  flex-grow: 1;
+  background-color: #F7F8FC;
+}
+
+.wordOrder {
+  margin-top: 45px;
+  margin-left: 38px;
+  margin-right: 36px;
+  font-size: 24px;font-weight: 700;
+  color: black;
+  justify-content: space-between;
+}
+
+.titleNNameInOrder {
+  display: flex;
+  justify-content: space-between;
+}
+
+.titleInOrder {
+  width: 80px;
+  margin-right: 0px;
+}
+
+.ButtonInOrder {
+  width: 167px;height: 42px;
+  margin-top: 20px!important;margin-bottom: 63px!important;margin-left: 28px;
+  border: 1px solid;
+  border-radius: 4px;
+  font-size: 15px;font-weight: 500;
+  background-color: #F7F8FC;
+}
+
+/* .buttonInOrder {
+  width: 167px;height: 42px;
+  margin-top: 20px;margin-left: 28px;
+  border: 1px solid #1976D2;
+  border-radius: 4px;
+  font-size: 15px;font-weight: 500;
+  color: #1976D2;background-color: #F7F8FC;
+} */
+
+.purchaseOrderList {
+  width: 95%;
+  margin-left: 29px;margin-right: 29px;
+  padding-bottom: 82px;
+  align-items: center;
+  border: 1px solid #DFE0EB;
+  border-radius: 8px;
+  background-color: white;
+}
+
+.wordPurchaseOrderList {
+  width: 210px;height: 32px;
+  margin-top: 40px;margin-left: 40px;
+  font-size: 24px;font-weight: 400;
+}
+
+.dropdownNTextareaInOrder {
+  display: flex;
+  width: 90%;min-height: 50px;
+  margin-top: 29px;margin-left: 40px;
+}
+
+.formControlInOrder {
+  width: 220px;
+  margin-top: 0px !important;margin-bottom: 0px !important;margin-left: 0px !important;
+  /* border: 1px solid #DFDFDF!important; */
+  border-radius: 8px!important;
+}
+
+.selectInOrder {
+  height: 50px!important;
+  padding-left: 12px !important;
+  font-size: 16px !important;font-weight: 400 !important;
+}
+
+.textFieldInOrder {
+  margin-top: -10px!important;margin-left: 40px!important;
+  line-height: 100px!important;
+}
+
+.tableInOrder {
+  width: 90%!important;
+  margin-left: 40px;
+}
+
+.tableFirstRowInOrder {
+  font-size: 14px!important;font-weight: 500!important;
+}
+
+.tableCellInOrder {
+  width: 260px;height: 52px;
+  font-size: 14px!important;font-weight: 400!important;
+}
+
+.lastTableCellInOrder {
+  font-size: 14px!important;font-weight: 400!important;
+}
+
+.stackInOrder {
+  margin-top: 80px;margin-bottom: 117px!important;
+  align-items: center;
+}
+
+/* page addneworder */
+.pageAddNewOrder {
+  width: 100vh;
+  margin-left: 0px;
+  padding-bottom: 99px;
+  flex-grow: 1;
+  background-color: #F7F8FC;
+}
+
+.threeButtonsInAddNewOrder {
+  margin-top: 25px;margin-left: 38px;
+}
+
+.listInAddNewOrder {
+  margin-top: 31px;margin-bottom: 75px;margin-left: 32px;margin-right: 31px;
+  padding-top: 39px;padding-bottom: 76px;
+  align-items: center;
+  border: 1px solid #DFE0EB;
+  border-radius: 8px;
+  background-color: white;
+}
+
+.listForOrder {
+  width: 100%;
+  margin-top: 35px;margin-left: 38px;
+}
+
+.buttonsInAddNewOrder {
+  margin-right: 15px!important;
+}
+
+.textFieldInAddNewOrder {
+  width: 40%;
+  margin-bottom: 100px!important;margin-right: 45px!important;
+}
+
+.wordProductsInAddNewOrder {
+  font-size: 24px;font-weight: 400;
+}
+
+.TableInAddNewOrder {
+  width: 100%!important;
+  margin-top: 20px;margin-left: 0px;
+}
+
+.TableCellFirstRowInAddNewOrder {
+  width: 185px;height: 60px;
+  vertical-align:text-top!important;
+}
+
+.buttonADDPRODUCTInAddNewOrder {
+  font-size: 15px!important;font-weight: 500!important;
+  margin-top: 25px!important;margin-bottom: 55px!important;
+}
+
+.last3TextFieldInAddNewOrder {
+  width: 84.5%;
+  margin-bottom: 100px!important;margin-right: 45px!important;
+}
+
+
+/* Product */
+.product {
+  width: 100vh;
+  margin-left: 0px;
+  flex-grow: 1;
+  background-color: #F7F8FC;
+}
+
+.wordProduct {
+  display: flex;
+  height: 34px;
+  margin-top: 45px;
+  margin-left: 38px;
+  margin-right: 36px;
+  font-size: 24px;font-weight: 700;
+  color: black;
+  justify-content: space-between;
+}
+
+.nameInProduct {
+  margin-right: 28px;
+  font-size: 14px;font-weight: 700;line-height: 38px;
+  color: black;
+}
+
+.buttonInProduct {
+  width: 209px;height: 48px;
+  margin-top: 30px! important;
+  margin-left: 38px;
+  border: 1px solid #0028CF;border-radius: 40px;
+  color:#0028CF;background-color: white;
+  font-size: 15px;font-weight: 700;
+}
+
+.productList {
+  width: 95%;
+  margin-top: 47px;margin-left: 29px;margin-right: 29px;
+  padding-bottom: 82px;
+  align-items: center;
+  border: 1px solid #DFE0EB;
+  border-radius: 8px;
+  background-color: white;
+}
+
+.wordProductList {
+  width: 125px;height: 26px;
+  margin-top: 40px;margin-left: 40px;
+  font-size: 21px;font-weight: 700;
+}
+
+.dropdownNtextarea {
+  display: flex;
+  width: 90%;min-height: 50px;
+  margin-top: 29px;margin-left: 40px;
+}
+
+.formControlInProduct {
+  width: 240px;
+  margin-top: 0px !important;margin-bottom: 0px !important;margin-left: 0px !important;
+  /* border: 1px solid #DFDFDF!important; */
+  border-radius: 8px!important;
+}
+
+.selectInProduct {
+  height: 50px!important;
+  padding-left: 30px !important;
+  font-size: 16px !important;font-weight: 600 !important;
+}
+
+.textFieldInProduct{
+  width: 280px;height: 50px;
+  margin-bottom: 0px;margin-left: 20px;
+  padding-left: 20px;
+  border: 1px solid #DFE0EB;
+  border-radius: 8px;
+}
+
+.textFieldInProduct::placeholder { 
+  font-size: 16px;font-weight: 400;
+  color: #A5A5A5;
+}
+
+.try111 {
+  width: 80vh;
+}
+
+.tableContainer {
+  width: 80vh!important;
+}
+
+.stackInProduct {
+  margin-top: 65px;margin-bottom: 109px!important;
+  align-items: center;
+}
+
+/* page addnewproduct */
+.pageAddNewProduct {
+  width: 100vh;
+  margin-left: 0px;
+  padding-bottom: 99px;
+  flex-grow: 1;
+  background-color: #F7F8FC;
+}
+
+.productList {
+  width: 95%;
+  margin-top: 47px;margin-left: 29px;margin-right: 29px;
+  padding-bottom: 82px;
+  align-items: center;
+  border: 1px solid #DFE0EB;
+  border-radius: 8px;
+  background-color: white;
+}
+
+.list {
+  margin-top: 31px;margin-bottom: 75px;margin-left: 32px;margin-right: 31px;
+  padding-top: 39px;padding-bottom: 138px;
+  align-items: center;
+  border: 1px solid #DFE0EB;
+  border-radius: 8px;
+  background-color: white;
+}
+
+.buttons {
+  width: 140px;height: 48px;
+  margin-top: 34px;margin-left: 30px;
+  border: 1px solid #0028CF;
+  border-radius: 40px;
+  color:#0028CF;background-color: white;
+  font-size: 15px;font-weight: 700;
+}
+
+.wordProductNHashtags {
+  width: 168px;height: 26px;
+  margin-left: 38px;
+  font-size: 24px;font-weight: 700;
+  color: black;
+  justify-content: space-between;
+}
+
+.nameForAddNewOrder {
+  width: 155px;
+  margin-top: 13px;
+  font-size: 16px;font-weight: 600;
+}
+
+.inputInListForOrder {
+  width: 300px;height: 48px;margin-right: 128px;
+  border: none;
+  background-color: #F9F9F9;
+}
+
+.specialNameForAddNewOrder {
+  width: 155px;
+  margin-top: 0px;
+  font-size: 16px;font-weight: 600;
+}
+
+.wordProductType {
+  margin-top: 44px;
+  font-size: 21px;font-weight: 700;
+}
+
+.longerInputInListForOrder {
+  width: 885px;height: 48px;margin-right: 128px;
+  border: none;
+  background-color: #F9F9F9;
+}
+
+.dashInputInListForOrder {
+  width: 300px;height: 48px;margin-right: 128px;
+  padding-left: 70px;
+  background-color: #F9F9F9;
+  border: 1px dashed #CDCDCD;
+  border-radius: 4px;
+}
+
+.largeInputInListForOrder {
+  width: 885px;height: 100px;
+  margin-bottom: 80px;margin-right: 128px;
+  border: none;
+  background-color: #F9F9F9;
+}
+
+/* Dialog */
+.wordAddProductInDialog {
+  margin-top: 24px;margin-left: 24px;
+  font-size: 20px;font-weight: 500;
+}
+
+.box1InDialog {
+  width: 95%;
+  margin-top: 35px;
+}
+
+
+@media (max-width:600px){
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    width: 100%;
+    margin: 0;
+  }
+
+  .showUnder600 {
+    display: block!important;
+  }
+
+  .hideUnder600 {
+    display: none!important;
+  }
+
+  .wholePicture {
+    display: block;
+  }
+
+  .leftEmpty {
+    height: 70px;
+    margin: 0px;
+    background-color: #0B184E;
+  }
+  
+  .left {
+    width: 100%;height: 70px;
+    margin: 0px;
+    background-color: #0B184E;
+    position: fixed;top: 0;left: 0;right: 0;
+  }
+  
+  .imgNWTKTrading {
+    display: flex;box-sizing: border-box;
+    width: 100%;height: 100%;
+    margin: 0px;
+    color: white;
+  }
+
+  .MenuIconInOrder {
+    display: block!important;
+    width: 21px!important;height: 18px!important;
+    margin-top: 26px;margin-bottom: 26px;margin-left: 20px;
+  }
+  
+  .WTC-logo1{
+    width: 24px;height: 34px;
+    margin-top: 18px;margin-left: 57px;
+  }
+  
+  .WTKTrading {
+    margin-top: 22px;margin-left: 16px;
+    font-size: 19px;
+  }
+  
+  /* Order */
+  .order {
+    width: 100%;
+    margin-top: 0px;
+    margin-left: 0px;margin-right: 0px;
+    padding-bottom: 1px;
+    background-color: #F7F8FC;
+  }
+  
+  .wordOrder {
+    display: inline-flex;
+    width: 100%;height: 92px;
+    margin-top: 0px;
+    margin-left: 38px;
+    padding-top: 35px;padding-right: 6%;
+    font-size: 24px;font-weight: 700;
+    color: black;
+    justify-content: space-between;
+  }
+  
+  .ButtonInOrder {
+    width: 150px;height: 36px;
+    margin-top: 0px!important;margin-right: 32px!important;
+    padding-top: 8px!important;
+    font-size: 14px!important;font-weight: 500;
+  }
+
+  /* .buttonInOrder {
+    width: 167px;height: 42px;
+    margin-top: 20px;margin-left: 28px;
+    border: 1px solid #1976D2;
+    border-radius: 4px;
+    font-size: 15px;font-weight: 500;
+    color: #1976D2;background-color: #F7F8FC;
+  } */
+  
+  .purchaseOrderList {
+    margin-top: 33px;margin-left: 11px;
+    padding-bottom: 82px;
+    align-items: center;
+    border: 1px solid #DFE0EB;
+    border-radius: 8px;
+    background-color: white;
+  }
+  
+  .wordPurchaseOrderList {
+    width: 210px;height: 32px;
+    margin-top: 40px;margin-left: 25px;
+    font-size: 24px;font-weight: 400;
+  }
+  
+  .dropdownNTextareaInOrder {
+    display: block;
+    margin-top: 29px;margin-left: 25px;
+  }
+  
+  .formControlInOrder {
+    width: 100%;
+    margin-top: 0px !important;margin-bottom: 0px !important;margin-left: 0px !important;
+    /* border: 1px solid #DFDFDF!important; */
+    border-radius: 8px!important;
+  }
+  
+  .selectInOrder {
+    height: 50px!important;
+    padding-left: 12px !important;
+    font-size: 16px !important;font-weight: 400 !important;
+  }
+  
+  .textFieldInOrder {
+    width: 100%;
+    margin-top: 10px!important;margin-left: 0px!important;
+  }
+  
+  .tableInOrder {
+    width: 90%!important;
+    margin-left: 20px;
+  }
+  
+  .tableFirstRowInOrder {
+    font-size: 14px!important;font-weight: 500!important;
+  }
+  
+  .tableCellInOrder {
+    width: 260px;height: 52px;
+    font-size: 14px!important;font-weight: 400!important;
+  }
+  
+  .lastTableCellInOrder {
+    font-size: 14px!important;font-weight: 400!important;
+  }
+  
+  .stackInOrder {
+    margin-top: 40px;margin-bottom: 40px!important;
+    align-items: center;
+  }
+  
+  /* page addneworder */
+  .pageAddNewOrder {
+    width: 100vh;
+    margin-top: 0px;
+    margin-left: 0px;
+    padding-top: 30px;
+    padding-bottom: 99px;
+    flex-grow: 1;
+    background-color: #F7F8FC;
+  }
+
+  .wordProduct {
+    margin-top: 0px;
+  }
+
+  .wordAddNewOrder {
+    font-size: 24px;font-weight: 400;
+  }
+  
+  .threeButtonsInAddNewOrder {
+    margin-top: 25px;margin-left: 38px;margin-right: 38px;
+    text-align: center;
+  }
+  
+  .buttonsInAddNewOrder {
+    width: 30%;
+    margin-right: 15px!important;
+  }
+
+  .rowInListForOrder {
+    display: block;
+  }
+  
+  .textFieldInAddNewOrder {
+    width: 90%;
+    margin-top: 40px!important;
+    margin-bottom: 100px!important;margin-right: 45px!important;
+  }
+  
+  .wordProductsInAddNewOrder {
+    font-size: 24px;font-weight: 400;
+  }
+  
+  .TableInAddNewOrder {
+    width: 100%!important;
+    margin-top: 20px;margin-left: 0px;
+  }
+  
+  .TableCellFirstRowInAddNewOrder {
+    width: 185px;height: 60px;
+    vertical-align:text-top!important;
+  }
+  
+  .buttonADDPRODUCTInAddNewOrder {
+    font-size: 15px!important;font-weight: 500!important;
+    margin-top: 25px!important;margin-bottom: 55px!important;
+  }
+  
+  .last3TextFieldInAddNewOrder {
+    width: 84.5%;
+    margin-bottom: 100px!important;margin-right: 45px!important;
+  }
+}

@@ -1,0 +1,21 @@
+{
+    "posts": [
+        {
+        "id": "1",
+        "data": [
+            {
+                "cu": "CST001",
+                "po": "Chanel-000010",
+                "at": "Wai,Benny",
+                "da": "02 Aug 2021"
+            },
+            {
+                "cu": "CST002",
+                "po": "Chanel-000011",
+                "at": "Wai,Benny",
+                "da": "01 Aug 2021"  
+            }
+        ]
+        }
+    ]
+}
