@@ -22,7 +22,7 @@ const Home = () => {
                 <Route exact path="/order">
                     <Order/> 
                 </Route>
-                <Route path="/addneworder">
+                <Route exact path="/addneworder">
                     <AddNewOrder />
                 </Route>
                 <Route exact path="/product">
