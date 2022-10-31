@@ -1,5 +1,6 @@
 import { Stack, Avatar, Button } from "@mui/material";
 import { useHistory } from 'react-router-dom';
+
 const Header = ({ title }) => {
 
   function goAddNewOrder (){
@@ -19,7 +20,7 @@ const Header = ({ title }) => {
             </Stack>
         </div>
       </div>
-      <Button className="ButtonInOrder" onClick={goAddNewOrder} label="ADD NEW ORDER" color="primary" variant="outlined">ADD NEW ORDER</Button>
+      <Button className="ButtonInOrder" onClick={() => history.push("/addneworder")} label="ADD NEW ORDER" color="primary" variant="outlined">ADD NEW ORDER</Button>
     </div>
   )
 }

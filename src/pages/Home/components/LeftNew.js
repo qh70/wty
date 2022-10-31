@@ -84,10 +84,10 @@ const Left = () => {
     <div>
         <div className="leftEmpty" />
         <div className="left">
-            <div className="imgNWTKTrading">
+            <div className="imgNWTYTrading">
                 <MenuIcon className="MenuIconInOrder hideOver600"/>
                 <img className="WTC-logo1" src={require("../../../static/WTY-logo 1.png")}/>
-                <p className="WTKTrading">WTK Trading</p>
+                <p className="WTYTrading">WTY Trading</p>
             </div>
             {/* <Item state={state} setState={setState} itemName="Order"/>
             <Item state={state} setState={setState} itemName="Product"/>

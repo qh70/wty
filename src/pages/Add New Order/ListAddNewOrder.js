@@ -12,6 +12,8 @@ import dayjs from 'dayjs';
 import Button from "@mui/material/Button";
 import Input from '@mui/material/Input';
 import TableInAddNewOrder from "../../components/Table/TableInAddNewOrder";
+import UploadFileIcon from '@mui/icons-material/UploadFile';
+import InputAdornment from '@mui/material/InputAdornment';
 
 
 const ListAddNewProduct = ({ setOpen, setShowAddProduct }) => {
@@ -77,9 +79,18 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct }) => {
             {/* </div> */}
 
             {/* <div className="rowInListForOrder"> */}
-                <TextField className="textFieldInAddNewOrder" id="standard-basic" label="???????????????" variant="outlined">
-                    {/* <Input type="file" placeholder="Customer P/O" hidden/> */}
-                    <input type="file"></input>
+                <TextField 
+                    className="textFieldInAddNewOrder" 
+                    id="standard-basic" label="Customer P/O" variant="outlined" type="file"
+                    InputProps={{
+                        startAdornment: (
+                        <InputAdornment position="start">
+                            <UploadFileIcon />
+                        </InputAdornment>
+                        ),
+                    }}
+                >
+                    
                 </TextField>
                 
             {/* </div> */}

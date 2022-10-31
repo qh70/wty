@@ -12,6 +12,9 @@ import Pagination from '@mui/material/Pagination';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Box from "@mui/material/Box";
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 // import '@fontsource/roboto/300.css';
 // import '@fontsource/roboto/400.css';
 // import '@fontsource/roboto/500.css';
@@ -31,13 +34,9 @@ const BtnNPurchaseOrderList = () => {
   
     const handleChange = (event) => {
         setSelectInOrder(event.target.value);
-    };
-    
-    const try11 = () => {
-        console.log(selectInOrder);
-    }
+    }; 
 
-    
+    const [valueInOrder, setValueInOrder] = useState("");
 
     return (
         <div>
@@ -45,20 +44,7 @@ const BtnNPurchaseOrderList = () => {
             <div className="purchaseOrderList">
                 <div className="wordPurchaseOrderList">Purchase Order List</div>
                 <div className="dropdownNTextareaInOrder">
-                    <TextField
-                        id="outlined -full-width"
-                        label="Image Upload"
-                        style={{margin: 8}}
-                        name="upload photo"
-                        type="file"
-                        fullWidth
-                        margin="normal"
-                        InputLabelProps={{
-                            shrink:true,
-                        }}
-                        variant="outlined"
-                        onChange={ handleChange }
-                    />
+                    
                     {/* <FormControl className="formControlInOrder" sx={{ m: 1 }}>
                         <Select
                         className="selectInOrder"
@@ -74,15 +60,26 @@ const BtnNPurchaseOrderList = () => {
                         </Select> */}
                         {/* <FormHelperText>Without label</FormHelperText> */}
                     {/* </FormControl> */}
-                    <Box width="250px">
-                        <TextField className="textFieldInOrder" label="Customer Code" select value={selectInOrder} onChange={handleChange} fullWidth>
-                            <MenuItem value="Customer Code">Customer Code</MenuItem>
-                            <MenuItem value="date">Date</MenuItem>
-                        </TextField>
-                    </Box>
+                    <TextField className="formControlInOrder" label="Customer Code" select value={selectInOrder} onChange={handleChange} fullWidth>
+                        <MenuItem value="Customer Code">Customer Code</MenuItem>
+                        <MenuItem value="date">Date</MenuItem>
+                    </TextField>
                     {/* <TextField className="textFieldInProduct" id="outlined-basic" variant="outlined" /> */}
                     <TextField className="textFieldInOrder" id="standard-basic" label="Enter Customer Code" variant="standard" />
-                    <button onClick={try11}>btn</button>
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <Stack className="" spacing={1}>
+                            <DatePicker
+                            label="Select the date"
+                            openTo="day"
+                            views={['year', 'month', 'day']}
+                            value={valueInOrder}
+                            onChange={(newValue) => {
+                                setValueInOrder(newValue);
+                            }}
+                            renderInput={(params) => <TextField {...params} />}
+                            />
+                        </Stack>
+                    </LocalizationProvider>
                 </div>
                 {/* <TableContainer component={Paper} className="tableContainer"> */}
                 <Table className="tableInOrder" aria-label="simple table">
