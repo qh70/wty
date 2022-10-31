@@ -20,7 +20,7 @@ const Header = ({ title }) => {
             </Stack>
         </div>
       </div>
-      <Button className="ButtonInOrder" onClick={() => history.push("/addneworder")} label="ADD NEW ORDER" color="primary" variant="outlined">ADD NEW ORDER</Button>
+      <Button className="ButtonInOrder" onClick={goAddNewOrder} label="ADD NEW ORDER" color="primary" variant="outlined">ADD NEW ORDER</Button>
     </div>
   )
 }
