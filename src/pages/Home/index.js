@@ -4,7 +4,6 @@ import Left from "./components/Left"
 import LeftNew from "./components/LeftNew"
 import Right from "./components/Right"
 import Order from "../Order/Index"
-import Product from "../Product/Index"
 import "../../index.css"
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import AddNewOrderBefore from "../Add New Order Before/index"
@@ -24,9 +23,6 @@ const Home = () => {
                 </Route>
                 <Route exact path="/addneworder">
                     <AddNewOrder />
-                </Route>
-                <Route exact path="/product">
-                    <Product /> 
                 </Route>
                 <Route path="/addnewproduct">
                     <AddNewProduct />

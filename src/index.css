@@ -15,14 +15,19 @@ body {
 }
 
 /* left */
+
+.leftNew {
+  width: 16%;
+}
+
 .leftEmpty {
-  width: 255px;height: 100vh;
+  width: 16vw;height: 100vh;
   margin: 0px;
   background-color: #0B184E;
 }
 
 .left {
-  width: 255px;height: 100vh;
+  width: 16vw;height: 100vh;
   margin: 0px;
   background-color: #0B184E;
   position: fixed;top: 0;left: 0;
@@ -32,12 +37,15 @@ body {
 .imgNWTYTrading {
   display: flex;
   width: 100%;
-  margin-top: 45px;
-  margin-bottom: 10px;
+  margin-top: 45px;margin-bottom: 10px;
   color: white;
 }
 
-.WTC-logo1{
+.logoNWordInOrder {
+  display: flex;
+}
+
+.WTCLogo1{
   width: 24px;height: 34px;
   margin-left: 33px;
 }
@@ -45,6 +53,7 @@ body {
 .WTYTrading {
   margin-top: 5px;margin-left: 19px;
   font-size: 19px;
+  white-space:nowrap;
 }
 
 /* .straightLine {
@@ -115,52 +124,6 @@ body {
 .itemDetailsDark {
   height: 10px;line-height: 10px;
   color: grey;
-}
-/* right */
-.right {
-  height: 100vh;
-  background-color: #F7F8FC;
-  flex-grow: 1;
-}
-
-.order {
-  margin-top: 10px;margin-left: 10px;
-}
-
-.purchaseOrderList {
-  margin-top: 10px;margin-left: 10px;
-}
-
-.selectInput {
-  display: flex;
-}
-
-.selectList {
-  width: 100px;
-  margin-top: 10px;margin-left: 10px;
-}
-
-.customerCode {
-  font-size: 1px;
-}
-
-.inputList {
-  width: 100px;
-  margin-top: 10px;margin-left: 10px;
-}
-
-table{
-  margin: 20px;
-  border-collapse:collapse;
-}
-
-td {
-  border-bottom:1px solid #888888;padding:10px;
-}
-
-.listList {
-  margin: 20px;
-  border-bottom:1px solid #888888;
 }
 
 /* pageAddNewOrder */
@@ -245,7 +208,7 @@ td {
 
 /* Order */
 .order {
-  width: 100vh;
+  width: 84%;
   margin-top: 0px;
   margin-left: 0px;
   flex-grow: 1;
@@ -329,6 +292,10 @@ td {
   line-height: 100px!important;
 }
 
+.datepickerInOrder {
+  margin-left: 40px!important;
+}
+
 .tableInOrder {
   width: 90%!important;
   margin-left: 40px;
@@ -341,6 +308,15 @@ td {
 .tableCellInOrder {
   width: 260px;height: 52px;
   font-size: 14px!important;font-weight: 400!important;
+}
+
+.ButtonsInTableInAddNewOrder {
+  display: flex;
+  margin-top: 30px;margin-left: -20px;
+}
+
+.buttonDELETEInTableInAddNewOrder {
+  margin-left: 10px!important;
 }
 
 .lastTableCellInOrder {
@@ -375,8 +351,12 @@ td {
 }
 
 .listForOrder {
-  width: 100%;
+  width: 80%;
   margin-top: 35px;margin-left: 38px;
+}
+
+.gridsInAddNewOrder {
+  margin-top: 0px!important;margin-bottom: -130px!important;
 }
 
 .buttonsInAddNewOrder {
@@ -603,9 +583,70 @@ td {
   font-size: 20px;font-weight: 500;
 }
 
+.secondWordsInDeleteDialog {
+  margin-left: 24px;margin-right: 24px;
+  font-size: 16px;font-weight: 400;
+}
+
 .box1InDialog {
   width: 95%;
   margin-top: 35px;
+}
+
+@media (max-width:1200px){
+  * {
+    box-sizing: border-box;
+  }
+
+  .imgNWTYTrading {
+    display: flex;
+    width: 100%;
+    margin-top: 45px;margin-bottom: 10px;
+    /* background-color: green; */
+    color: red;
+  }
+  
+  .logoNWordInOrder {
+    display: flex;
+  }
+  
+  .WTCLogo1{
+    width: 24px;height: 34px;
+    margin-left: 2%;
+  }
+  
+  .WTYTrading {
+    margin-top: 5px;margin-right: 19px;
+    font-size: 1rem;
+  }
+
+  .ListInLeftNew {
+    margin-left: 0px!important;
+    padding-left: 0px!important;
+  }
+
+  .iconNMenuDark{
+    display: flex;
+    width: 231px;height: 56px;
+    margin-left: 0px;
+    align-items: left;
+  }
+  
+  .itemIconDark {
+    width: 16px;height: 18px;
+    margin-left: -10%;
+    color: #9FA2B4 !important;
+  }
+  
+  .itemMenu {
+    margin-top: 13px!important;margin-left: 10px;
+    color: white ;
+  }
+  
+  .itemMenuDark {
+    margin-top: 13px!important;margin-left: -10%;
+    color: #9FA2B4;
+  }
 }
 
 
@@ -651,20 +692,30 @@ td {
     color: white;
   }
 
+  .logoNWordInOrder {
+    color: white;display: flex;
+    margin: auto;
+  }
+
   .MenuIconInOrder {
     display: block!important;
-    width: 21px!important;height: 18px!important;
-    margin-top: 26px;margin-bottom: 26px;margin-left: 20px;
+    width: 36px!important;height: 30px!important;
+    margin-top: 20px;margin-bottom: 26px;margin-left: 5%;
+    position: fixed;
   }
   
-  .WTC-logo1{
+  .WTCLogo1{
     width: 24px;height: 34px;
-    margin-top: 18px;margin-left: 57px;
+    /* margin-top: 18px;margin-left: 15%; */
+    margin: auto;
   }
   
   .WTYTrading {
-    margin-top: 22px;margin-left: 16px;
+    /* margin-top: 22px;margin-left: 16px; */
+    margin: auto;
+    margin-left: 16px;
     font-size: 19px;
+    white-space:nowrap;
   }
   
   /* Order */
@@ -720,11 +771,12 @@ td {
   
   .dropdownNTextareaInOrder {
     display: block;
+    width: 90%;
     margin-top: 29px;margin-left: 25px;
   }
   
   .formControlInOrder {
-    width: 100%;
+    width: 100%!important;
     margin-top: 0px !important;margin-bottom: 0px !important;margin-left: 0px !important;
     /* border: 1px solid #DFDFDF!important; */
     border-radius: 8px!important;
@@ -740,10 +792,15 @@ td {
     width: 100%;
     margin-top: 10px!important;margin-left: 0px!important;
   }
+
+  .datepickerInOrder {
+    width: 100%;
+    margin-top: 10px!important;margin-left: 0px!important;
+  }
   
   .tableInOrder {
     width: 90%!important;
-    margin-left: 20px;
+    margin-top: 40px;margin-left: 20px;
   }
   
   .tableFirstRowInOrder {
@@ -766,7 +823,7 @@ td {
   
   /* page addneworder */
   .pageAddNewOrder {
-    width: 100vh;
+    width: 100vw;
     margin-top: 0px;
     margin-left: 0px;
     padding-top: 30px;
@@ -790,7 +847,9 @@ td {
   
   .buttonsInAddNewOrder {
     width: 30%;
-    margin-right: 15px!important;
+    margin-right: 3%!important;
+    font-size: 14px!important;
+    white-space:nowrap;
   }
 
   .rowInListForOrder {

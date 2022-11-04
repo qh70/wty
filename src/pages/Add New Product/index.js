@@ -1,7 +1,6 @@
 import { useState  } from "react"
 import ListAddNewProduct from "./ListAddNewProduct"
 import AddProduct from "../../components/Add Product/index"
-import Header from "../Product/components/Header"
 import MaxWidthDialog from "../../components/Dialog"
 
 const AddNewProduct = () => {
@@ -17,7 +16,7 @@ const AddNewProduct = () => {
   return (
     <div className="pageAddNewProduct">
         <MaxWidthDialog open={open} setOpen={setOpen} />
-        <Header title="Add New Product"/>
+        {/* <Header title="Add New Product"/> */}
         <div>
             <button className="buttons">Save Draft</button>
             <button className="buttons">Confirm</button>

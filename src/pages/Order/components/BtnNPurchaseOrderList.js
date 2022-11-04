@@ -15,6 +15,11 @@ import Box from "@mui/material/Box";
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
+import { DesktopDatePicker } from '@mui/x-date-pickers';
+import { TextFieldProps } from "@mui/material";
+import dayjs from 'dayjs';
+import DateRangeIcon from '@mui/icons-material/DateRange';
+import InputAdornment from '@mui/material/InputAdornment';
 // import '@fontsource/roboto/300.css';
 // import '@fontsource/roboto/400.css';
 // import '@fontsource/roboto/500.css';
@@ -30,13 +35,13 @@ const rows = [
 
 const BtnNPurchaseOrderList = () => {
 
-    const [selectInOrder, setSelectInOrder] = useState("");
+    const [selectInOrder, setSelectInOrder] = useState("Customer Code");
   
     const handleChange = (event) => {
         setSelectInOrder(event.target.value);
     }; 
 
-    const [valueInOrder, setValueInOrder] = useState("");
+    const [valueInOrder, setValueInOrder] = useState(new Date());
 
     return (
         <div>
@@ -62,24 +67,57 @@ const BtnNPurchaseOrderList = () => {
                     {/* </FormControl> */}
                     <TextField className="formControlInOrder" label="Customer Code" select value={selectInOrder} onChange={handleChange} fullWidth>
                         <MenuItem value="Customer Code">Customer Code</MenuItem>
-                        <MenuItem value="date">Date</MenuItem>
+                        <MenuItem value="Date">Date</MenuItem>
                     </TextField>
                     {/* <TextField className="textFieldInProduct" id="outlined-basic" variant="outlined" /> */}
-                    <TextField className="textFieldInOrder" id="standard-basic" label="Enter Customer Code" variant="standard" />
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <Stack className="" spacing={1}>
-                            <DatePicker
-                            label="Select the date"
-                            openTo="day"
-                            views={['year', 'month', 'day']}
-                            value={valueInOrder}
-                            onChange={(newValue) => {
-                                setValueInOrder(newValue);
-                            }}
-                            renderInput={(params) => <TextField {...params} />}
-                            />
-                        </Stack>
-                    </LocalizationProvider>
+                    {
+                        selectInOrder === "Customer Code"?
+                        <TextField className="textFieldInOrder" id="standard-basic" label="Enter Customer Code" variant="standard" />
+                        :null
+                    }
+                    {
+                        selectInOrder === "Date"?
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                            <Stack className="datepickerInOrder" spacing={3}>
+                                <DatePicker
+                                label="Select the date"
+                                openTo="day"
+                                views={['year', 'month', 'day']}
+                                value={valueInOrder}
+                                onChange={(newValue) => {
+                                    setValueInOrder(newValue);
+                                }}
+                                renderInput={(params) => 
+                                    <TextField 
+                                        {...params} 
+                                        InputProps={{
+                                            startAdornment: (
+                                            <InputAdornment position="start">
+                                                <DateRangeIcon />
+                                            </InputAdornment>
+                                            ),
+                                        }}
+                                    />
+                                }
+                                showDaysOutsideCurrentMonth
+                                />
+                                {/* <DesktopDatePicker
+                                    label="Date"
+                                    inputFormat="MM/DD/YYYY"
+                                    value={valueInOrder}
+                                    onChange={(newValue) => {
+                                        setValueInOrder(newValue);
+                                    }}
+                                    renderInput={(params: TextFieldProps)=>{
+                                        return <TextField {...params} />;
+                                    }}
+                                    views={["day", "month"]}
+                                    showDaysOutsideCurrentMonth
+                                /> */}
+                            </Stack>
+                        </LocalizationProvider>
+                        :null
+                    }
                 </div>
                 {/* <TableContainer component={Paper} className="tableContainer"> */}
                 <Table className="tableInOrder" aria-label="simple table">

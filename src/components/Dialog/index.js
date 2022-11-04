@@ -12,6 +12,8 @@ import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import Switch from '@mui/material/Switch';
 import Slider from '@mui/material/Slider';
+import InputAdornment from '@mui/material/InputAdornment';
+import SearchIcon from '@mui/icons-material/Search';
 
 const marks = [
     {
@@ -64,12 +66,22 @@ export default function MaxWidthDialog({ open, setOpen,}) {
                 </TextField>
             </Box>
             <Box className="box1InDialog">
-                <TextField label="Search for Products" fullWidth placeholder="Search ...">
+                <TextField 
+                  label="Search for Products" fullWidth 
+                  placeholder="Search ..."
+                  InputProps={{
+                    startAdornment: (
+                    <InputAdornment position="start">
+                        <SearchIcon />
+                    </InputAdornment>
+                    ),
+                  }}
+                >
                     <MenuItem value="WTY Code">WTY Code</MenuItem>
                     <MenuItem value="Some other Code">Some other Code</MenuItem>
                 </TextField>
             </Box>
-            <Box sx={{ width: 525, mt: "50px" }}>
+            <Box sx={{ width: "94%", mt: "50px" }}>
                 <Slider
                     sx={{color: "#BDBDBD", height: "2px"}}
                     aria-label="Custom marks"

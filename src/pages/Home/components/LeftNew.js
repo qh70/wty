@@ -81,19 +81,21 @@ const Left = () => {
     ]
 
   return (
-    <div>
-        <div className="leftEmpty" />
+    <div className="leftNew">
+        <div className="leftEmpty"/>
         <div className="left">
             <div className="imgNWTYTrading">
                 <MenuIcon className="MenuIconInOrder hideOver600"/>
-                <img className="WTC-logo1" src={require("../../../static/WTY-logo 1.png")}/>
-                <p className="WTYTrading">WTY Trading</p>
+                <div className="logoNWordInOrder">
+                  <img className="WTCLogo1" src={require("../../../static/WTY-logo 1.png")}/>
+                  <div className="WTYTrading">WTY Trading</div>
+                </div>
             </div>
             {/* <Item state={state} setState={setState} itemName="Order"/>
             <Item state={state} setState={setState} itemName="Product"/>
             <Item state={state} setState={setState} itemName="Users"/>
             <Item state={state} setState={setState} itemName="Clients"/> */}
-            <List className="hideUnder600">
+            <List className="hideUnder600 ListInLeftNew">
                 {itemMeun.map(item => (
                 <ListItem 
                     button
@@ -102,8 +104,8 @@ const Left = () => {
                     // className={location.pathname == item.path ? classes.active :null}
                 >
                     <div className="iconNMenuDark">
-                    <ListItemIcon className="itemIconDark">{item.icon}</ListItemIcon>
-                    <ListItemText className={location.pathname == item.path ? "itemMenu" : "itemMenuDark"} primary={item.text}/>
+                      <ListItemIcon className="itemIconDark">{item.icon}</ListItemIcon>
+                      <ListItemText className={location.pathname == item.path ? "itemMenu" : "itemMenuDark"} primary={item.text}/>
                     </div>
                 </ListItem>
                 ))}
