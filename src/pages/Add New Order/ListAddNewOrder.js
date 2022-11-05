@@ -8,6 +8,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import Stack from '@mui/material/Stack';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
+// import DatePicker from '@mui/lab/DatePicker';
 import dayjs from 'dayjs';
 import Button from "@mui/material/Button";
 import Input from '@mui/material/Input';
@@ -74,11 +75,11 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, setDeletepopup }) => {
                                 }}
                                 renderInput={(params) => 
                                     <TextField 
-                                        className="textFieldInAddNewOrder" 
-                                        {...params} 
+                                        className="textFieldInAddNewOrder"
+                                        {...params}  
                                         InputProps={{
                                             startAdornment: (
-                                            <InputAdornment position="start">
+                                            <InputAdornment position="start" type="date">
                                                 <DateRangeIcon />
                                             </InputAdornment>
                                             ),
@@ -89,6 +90,12 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, setDeletepopup }) => {
                                 }
                                 showDaysOutsideCurrentMonth
                                 />
+
+                                {/* <DatePicker 
+                                    label="Select the date"
+                                    renderInput={(params) => <TextField {...params} />}
+                                /> */}
+
                             </Stack>
                         </LocalizationProvider>
                     </Grid>
@@ -214,9 +221,10 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, setDeletepopup }) => {
                                         className="textFieldInAddNewOrder" 
                                         {...params} 
                                         InputProps={{
+                                            type: "date",
                                             startAdornment: (
-                                            <InputAdornment position="start">
-                                                <DateRangeIcon />
+                                            <InputAdornment position="start" type="date">
+                                                <DateRangeIcon type="date"/>
                                             </InputAdornment>
                                             ),
                                         }} 
