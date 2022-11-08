@@ -47,7 +47,7 @@ const BtnNPurchaseOrderList = () => {
         <div>
             {/* <List orderList={orderList}/>     */}
             <div className="purchaseOrderList">
-                <div className="wordPurchaseOrderList">Purchase Order List</div>
+                <div className="wordPurchaseOrderList">Purduct List</div>
                 <div className="dropdownNTextareaInOrder">
                     
                     {/* <FormControl className="formControlInOrder" sx={{ m: 1 }}>
@@ -65,45 +65,16 @@ const BtnNPurchaseOrderList = () => {
                         </Select> */}
                         {/* <FormHelperText>Without label</FormHelperText> */}
                     {/* </FormControl> */}
-                    <TextField className="formControlInOrder" label="Customer Code" select value={selectInOrder} onChange={handleChange} fullWidth>
-                        <MenuItem value="Customer Code">Customer Code</MenuItem>
-                        <MenuItem value="Date">Date</MenuItem>
+                    <TextField className="formControlInOrder" select value={selectInOrder} onChange={handleChange} fullWidth>
+                        <MenuItem value="Product Name" >Product Name</MenuItem>
+                        <MenuItem value="Description of Goods">Description of Goods</MenuItem>
                     </TextField>
                     {/* <TextField className="textFieldInProduct" id="outlined-basic" variant="outlined" /> */}
                     {
-                        selectInOrder === "Customer Code"?
-                        <TextField className="textFieldInOrder" id="standard-basic" label="Enter Customer Code" variant="standard" />
-                        :null
-                    }
-                    {
-                        selectInOrder === "Date"?
-                        <LocalizationProvider dateAdapter={AdapterDayjs}>
-                            <Stack className="datepickerInOrder" spacing={3}>
-                                <DatePicker
-                                label="Select the date"
-                                openTo="day"
-                                views={['year', 'month', 'day']}
-                                value={valueInOrder}
-                                onChange={(newValue) => {
-                                    setValueInOrder(newValue);
-                                }}
-                                renderInput={(params) => 
-                                    <TextField 
-                                        {...params} 
-                                        InputProps={{
-                                            startAdornment: (
-                                            <InputAdornment position="start">
-                                                <DateRangeIcon />
-                                            </InputAdornment>
-                                            ),
-                                        }}
-                                    />
-                                }
-                                showDaysOutsideCurrentMonth
-                                />
-                            </Stack>
-                        </LocalizationProvider>
-                        :null
+                        selectInOrder === "Product Name"?
+                        <TextField className="textFieldInOrder" id="standard-basic" label="Product Name" variant="standard" />
+                        :
+                        <TextField className="textFieldInOrder" id="standard-basic" label="Description of Goods" variant="standard" />
                     }
                 </div>
                 {/* <TableContainer component={Paper} className="tableContainer"> */}

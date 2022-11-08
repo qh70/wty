@@ -15,7 +15,13 @@ const AddNewOrder = () => {
 
     const [open, setOpen] = useState(false);
 
-    const [deletepopup, setDeletepopup] = useState(false);    
+    const [deletepopup, setDeletepopup] = useState(false);  
+
+    const [ stateAllInAddNewOrder, setStateAllInAddNewOrder] = useState(false);
+    
+    const disableAllInAddNewOrder = function () {
+      setStateAllInAddNewOrder(true);
+    }
 
   return (
     <div className="pageAddNewOrder">
@@ -24,11 +30,11 @@ const AddNewOrder = () => {
         <Header title="Add New Order"/>
         <div className="threeButtonsInAddNewOrder">
             <Button className="buttonsInAddNewOrder" variant="outlined" color="secondary" disabled>Save Draft</Button>
-            <Button className="buttonsInAddNewOrder" variant="outlined" color="info" >Confirm</Button>
+            <Button className="buttonsInAddNewOrder" variant="outlined" color="info" onClick={disableAllInAddNewOrder}>Confirm</Button>
             <Button className="buttonsInAddNewOrder" variant="outlined" color="error">Cancel</Button>
             {/* <button className="buttons" onClick={handleClickOpen}>Dialog</button> */}
         </div>
-        <ListAddNewOrder setShowAddProduct={setShowAddProduct} setOpen={setOpen} setDeletepopup={setDeletepopup}/>
+        <ListAddNewOrder setShowAddProduct={setShowAddProduct} setOpen={setOpen} setDeletepopup={setDeletepopup} stateAllInAddNewOrder={stateAllInAddNewOrder}/>
         <div className="threeButtonsInAddNewOrder">
             <Button className="buttonsInAddNewOrder" variant="outlined" color="secondary" >Save Draft</Button>
             <Button className="buttonsInAddNewOrder" variant="outlined" color="info" disabled>Confirm</Button>

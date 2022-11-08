@@ -13,6 +13,7 @@ import dayjs from 'dayjs';
 import Button from "@mui/material/Button";
 import Input from '@mui/material/Input';
 import TableInAddNewOrder from "../../components/Table/TableInAddNewOrder";
+import TableInAddNewOrder2 from "../../components/Table/TableInAddNewOrder2";
 import UploadFileIcon from '@mui/icons-material/UploadFile';
 import InputAdornment from '@mui/material/InputAdornment';
 import Grid from '@mui/material/Grid';
@@ -20,7 +21,7 @@ import Box from '@mui/material/Box';
 import DateRangeIcon from '@mui/icons-material/DateRange';
 
 
-const ListAddNewProduct = ({ setOpen, setShowAddProduct, setDeletepopup }) => {
+const ListAddNewProduct = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllInAddNewOrder }) => {
     
     // const [showAddProduct, setShowAddProduct] = useState(false);
 
@@ -32,17 +33,23 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, setDeletepopup }) => {
     <div className="listInAddNewOrder">
         <a className="wordProductNHashtags">Order ######</a>
         {/* <div className="listForOrder"> */}
-            <Box className="listForOrder">
+            <Box className="listForOrder" disabled>
                 <Grid container spacing={8}>
                     {/* <div className="rowInListForOrder"> */}
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
-                        <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Customer Code" variant="standard" fullWidth="50%"/>
+                        <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Customer Code" variant="standard" fullWidth="50%"
+                            disabled={stateAllInAddNewOrder}
+                        />
                     </Grid>
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
-                        <TextField className="textFieldInAddNewOrder" id="standard-basic" label="P/O No." variant="standard" fullWidth/>
+                        <TextField className="textFieldInAddNewOrder" id="standard-basic" label="P/O No." variant="standard" fullWidth
+                            disabled={stateAllInAddNewOrder}
+                        />
                     </Grid>
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
-                        <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Attn" variant="standard" fullWidth/>
+                        <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Attn" variant="standard" fullWidth
+                            disabled={stateAllInAddNewOrder}
+                        />
                     </Grid>
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                         <FormControl className="textFieldInAddNewOrder" variant="standard" fullWidth>
@@ -53,6 +60,7 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, setDeletepopup }) => {
                                 // value={age}
                                 // onChange={handleChange}
                                 label="Age"
+                                disabled={stateAllInAddNewOrder}
                             >
                                 <MenuItem value="Mr.">Mr.</MenuItem>
                                 <MenuItem value="Mrs.">Mrs.</MenuItem>
@@ -60,7 +68,12 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, setDeletepopup }) => {
                         </FormControl>
                     </Grid>
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
-                        <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Telephone" variant="standard" fullWidth/>
+                        <TextField 
+                            className="textFieldInAddNewOrder" 
+                            id="standard-basic" label="Telephone" variant="standard" 
+                            disabled={stateAllInAddNewOrder}
+                            fullWidth
+                        />
                     </Grid>
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -86,6 +99,7 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, setDeletepopup }) => {
                                         }} 
                                         fullWidth
                                         style={{marginBottom: "50px"}}
+                                        disabled={stateAllInAddNewOrder}
                                     />
                                 }
                                 showDaysOutsideCurrentMonth
@@ -100,13 +114,19 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, setDeletepopup }) => {
                         </LocalizationProvider>
                     </Grid>
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
-                        <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Email" variant="standard" fullWidth/>
+                        <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Email" variant="standard" fullWidth
+                            disabled={stateAllInAddNewOrder}
+                        />
                     </Grid>
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
-                        <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Order Number" variant="standard" date fullWidth/>
+                        <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Order Number" variant="standard" date fullWidth
+                            disabled={stateAllInAddNewOrder}
+                        />
                     </Grid>
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
-                        <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Fax" variant="standard" fullWidth/><br></br>
+                        <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Fax" variant="standard" fullWidth
+                            disabled={stateAllInAddNewOrder}
+                        />
                     </Grid>
                     <hr/>
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
@@ -121,6 +141,7 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, setDeletepopup }) => {
                                 ),
                             }}
                             fullWidth
+                            disabled={stateAllInAddNewOrder}
                         />
                     </Grid>
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
@@ -135,6 +156,7 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, setDeletepopup }) => {
                                 ),
                             }}
                             fullWidth
+                            disabled={stateAllInAddNewOrder}
                         />
                     </Grid>
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
@@ -149,6 +171,7 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, setDeletepopup }) => {
                                 ),
                             }}
                             fullWidth
+                            disabled={stateAllInAddNewOrder}
                         />
                     </Grid>
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
@@ -163,6 +186,7 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, setDeletepopup }) => {
                                 ),
                             }}
                             fullWidth
+                            disabled={stateAllInAddNewOrder}
                         />
                     </Grid>
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
@@ -177,6 +201,7 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, setDeletepopup }) => {
                                 ),
                             }}
                             fullWidth
+                            disabled={stateAllInAddNewOrder}
                         />
                     </Grid>
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
@@ -191,6 +216,7 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, setDeletepopup }) => {
                                 ),
                             }}
                             fullWidth
+                            disabled={stateAllInAddNewOrder}
                         />
                     </Grid>
                 </Grid>
@@ -200,8 +226,12 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, setDeletepopup }) => {
             <div className="listForOrder" style={{marginTop: "100px"}}>
                 
                 <div className="wordProductsInAddNewOrder">Products</div>
-                <TableInAddNewOrder setDeletepopup={setDeletepopup}/>
-                <Button className="buttonADDPRODUCTInAddNewOrder" variant="outlined" color="primary" onClick={handleClickOpen}>ADD PRODUCT</Button>
+                <TableInAddNewOrder setDeletepopup={setDeletepopup} stateAllInAddNewOrder={stateAllInAddNewOrder}/>
+                <TableInAddNewOrder2 setDeletepopup={setDeletepopup}/>
+                {!stateAllInAddNewOrder?
+                    <Button className="buttonADDPRODUCTInAddNewOrder" variant="outlined" color="primary" onClick={handleClickOpen}>ADD PRODUCT</Button>
+                 :null
+                }
             </div>
             <Box className="listForOrder">
                 <Grid container spacing={8}>
@@ -216,20 +246,23 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, setDeletepopup }) => {
                                 onChange={(newValue) => {
                                     setValue(newValue);
                                 }}
+                                components={{
+                                    OpenPickerIcon: DateRangeIcon,
+                                }}
                                 renderInput={(params) => 
                                     <TextField 
                                         className="textFieldInAddNewOrder" 
                                         {...params} 
-                                        InputProps={{
-                                            type: "date",
-                                            startAdornment: (
-                                            <InputAdornment position="start" type="date">
-                                                <DateRangeIcon type="date"/>
-                                            </InputAdornment>
-                                            ),
-                                        }} 
-                                        fullWidth
-                                        style={{marginBottom: "50px"}}
+                                        // InputProps={{
+                                        //     startAdornment: (
+                                        //     <InputAdornment position="start">
+                                        //         <DateRangeIcon/>
+                                        //     </InputAdornment>
+                                        //     ),
+                                        // }} 
+                                        // fullWidth
+                                        // style={{marginBottom: "50px"}}
+                                        disabled={stateAllInAddNewOrder}
                                     />
                                 }
                                 showDaysOutsideCurrentMonth
@@ -238,16 +271,24 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, setDeletepopup }) => {
                         </LocalizationProvider>
                     </Grid>
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
-                        <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Terms of delivery" variant="standard" fullWidth/>
+                        <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Terms of delivery" variant="standard" fullWidth
+                        disabled={stateAllInAddNewOrder}
+                        />
                     </Grid>
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={12}>
-                        <TextField className="last3TextFieldInAddNewOrder" id="standard-basic" label="Delivery Address" variant="standard" fullWidth/>
+                        <TextField className="last3TextFieldInAddNewOrder" id="standard-basic" label="Delivery Address" variant="standard" fullWidth
+                        disabled={stateAllInAddNewOrder}
+                        />
                     </Grid>
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={12}>
-                        <TextField className="last3TextFieldInAddNewOrder" id="standard-basic" label="Payment Terms" variant="standard" fullWidth/>
+                        <TextField className="last3TextFieldInAddNewOrder" id="standard-basic" label="Payment Terms" variant="standard" fullWidth
+                        disabled={stateAllInAddNewOrder}
+                        />
                     </Grid>
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={12}>
-                        <TextField className="last3TextFieldInAddNewOrder" id="standard-basic" label="Remarks" variant="standard" fullWidth/>
+                        <TextField className="last3TextFieldInAddNewOrder" id="standard-basic" label="Remarks" variant="standard" fullWidth
+                        disabled={stateAllInAddNewOrder}
+                        />
                     </Grid>
                 </Grid>
             </Box>
