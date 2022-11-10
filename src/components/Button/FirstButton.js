@@ -1,14 +1,16 @@
 import { Button } from "@mui/material";
 
-const FirstButton = () => {
+const FirstButton = ({ goto }) => {
     
-    function goAddNewOrder (){
-        document.location = "/addneworder";
+    
+
+    function gotosomewhere (){
+        document.location = `/addnew${goto.toLowerCase()}`;
     }
 
   return (
     <div>
-      <Button className="FirstButton" onClick={goAddNewOrder} label="ADD NEW ORDER" color="primary" variant="outlined">ADD NEW ORDER</Button>
+      <Button className="FirstButton" onClick={gotosomewhere} label="ADD NEW ORDER" color="primary" variant="outlined">ADD NEW {goto}</Button>
     </div>
   )
 }

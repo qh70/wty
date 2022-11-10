@@ -7,6 +7,7 @@ import Product from "../Product/Product/index"
 import "../../index.css"
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import AddNewOrder from "../Add New Order/index"
+import AddNewProduct from "../Product/AddNewProduct"
 
 const Home = () => {
 
@@ -23,6 +24,9 @@ const Home = () => {
                 </Route>
                 <Route exact path="/product">
                     <Product/> 
+                </Route>
+                <Route exact path="/addnewproduct">
+                    <AddNewProduct />
                 </Route>
             </Switch>
         </div>

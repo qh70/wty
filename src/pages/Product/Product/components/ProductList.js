@@ -24,18 +24,18 @@ import InputAdornment from '@mui/material/InputAdornment';
 // import '@fontsource/roboto/400.css';
 // import '@fontsource/roboto/500.css';
 
-function createData(name, POno, Attention, Date) {
-    return { name, POno, Attention, Date };
+function createData( ProductName, DescriptionProduct ) {
+    return { ProductName, DescriptionProduct };
 };
 
 const rows = [
-    createData("CST001", "Chanel-000010", "Wai, Benny", "02 Aug 2021"),
-    createData("CST002", "Chanel-000011", "Wai, Benny", "01 Aug 2021"),
+    createData("Pink Angel", "Pink Angel xxxxxxxxxx Pink Angel xxxxxxxxxx Pink Angel xxxxxxxxxx Pink Angel xxxxxxxxxx"),
+    createData("CST002", "Pink Angel xxxxxxxxxx Pink Angel xxxxxxxxxx Pink Angel xxxxxxxxxx Pink Angel xxxxxxxxxx"),
 ];
 
 const BtnNPurchaseOrderList = () => {
 
-    const [selectInOrder, setSelectInOrder] = useState("Customer Code");
+    const [selectInOrder, setSelectInOrder] = useState("Product Name");
   
     const handleChange = (event) => {
         setSelectInOrder(event.target.value);
@@ -72,19 +72,17 @@ const BtnNPurchaseOrderList = () => {
                     {/* <TextField className="textFieldInProduct" id="outlined-basic" variant="outlined" /> */}
                     {
                         selectInOrder === "Product Name"?
-                        <TextField className="textFieldInOrder" id="standard-basic" label="Product Name" variant="standard" />
+                        <TextField className="textFieldInProduct" id="standard-basic" label="Enter Product Name" variant="standard" sx={{width: 250}}/>
                         :
-                        <TextField className="textFieldInOrder" id="standard-basic" label="Description of Goods" variant="standard" />
+                        <TextField className="textFieldInProduct" id="standard-basic" label="Enter Description of Goods" variant="standard" sx={{width: 250}}/>
                     }
                 </div>
                 {/* <TableContainer component={Paper} className="tableContainer"> */}
                 <Table className="tableInOrder" aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell className="tableFirstRowInOrder">Coustomer Code</TableCell>
-                            <TableCell className="tableFirstRowInOrder">P/O No.</TableCell>
-                            <TableCell className="tableFirstRowInOrder">Attention</TableCell>
-                            <TableCell className="tableFirstRowInOrder">Date</TableCell>
+                            <TableCell className="tableFirstRowInProduct">Product Name</TableCell>
+                            <TableCell className="tableFirstRowInProduct1">Description of Product</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -93,10 +91,8 @@ const BtnNPurchaseOrderList = () => {
                             key={row.name}
                             // sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
-                            <TableCell className="tableCellInOrder" component="th" scope="row">{row.name}</TableCell>
-                            <TableCell className="tableCellInOrder" align="left">{row.POno}</TableCell>
-                            <TableCell className="tableCellInOrder" align="left">{row.Attention}</TableCell>
-                            <TableCell className="lastTableCellInOrder" align="left">{row.Date}</TableCell>
+                            <TableCell className="tableCellInOrder" component="th" scope="row">{row.ProductName}</TableCell>
+                            <TableCell className="tableCellInOrder" align="left">{row.DescriptionProduct}</TableCell>
                         </TableRow>
                         ))}
                     </TableBody>

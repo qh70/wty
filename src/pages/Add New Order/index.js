@@ -26,7 +26,7 @@ const AddNewOrder = () => {
   return (
     <div className="pageAddNewOrder">
         <MaxWidthDialog open={open} setOpen={setOpen} />
-        <Delete deletepopup={deletepopup} setDeletepopup={setDeletepopup}/>
+        <Delete deletepopup={deletepopup} setDeletepopup={setDeletepopup} modules="order"/>
         <Header title="Add New Order"/>
         <div className="threeButtonsInAddNewOrder">
             <Button className="buttonsInAddNewOrder" variant="outlined" color="secondary" disabled>Save Draft</Button>

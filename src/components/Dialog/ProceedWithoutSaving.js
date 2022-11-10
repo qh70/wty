@@ -18,12 +18,12 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 
-export default function Delete({ deletepopup, setDeletepopup, modules }) {
+export default function Delete({ proceedWithoutSaving, setProceedWithoutSaving }) {
   const [fullWidth, setFullWidth] = React.useState(true);
   const [maxWidth, setMaxWidth] = React.useState('md');
 
   const handleClose = () => {
-    setDeletepopup(false);
+    setProceedWithoutSaving(false);
   };
 
   const handleMaxWidthChange = (event) => {
@@ -46,13 +46,13 @@ export default function Delete({ deletepopup, setDeletepopup, modules }) {
       <Dialog
         fullWidth={fullWidth}
         maxWidth={maxWidth}
-        open={deletepopup}
+        open={proceedWithoutSaving}
         onClose={handleClose}
       >
-        <div className="wordAddProductInDialog">Do you want to delete this {modules}?</div>
-        <div className="secondWordsInDeleteDialog">If you delete this {modules},you cannot recover it back.</div>
+        <div className="wordAddProductInDialog">Do you want to proceed without saving the data?</div>
+        <div className="secondWordsInDeleteDialog">If you proceed without saving the data, you cannot recover it back.</div>
         <DialogActions>
-          <Button color="primary">YES,PLEASE DELETE</Button>
+          <Button color="primary">YES,PLEASE PROCEED</Button>
           <Button onClick={handleClose} color="warning">NO</Button>
         </DialogActions>
       </Dialog>

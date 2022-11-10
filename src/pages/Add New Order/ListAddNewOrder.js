@@ -128,21 +128,7 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, setDeletepopup, stateAl
                             disabled={stateAllInAddNewOrder}
                         />
                     </Grid>
-                    <hr/>
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
-                        <TextField 
-                            className="textFieldInAddNewOrder" 
-                            id="standard-basic" label="Customer P/O" variant="outlined" type="file"
-                            InputProps={{
-                                startAdornment: (
-                                <InputAdornment position="start">
-                                    <UploadFileIcon />
-                                </InputAdornment>
-                                ),
-                            }}
-                            fullWidth
-                            disabled={stateAllInAddNewOrder}
-                        />
                     </Grid>
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                         <TextField 
@@ -162,7 +148,7 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, setDeletepopup, stateAl
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                         <TextField 
                             className="textFieldInAddNewOrder" 
-                            id="standard-basic" label="Customer P/O" variant="outlined" type="file"
+                            id="standard-basic" label="Upload Customer Reference" variant="outlined" type="file"
                             InputProps={{
                                 startAdornment: (
                                 <InputAdornment position="start">
@@ -177,7 +163,7 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, setDeletepopup, stateAl
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                         <TextField 
                             className="textFieldInAddNewOrder" 
-                            id="standard-basic" label="Customer P/O" variant="outlined" type="file"
+                            id="standard-basic" label="Upload Invoice" variant="outlined" type="file"
                             InputProps={{
                                 startAdornment: (
                                 <InputAdornment position="start">
@@ -192,7 +178,7 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, setDeletepopup, stateAl
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                         <TextField 
                             className="textFieldInAddNewOrder" 
-                            id="standard-basic" label="Customer P/O" variant="outlined" type="file"
+                            id="standard-basic" label="Upload Packing List " variant="outlined" type="file"
                             InputProps={{
                                 startAdornment: (
                                 <InputAdornment position="start">
@@ -207,7 +193,22 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, setDeletepopup, stateAl
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                         <TextField 
                             className="textFieldInAddNewOrder" 
-                            id="standard-basic" label="Customer P/O" variant="outlined" type="file"
+                            id="standard-basic" label="Upload Waybill" variant="outlined" type="file"
+                            InputProps={{
+                                startAdornment: (
+                                <InputAdornment position="start">
+                                    <UploadFileIcon />
+                                </InputAdornment>
+                                ),
+                            }}
+                            fullWidth
+                            disabled={stateAllInAddNewOrder}
+                        />
+                    </Grid>
+                    <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
+                        <TextField 
+                            className="textFieldInAddNewOrder" 
+                            id="standard-basic" label="Upload Others" variant="outlined" type="file"
                             InputProps={{
                                 startAdornment: (
                                 <InputAdornment position="start">

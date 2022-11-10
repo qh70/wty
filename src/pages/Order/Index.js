@@ -8,6 +8,7 @@ import { display } from '@mui/system';
 import Header from "./components/Header"
 import BtnNPurchaseOrderList from "./components/BtnNPurchaseOrderList"
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import FirstButton from '../../components/Button/FirstButton';
 
 
 const Order = () => {
@@ -15,6 +16,7 @@ const Order = () => {
   return (
     <div className="order">
       <Header title="Order"/>
+      <FirstButton goto="Order"/>
       <BtnNPurchaseOrderList/>
     </div>
   )

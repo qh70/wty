@@ -16,7 +16,7 @@ const Product = () => {
   return (
     <div className="product">
       <Header title="Product"/>
-      <FirstButton/>
+      <FirstButton goto="PRODUCT"/>
       <ProductList/>
     </div>
   )

@@ -230,7 +230,6 @@ body {
 }
 
 .titleInOrder {
-  width: 80px;
   margin-right: 0px;
 }
 
@@ -392,100 +391,133 @@ body {
   margin-bottom: 100px!important;margin-right: 45px!important;
 }
 
-
 /* Product */
 .product {
-  width: 100vh;
-  margin-left: 0px;
-  flex-grow: 1;
-  background-color: #F7F8FC;
+ width: 100vh;
+ margin-left: 0px;
+ flex-grow: 1;
+ background-color: #F7F8FC;
 }
 
 .wordProduct {
-  display: flex;
-  height: 34px;
-  margin-top: 45px;
-  margin-left: 38px;
-  margin-right: 36px;
-  font-size: 24px;font-weight: 700;
-  color: black;
-  justify-content: space-between;
+ display: flex;
+ height: 34px;
+ margin-top: 45px;
+ margin-left: 38px;
+ margin-right: 36px;
+ font-size: 24px;font-weight: 700;
+ color: black;
+ justify-content: space-between;
 }
 
 .nameInProduct {
-  margin-right: 28px;
-  font-size: 14px;font-weight: 700;line-height: 38px;
-  color: black;
+ margin-right: 28px;
+ font-size: 14px;font-weight: 700;line-height: 38px;
+ color: black;
 }
 
 .buttonInProduct {
-  width: 209px;height: 48px;
-  margin-top: 30px! important;
-  margin-left: 38px;
-  border: 1px solid #0028CF;border-radius: 40px;
-  color:#0028CF;background-color: white;
-  font-size: 15px;font-weight: 700;
+ width: 209px;height: 48px;
+ margin-top: 30px! important;
+ margin-left: 38px;
+ border: 1px solid #0028CF;border-radius: 40px;
+ color:#0028CF;background-color: white;
+ font-size: 15px;font-weight: 700;
 }
 
 .productList {
-  width: 95%;
-  margin-top: 47px;margin-left: 29px;margin-right: 29px;
-  padding-bottom: 82px;
-  align-items: center;
-  border: 1px solid #DFE0EB;
-  border-radius: 8px;
-  background-color: white;
+ width: 95%;
+ margin-top: 47px;margin-left: 29px;margin-right: 29px;
+ padding-bottom: 82px;
+ align-items: center;
+ border: 1px solid #DFE0EB;
+ border-radius: 8px;
+ background-color: white;
 }
 
 .wordProductList {
-  width: 125px;height: 26px;
-  margin-top: 40px;margin-left: 40px;
-  font-size: 21px;font-weight: 700;
+ width: 125px;height: 26px;
+ margin-top: 40px;margin-left: 40px;
+ font-size: 21px;font-weight: 700;
 }
 
 .dropdownNtextarea {
-  display: flex;
-  width: 90%;min-height: 50px;
-  margin-top: 29px;margin-left: 40px;
+ display: flex;
+ width: 90%;min-height: 50px;
+ margin-top: 29px;margin-left: 40px;
 }
 
 .formControlInProduct {
-  width: 240px;
-  margin-top: 0px !important;margin-bottom: 0px !important;margin-left: 0px !important;
-  /* border: 1px solid #DFDFDF!important; */
-  border-radius: 8px!important;
+ width: 240px;
+ margin-top: 0px !important;margin-bottom: 0px !important;margin-left: 0px !important;
+ border: 1px solid #DFDFDF!important;
+ border-radius: 8px!important;
 }
 
 .selectInProduct {
-  height: 50px!important;
-  padding-left: 30px !important;
-  font-size: 16px !important;font-weight: 600 !important;
+ height: 50px!important;
+ padding-left: 30px !important;
+ font-size: 16px !important;font-weight: 600 !important;
 }
 
 .textFieldInProduct{
-  width: 280px;height: 50px;
-  margin-bottom: 0px;margin-left: 20px;
-  padding-left: 20px;
-  border: 1px solid #DFE0EB;
-  border-radius: 8px;
+ width: 280px;height: 50px;
+ margin-bottom: 0px;margin-left: 20px;
+ padding-left: 20px;
+ border: 1px solid #DFE0EB;
+ border-radius: 8px;
 }
 
 .textFieldInProduct::placeholder { 
-  font-size: 16px;font-weight: 400;
-  color: #A5A5A5;
+ font-size: 16px;font-weight: 400;
+ color: #A5A5A5;
 }
 
 .try111 {
-  width: 80vh;
+ width: 80vh;
 }
 
 .tableContainer {
-  width: 80vh!important;
+ width: 80vh!important;
 }
 
 .stackInProduct {
-  margin-top: 65px;margin-bottom: 109px!important;
-  align-items: center;
+ margin-top: 65px;margin-bottom: 109px!important;
+ align-items: center;
+}
+
+/* page Product */
+.product {
+  width: 100%;
+  margin-top: 0px;
+  margin-left: 0px;margin-right: 0px;
+  padding-bottom: 1px;
+  background-color: #F7F8FC;
+}
+
+.FirstButton {
+  width: 167px;height: 42px;
+  margin-top: 20px!important;margin-bottom: 63px!important;margin-left: 38px!important;
+  border: 1px solid;
+  border-radius: 4px;
+  font-size: 15px;font-weight: 500;
+  background-color: #F7F8FC;
+}
+
+.textFieldInProduct {
+  margin-top: -10px!important;margin-left: 40px!important;
+  line-height: 100px!important;
+}
+
+.tableFirstRowInProduct {
+  font-size: 14px!important;font-weight: 500!important;
+  width: 10px!important;
+  background-color: red;
+}
+
+.tableFirstRowInProduct1 {
+  font-size: 14px!important;font-weight: 500!important;
+  background-color: green;
 }
 
 /* page addnewproduct */
@@ -533,6 +565,14 @@ body {
   justify-content: space-between;
 }
 
+.wordProductType {
+  width: 168px;height: 26px;
+  margin-top: 110px;margin-left: 38px;
+  font-size: 24px;font-weight: 700;
+  color: black;
+  justify-content: space-between;
+}
+
 .nameForAddNewOrder {
   width: 155px;
   margin-top: 13px;
@@ -551,10 +591,10 @@ body {
   font-size: 16px;font-weight: 600;
 }
 
-.wordProductType {
+/* .wordProductType {
   margin-top: 44px;
   font-size: 21px;font-weight: 700;
-}
+} */
 
 .longerInputInListForOrder {
   width: 885px;height: 48px;margin-right: 128px;
@@ -577,6 +617,15 @@ body {
   background-color: #F9F9F9;
 }
 
+.gridDescriptionOfGoodsInAddNewProduct {
+  margin-top: 0px!important;margin-bottom: -80px!important;
+}
+
+.lastTextFieldInAddNewProduct {
+  width: 84.5%;
+  margin-top: 40px!important;margin-bottom: 150px!important;margin-right: 45px!important;
+}
+
 /* Dialog */
 .wordAddProductInDialog {
   margin-top: 24px;margin-left: 24px;
@@ -584,7 +633,7 @@ body {
 }
 
 .secondWordsInDeleteDialog {
-  margin-left: 24px;margin-right: 24px;
+  margin-top: 20px;margin-left: 24px;margin-right: 24px;
   font-size: 16px;font-weight: 400;
 }
 
@@ -887,20 +936,3 @@ body {
   }
 }
 
-/* page Product */
-.product {
-  width: 100%;
-  margin-top: 0px;
-  margin-left: 0px;margin-right: 0px;
-  padding-bottom: 1px;
-  background-color: #F7F8FC;
-}
-
-.FirstButton {
-  width: 167px;height: 42px;
-  margin-top: 20px!important;margin-bottom: 63px!important;margin-left: 38px!important;
-  border: 1px solid;
-  border-radius: 4px;
-  font-size: 15px;font-weight: 500;
-  background-color: #F7F8FC;
-}
