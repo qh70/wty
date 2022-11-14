@@ -253,16 +253,16 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, setDeletepopup, stateAl
                                 renderInput={(params) => 
                                     <TextField 
                                         className="textFieldInAddNewOrder" 
+                                        InputProps={{
+                                            startAdornment: (
+                                            <InputAdornment position="start">
+                                                <DateRangeIcon/>
+                                            </InputAdornment>
+                                            ),
+                                        }} 
                                         {...params} 
-                                        // InputProps={{
-                                        //     startAdornment: (
-                                        //     <InputAdornment position="start">
-                                        //         <DateRangeIcon/>
-                                        //     </InputAdornment>
-                                        //     ),
-                                        // }} 
-                                        // fullWidth
-                                        // style={{marginBottom: "50px"}}
+                                        fullWidth
+                                        style={{marginBottom: "50px"}}
                                         disabled={stateAllInAddNewOrder}
                                     />
                                 }
