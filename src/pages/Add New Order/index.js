@@ -1,7 +1,7 @@
 import { useState  } from "react"
 import ListAddNewOrder from "./ListAddNewOrder"
 import AddProduct from "../../components/Add Product/index"
-import Header from "./components/Header"
+import Header from "../../components/Header/Header"
 import MaxWidthDialog from "../../components/Dialog"
 import { Button } from "@mui/material"
 import '@fontsource/roboto/300.css';
@@ -27,7 +27,7 @@ const AddNewOrder = () => {
     <div className="pageAddNewOrder">
         <MaxWidthDialog open={open} setOpen={setOpen} />
         <Delete deletepopup={deletepopup} setDeletepopup={setDeletepopup} modules="order"/>
-        <Header title="Add New Order"/>
+        <Header/>
         <div className="threeButtonsInAddNewOrder">
             <Button className="buttonsInAddNewOrder" variant="outlined" color="secondary" disabled>Save Draft</Button>
             <Button className="buttonsInAddNewOrder" variant="outlined" color="info" onClick={disableAllInAddNewOrder}>Confirm</Button>

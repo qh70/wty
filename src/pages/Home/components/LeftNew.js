@@ -44,7 +44,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 // });
 
 
-const Left = () => {
+const LeftNew = () => {
     // 本來嘗試useReducer，但後來感覺useState比較合適
     // const [state, dispatch] = useReducer(reducer, {
     //     state: "Order"
@@ -74,46 +74,52 @@ const Left = () => {
         path: "/user"
       },
       {
-        text: "Client",
+        text: "Clients",
         icon: <AutoAwesomeMosaicIcon />,
-        path: "/client"
+        path: "/clients"
       }
     ]
+    // const sec = function (){
+    //   var left1 = document.getElementById("left1")
+    //   console.log(left1.parentNode.style)
+
+    // }
 
   return (
     <div className="leftNew">
-        <div className="leftEmpty"/>
-        <div className="left">
-            <div className="imgNWTYTrading">
-                <MenuIcon className="MenuIconInOrder hideOver600"/>
-                <div className="logoNWordInOrder">
-                  <img className="WTCLogo1" src={require("../../../static/WTY-logo 1.png")}/>
-                  <div className="WTYTrading">WTY Trading</div>
-                </div>
-            </div>
-            {/* <Item state={state} setState={setState} itemName="Order"/>
-            <Item state={state} setState={setState} itemName="Product"/>
-            <Item state={state} setState={setState} itemName="Users"/>
-            <Item state={state} setState={setState} itemName="Clients"/> */}
-            <List className="hideUnder600 ListInLeftNew">
-                {itemMeun.map(item => (
-                <ListItem 
-                    button
-                    key={item.text}
-                    onClick={() => history.push(item.path)}
-                    // className={location.pathname == item.path ? classes.active :null}
-                >
-                    <div className="iconNMenuDark">
-                      <ListItemIcon className="itemIconDark">{item.icon}</ListItemIcon>
-                      <ListItemText className={location.pathname == item.path ? "itemMenu" : "itemMenuDark"} primary={item.text}/>
-                    </div>
-                </ListItem>
-                ))}
-            </List>
-        </div>
+      <div id="left1" className="leftEmpty"/>
+      <div className="left">
+          <div className="imgNWTYTrading">
+              <MenuIcon className="MenuIconInOrder hideOver600"/>
+              <div className="logoNWordInOrder">
+                <img className="WTCLogo1" src={require("../../../static/WTY-logo 1.png")}/>
+                <div className="WTYTrading">WTY Trading</div>
+              </div>
+          </div>
+          {/* <Item state={state} setState={setState} itemName="Order"/>
+          <Item state={state} setState={setState} itemName="Product"/>
+          <Item state={state} setState={setState} itemName="Users"/>
+          <Item state={state} setState={setState} itemName="Clients"/> */}
+          <List className="hideUnder600 ListInLeftNew">
+              {itemMeun.map(item => (
+              <ListItem 
+                  button
+                  key={item.text}
+                  onClick={() => history.push(item.path)}
+                  // className={location.pathname == item.path ? classes.active :null}
+              >
+                  <div className="iconNMenuDark">
+                    <ListItemIcon className="itemIconDark">{item.icon}</ListItemIcon>
+                    <ListItemText className={location.pathname == item.path ? "itemMenu" : "itemMenuDark"} primary={item.text}/>
+                  </div>
+              </ListItem>
+              ))}
+          </List>
+          {/* <button onClick={sec}/> */}
+      </div>
     </div>
     
   )
 }
 
-export default Left
+export default LeftNew

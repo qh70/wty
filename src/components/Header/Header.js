@@ -1,6 +1,15 @@
 import { Stack, Avatar } from "@mui/material";
 
-const Header = ({ title }) => {
+const Header = () => {
+
+  const URL = window.location.href;
+  if (URL.includes("addnew")){
+    const page = URL.split("/").slice(-1)[0]
+    var title = page[0].toUpperCase()+page.substring(1, 3)+" "+page[3].toUpperCase()+page.substring(4,6)+" "+page[6].toUpperCase()+page.substring(7)
+  }else{
+    const page = URL.split("/").slice(-1)[0]
+    var title = page[0].toUpperCase()+page.substring(1)
+  }
 
   return (
     <div className="wordOrder">

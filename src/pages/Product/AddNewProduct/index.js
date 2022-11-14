@@ -9,7 +9,7 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import Delete from "../../../components/Dialog/Delete"
 
-const AddNewOrder = () => {
+const AddNewProduct = () => {
 
     const [showAddProduct, setShowAddProduct] = useState(false);
 
@@ -29,7 +29,7 @@ const AddNewOrder = () => {
     <div className="pageAddNewOrder">
       <ProceedWithoutSaving proceedWithoutSaving={proceedWithoutSaving} setProceedWithoutSaving={setProceedWithoutSaving}/>
       <Delete deletepopup={deletepopup} setDeletepopup={setDeletepopup} modules="product"/>
-      <Header title="Add New Product"/>
+      <Header/>
       <div className="threeButtonsInAddNewOrder">
           <Button className="buttonsInAddNewOrder" variant="outlined" color="secondary" onClick={setProceedWithoutSaving}>Save Draft</Button>
           <Button className="buttonsInAddNewOrder" variant="outlined" color="info" onClick={disableAllInAddNewOrder}>Confirm</Button>
@@ -48,4 +48,4 @@ const AddNewOrder = () => {
   )
 }
 
-export default AddNewOrder
+export default AddNewProduct
