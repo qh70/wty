@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState,useContext } from "react";
 import { TextField } from "@mui/material"
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
@@ -24,7 +24,7 @@ import DateRangeIcon from '@mui/icons-material/DateRange';
 import { UserContext } from "../../../../UserContext"
 
 
-const ListAddNewProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder }) => {
+const ListUneditableProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder }) => {
     
     // const [showAddProduct, setShowAddProduct] = useState(false);
 
@@ -32,13 +32,8 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder }
     
     const handleClickOpen = () => {setOpen(true);};
 
-    const { product11, setProduct11 } = useContext(UserContext);
+    const {product11} = useContext(UserContext);
     console.log(useContext(UserContext))
-
-    function product11Change(e) {
-        setProduct11(e.target.value)
-        console.log(product11)
-    }
 
   return (
     <div className="listInAddNewOrder">
@@ -49,68 +44,84 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder }
                 {/* <div className="rowInListForOrder"> */}
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField className="textFieldInAddNewOrder" id="standard-basic" label="WTC code" variant="standard" fullWidth
-                        value={product11}
-                        onChange={product11Change}
-                        disabled={stateAllInAddNewOrder}
+                        value = {product11}
+                        InputProps={{
+                            readOnly: true,
+                        }}
                     />
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Luzi code" variant="standard" fullWidth
-                        disabled={stateAllInAddNewOrder}
+                        value=""
+                        InputProps={{
+                            readOnly: true,
+                        }}
                     />
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Customer code" variant="standard" fullWidth
-                        disabled={stateAllInAddNewOrder}
+                        value="Customer code #1234567"
+                        InputProps={{
+                            readOnly: true,
+                        }}
                     />
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
-                    <FormControl className="textFieldInAddNewOrder" variant="standard" fullWidth>
-                        <InputLabel id="demo-simple-select-standard-label">Gender</InputLabel>
-                        <Select
-                            labelId="demo-simple-select-standard-label"
-                            id="demo-simple-select-standard"
-                            // value={age}
-                            // onChange={handleChange}
-                            label="Age"
-                            disabled={stateAllInAddNewOrder}
-                        >
-                            <MenuItem value="Male">Male</MenuItem>
-                            <MenuItem value="Female">Female</MenuItem>
-                        </Select>
-                    </FormControl>
+                    <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Gender" variant="standard" fullWidth
+                        value="Male"
+                        InputProps={{
+                            readOnly: true,
+                        }}
+                    />
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField 
                         className="textFieldInAddNewOrder" 
-                        id="standard-basic" label="Name" variant="standard" 
-                        disabled={stateAllInAddNewOrder}
-                        fullWidth
+                        id="standard-basic" label="Name" variant="standard" fullWidth
+                        value=""
+                        InputProps={{
+                            readOnly: true,
+                        }}
                     />
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Name (CN)" variant="standard" fullWidth
-                        disabled={stateAllInAddNewOrder}
+                        value=""
+                        InputProps={{
+                            readOnly: true,
+                        }}
                     />
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Inspired by designer" variant="standard" date fullWidth
-                        disabled={stateAllInAddNewOrder}
+                        value=""
+                        InputProps={{
+                            readOnly: true,
+                        }}
                     />
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Inspired by designer (CN)" variant="standard" fullWidth
-                        disabled={stateAllInAddNewOrder}
+                        value=""
+                        InputProps={{
+                            readOnly: true,
+                        }}
                     />
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Inspired by brand" variant="standard" date fullWidth
-                        disabled={stateAllInAddNewOrder}
+                        value=""
+                        InputProps={{
+                            readOnly: true,
+                        }}
                     />
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Inspired by brand (CN)" variant="standard" fullWidth
-                        disabled={stateAllInAddNewOrder}
+                        value=""
+                        InputProps={{
+                            readOnly: true,
+                        }}
                     />
                 </Grid>
             </Grid>
@@ -130,15 +141,23 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder }
         <Box className="listForOrder">
             <Grid container spacing={8}>
                 <Grid className="gridDescriptionOfGoodsInAddNewProduct" item xs={12} sm={12}>
-                    <TextField className="last3TextFieldInAddNewOrder" id="standard-basic" label="Description of Goods" variant="standard" fullWidth
-                    disabled={stateAllInAddNewOrder}
+                    <TextField className="TextFieldDescriptionOfGoodsInEditProduct" 
+                        // id="standard-basic" 
+                        label="Description of Goods" variant="standard" fullWidth
+                        value="Description of the goods, put some context here."
+                        InputProps={{
+                            style: {fontSize: 16,fontWeight: 400},
+                            readOnly: true,
+                        }}
                     />
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField 
                         className="textFieldInAddNewOrder" 
-                        id="standard-basic" label="Upload COA" variant="outlined" type="file"
+                        id="standard-basic" label="Upload COA" variant="outlined"
+                        value="coa.pdf"
                         InputProps={{
+                            readOnly: true,
                             startAdornment: (
                             <InputAdornment position="start">
                                 <UploadFileIcon />
@@ -146,14 +165,15 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder }
                             ),
                         }}
                         fullWidth
-                        disabled={stateAllInAddNewOrder}
                     />
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField 
                         className="textFieldInAddNewOrder" 
-                        id="standard-basic" label="Upload COA (CN)" variant="outlined" type="file"
+                        id="standard-basic" label="Upload COA (CN)" variant="outlined"
+                        value="coa-cn.pdf"
                         InputProps={{
+                            readOnly: true,
                             startAdornment: (
                             <InputAdornment position="start">
                                 <UploadFileIcon />
@@ -161,14 +181,15 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder }
                             ),
                         }}
                         fullWidth
-                        disabled={stateAllInAddNewOrder}
                     />
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField 
                         className="textFieldInAddNewOrder" 
-                        id="standard-basic" label="Upload MSDS" variant="outlined" type="file"
+                        id="standard-basic" label="Upload MSDS" variant="outlined"
+                        value="msds.pdf"
                         InputProps={{
+                            readOnly: true,
                             startAdornment: (
                             <InputAdornment position="start">
                                 <UploadFileIcon />
@@ -176,14 +197,15 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder }
                             ),
                         }}
                         fullWidth
-                        disabled={stateAllInAddNewOrder}
                     />
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField 
                         className="textFieldInAddNewOrder" 
-                        id="standard-basic" label="Upload MSDS (CN)" variant="outlined" type="file"
+                        id="standard-basic" label="Upload MSDS (CN)" variant="outlined"
+                        value="msds-cn.pdf"
                         InputProps={{
+                            readOnly: true,
                             startAdornment: (
                             <InputAdornment position="start">
                                 <UploadFileIcon />
@@ -191,14 +213,15 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder }
                             ),
                         }}
                         fullWidth
-                        disabled={stateAllInAddNewOrder}
                     />
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField 
                         className="textFieldInAddNewOrder" 
-                        id="standard-basic" label="Upload Fragrance profile" variant="outlined" type="file"
+                        id="standard-basic" label="Upload Fragrance profile" variant="outlined"
+                        value="fragranceprofile.pdf"
                         InputProps={{
+                            readOnly: true,
                             startAdornment: (
                             <InputAdornment position="start">
                                 <UploadFileIcon />
@@ -206,14 +229,15 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder }
                             ),
                         }}
                         fullWidth
-                        disabled={stateAllInAddNewOrder}
                     />
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField 
                         className="textFieldInAddNewOrder" 
-                        id="standard-basic" label="Upload IFRA Cert" variant="outlined" type="file"
+                        id="standard-basic" label="Upload IFRA Cert" variant="outlined"
+                        value="CustomerRef.pdf"
                         InputProps={{
+                            readOnly: true,
                             startAdornment: (
                             <InputAdornment position="start">
                                 <UploadFileIcon />
@@ -221,14 +245,15 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder }
                             ),
                         }}
                         fullWidth
-                        disabled={stateAllInAddNewOrder}
                     />
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField 
                         className="textFieldInAddNewOrder" 
-                        id="standard-basic" label="Upload 26 allergy list" variant="outlined" type="file"
+                        id="standard-basic" label="Upload 26 allergy list" variant="outlined"
+                        value="26allergylist.pdf"
                         InputProps={{
+                            readOnly: true,
                             startAdornment: (
                             <InputAdornment position="start">
                                 <UploadFileIcon />
@@ -236,24 +261,20 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder }
                             ),
                         }}
                         fullWidth
-                        disabled={stateAllInAddNewOrder}
                     />
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={12}>
                     <TextField className="lastTextFieldInAddNewProduct" id="standard-basic" label="Remarks" variant="standard" fullWidth
-                    disabled={stateAllInAddNewOrder}
+                    value=" "
+                    InputProps={{
+                            readOnly: true,
+                        }}
                     />
                 </Grid>
             </Grid>
-        </Box>
-                    
-                
-                    
-                
-                    
-                
+        </Box>  
     </div>
   )
 }
 
-export default ListAddNewProduct
+export default ListUneditableProduct

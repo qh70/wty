@@ -228,7 +228,7 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, setDeletepopup, stateAl
                 
                 <div className="wordProductsInAddNewOrder">Products</div>
                 <TableInAddNewOrder setDeletepopup={setDeletepopup} stateAllInAddNewOrder={stateAllInAddNewOrder}/>
-                <TableInAddNewOrder2 setDeletepopup={setDeletepopup}/>
+                {/* <TableInAddNewOrder2 setDeletepopup={setDeletepopup}/> */}
                 {!stateAllInAddNewOrder?
                     <Button className="buttonADDPRODUCTInAddNewOrder" variant="outlined" color="primary" onClick={handleClickOpen}>ADD PRODUCT</Button>
                  :null

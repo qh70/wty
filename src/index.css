@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font-family: "Roboto";
 }
 
 body {
@@ -235,7 +236,7 @@ body {
 }
 
 .titleInOrder {
-  margin-right: 0px;
+  margin-right: 0px;font: roboto;
 }
 
 .ButtonInOrder {
@@ -305,7 +306,7 @@ body {
 
 .tableInOrder {
   width: 90%!important;
-  margin-left: 40px;
+  margin-top: 20px;margin-left: 40px;
 }
 
 .tableFirstRowInOrder {
@@ -522,9 +523,11 @@ body {
   width: 10px!important;
 }
 
-.tableFirstRowInProduct1 {
-  font-size: 14px!important;font-weight: 500!important;
-  background-color: green;
+.tableCellInProduct {
+  width: 260px!important;height: 52px;
+  /* margin-right: -1000px!important;  沒用 */
+  font-size: 14px!important;font-weight: 400!important;
+  cursor: pointer;
 }
 
 /* page addnewproduct */
@@ -636,6 +639,11 @@ body {
 /* page AddNewUser */
 .buttonRestInAddNewUser {
   position: absolute!important;right: 31px;
+}
+
+/* page EditProduct */
+.TextFieldDescriptionOfGoodsInEditProduct {
+  margin-bottom: 100px!important;margin-right: 45px!important;
 }
 
 /* Dialog */
@@ -945,6 +953,14 @@ body {
   .last3TextFieldInAddNewOrder {
     width: 84.5%;
     margin-bottom: 100px!important;margin-right: 45px!important;
+  }
+
+  /* page product */
+  
+  .tableCellInProduct {
+    width: 260px;height: 52px;
+    font-size: 14px!important;font-weight: 400!important;
+    cursor: pointer;
   }
 }
 

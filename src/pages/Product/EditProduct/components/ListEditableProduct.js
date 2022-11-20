@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { TextField } from "@mui/material"
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
@@ -20,25 +20,14 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import DateRangeIcon from '@mui/icons-material/DateRange';
 
-// useContext
-import { UserContext } from "../../../../UserContext"
 
-
-const ListAddNewProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder }) => {
+const ListEditableProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder }) => {
     
     // const [showAddProduct, setShowAddProduct] = useState(false);
 
     const [value, setValue] = useState(new Date());
     
     const handleClickOpen = () => {setOpen(true);};
-
-    const { product11, setProduct11 } = useContext(UserContext);
-    console.log(useContext(UserContext))
-
-    function product11Change(e) {
-        setProduct11(e.target.value)
-        console.log(product11)
-    }
 
   return (
     <div className="listInAddNewOrder">
@@ -48,9 +37,7 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder }
             <Grid container spacing={8}>
                 {/* <div className="rowInListForOrder"> */}
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
-                    <TextField className="textFieldInAddNewOrder" id="standard-basic" label="WTC code" variant="standard" fullWidth
-                        value={product11}
-                        onChange={product11Change}
+                    <TextField className="textFieldInAddNewOrder" id="standard-basic" label="WTC code" variant="standard" fullWidth="50%"
                         disabled={stateAllInAddNewOrder}
                     />
                 </Grid>
@@ -245,15 +232,9 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder }
                     />
                 </Grid>
             </Grid>
-        </Box>
-                    
-                
-                    
-                
-                    
-                
+        </Box>      
     </div>
   )
 }
 
-export default ListAddNewProduct
+export default ListEditableProduct

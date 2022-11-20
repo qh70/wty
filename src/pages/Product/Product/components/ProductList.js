@@ -43,6 +43,10 @@ const BtnNPurchaseOrderList = () => {
 
     const [valueInOrder, setValueInOrder] = useState(new Date());
 
+    const goToEditProduct = () => {
+        document.location = "editproduct"
+    }
+
     return (
         <div>
             {/* <List orderList={orderList}/>     */}
@@ -79,10 +83,14 @@ const BtnNPurchaseOrderList = () => {
                 </div>
                 {/* <TableContainer component={Paper} className="tableContainer"> */}
                 <Table className="tableInOrder" aria-label="simple table">
+                    <colgroup>
+                        <col style={{width:'12%'}}/>
+                        <col style={{width:'88%'}}/>
+                    </colgroup>
                     <TableHead>
                         <TableRow>
                             <TableCell className="tableFirstRowInProduct">Product Name</TableCell>
-                            <TableCell className="tableFirstRowInProduct1">Description of Product</TableCell>
+                            <TableCell className="tableFirstRowInProduct">Description of Product</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -91,8 +99,8 @@ const BtnNPurchaseOrderList = () => {
                             key={row.name}
                             // sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
-                            <TableCell className="tableCellInOrder" component="th" scope="row">{row.ProductName}</TableCell>
-                            <TableCell className="tableCellInOrder" align="left">{row.DescriptionProduct}</TableCell>
+                            <TableCell className="tableCellInProduct" component="th" scope="row" onClick={goToEditProduct}>{row.ProductName}</TableCell>
+                            <TableCell className="tableCellInProduct" align="left" onClick={goToEditProduct}>{row.DescriptionProduct}</TableCell>
                         </TableRow>
                         ))}
                     </TableBody>

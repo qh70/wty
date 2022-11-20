@@ -25,6 +25,10 @@ const AddNewProduct = () => {
       setStateAllInAddNewOrder(true);
     }
 
+    const goToEditProduct = () => {
+        document.location = "editproduct"
+    }
+
   return (
     <div className="pageAddNewOrder">
       <ProceedWithoutSaving proceedWithoutSaving={proceedWithoutSaving} setProceedWithoutSaving={setProceedWithoutSaving}/>
@@ -32,14 +36,14 @@ const AddNewProduct = () => {
       <Header/>
       <div className="threeButtonsInAddNewOrder">
           <Button className="buttonsInAddNewOrder" variant="outlined" color="secondary" onClick={setProceedWithoutSaving}>Save Draft</Button>
-          <Button className="buttonsInAddNewOrder" variant="outlined" color="info" onClick={disableAllInAddNewOrder}>Confirm</Button>
+          <Button className="buttonsInAddNewOrder" variant="outlined" color="info" onClick={goToEditProduct}>Confirm</Button>
           <Button className="buttonsInAddNewOrder" variant="outlined" color="error" onClick={setDeletepopup}>Cancel</Button>
           {/* <button className="buttons" onClick={handleClickOpen}>Dialog</button> */}
       </div>
       <ListAddNewProduct setShowAddProduct={setShowAddProduct} setOpen={setOpen} stateAllInAddNewOrder={stateAllInAddNewOrder}/>
       <div className="threeButtonsInAddNewOrder">
           <Button className="buttonsInAddNewOrder" variant="outlined" color="secondary" >Save Draft</Button>
-          <Button className="buttonsInAddNewOrder" variant="outlined" color="info" disabled>Confirm</Button>
+          <Button className="buttonsInAddNewOrder" variant="outlined" color="info" onClick={goToEditProduct}>Confirm</Button>
           <Button className="buttonsInAddNewOrder" variant="outlined" color="error">Cancel</Button>
           {/* <button className="buttons" onClick={handleClickOpen}>Dialog</button> */}
       </div>

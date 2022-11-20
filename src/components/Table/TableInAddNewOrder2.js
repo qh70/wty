@@ -11,6 +11,7 @@ import TableRow from '@mui/material/TableRow';
 const columns = [
   { id: 'Item', label: 'Item', minWidth: 170 },
   { id: 'ProductName', label: 'Product Name', minWidth: 100 },
+  { id: '', label: '', minWidth: 100 },
   {
     id: 'DesignerName',
     label: 'Designer Name',

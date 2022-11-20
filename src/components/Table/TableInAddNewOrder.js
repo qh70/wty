@@ -7,13 +7,15 @@ function createData(Item, ProductName, DesignerName, BrandName, ProductCode, Pac
 const TableInAddNewOrder = ({ setDeletepopup }) => {
 
     const testrows = [
-        createData(1, "Pink Angel", "Dior", "Miss Dior Perfune Femme", "338833-A(HM30028611)", 2, "0.9kg"),        
+        createData(1, "Pink Angel", "Dior", "Miss Dior Perfune Femme", "338833-A(HM30028611)", 2, "0.9kg"),
+        createData(2, "Pink Angel", "Chanel", "Miss Dior Perfune Femme", "338833-A(HM30028611)", 2, "0.9kg"),
+        createData(3, "Pink Angel", "Chanel", "Miss Dior Perfune Femme", "338833-A(HM30028611)", 2, "0.9kg"),
     ];
     
     const handleClickDelete = () => {console.log(1);setDeletepopup(true);};
 
   return (
-    <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+    <Paper sx={{ width: '100%', paddingBottom: 3, overflow: 'hidden' }}>
       <TableContainer>
         <Table className="TableInAddNewOrder" aria-label="simple table">
             <TableHead>
