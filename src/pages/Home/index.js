@@ -32,7 +32,7 @@ const Home = () => {
                     <AddNewOrder />
                 </Route>
 
-                <UserContext.Provider value={{ product11, setProduct11 }}>
+                {/* <UserContext.Provider value={{ product11, setProduct11 }}> */}
                     <Route exact path="/product">
                         <Product/> 
                     </Route>
@@ -42,7 +42,7 @@ const Home = () => {
                     <Route exact path="/editproduct">
                         <EditProduct/>
                     </Route>
-                </UserContext.Provider>
+                {/* </UserContext.Provider> */}
                 
                 <Route exact path="/user">
                     <User/> 
