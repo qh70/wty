@@ -31,18 +31,6 @@ const Home = () => {
                 <Route exact path="/addneworder">
                     <AddNewOrder />
                 </Route>
-
-                {/* <UserContext.Provider value={{ product11, setProduct11 }}> */}
-                    <Route exact path="/product">
-                        <Product/> 
-                    </Route>
-                    <Route exact path="/addnewproduct">
-                        <AddNewProduct/>
-                    </Route>
-                    <Route exact path="/editproduct">
-                        <EditProduct/>
-                    </Route>
-                {/* </UserContext.Provider> */}
                 
                 <Route exact path="/user">
                     <User/> 
@@ -57,6 +45,17 @@ const Home = () => {
                 <Route exact path="/addnewclient">
                     <AddNewClient />
                 </Route>
+                <UserContext.Provider value={{ product11, setProduct11 }}>
+                    <Route exact path="/product">
+                        <Product/> 
+                    </Route>
+                    <Route exact path="/addnewproduct">
+                        <AddNewProduct/>
+                    </Route>
+                    <Route exact path="/editproduct">
+                        <EditProduct/>
+                    </Route>
+                </UserContext.Provider>
                 <Route path="/try" exact component={Client} />
             </Switch>
         </div>
