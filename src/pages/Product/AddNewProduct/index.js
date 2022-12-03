@@ -9,6 +9,8 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import Delete from "../../../components/Dialog/Delete"
 
+import { useHistory } from "react-router-dom";
+
 const AddNewProduct = () => {
 
     const [showAddProduct, setShowAddProduct] = useState(false);
@@ -25,8 +27,10 @@ const AddNewProduct = () => {
       setStateAllInAddNewOrder(true);
     }
 
+    let history = useHistory();
+
     const goToEditProduct = () => {
-        document.location = "editproduct"
+        history.push("/editproduct");
     }
 
   return (

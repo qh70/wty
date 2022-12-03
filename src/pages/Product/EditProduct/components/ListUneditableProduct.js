@@ -31,7 +31,7 @@ const ListUneditableProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrd
     const [value, setValue] = useState(new Date());
     
     const handleClickOpen = () => {setOpen(true);};
-
+    
     const {product11} = useContext(UserContext);
     console.log(useContext(UserContext))
 
@@ -45,9 +45,9 @@ const ListUneditableProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrd
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField className="textFieldInAddNewOrder" id="standard-basic" label="WTC code" variant="standard" fullWidth
                         value = {product11}
-                        InputProps={{
-                            readOnly: true,
-                        }}
+                        // InputProps={{
+                        //     readOnly: true,
+                        // }}
                     />
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>

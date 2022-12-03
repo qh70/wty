@@ -132,6 +132,12 @@ body {
   color: grey;
 }
 
+/* right */
+.right {
+  width: 100%;
+  background-color: #F7F8FC;
+}
+
 /* pageAddNewOrder */
 
 .rowInListForOrder {
@@ -214,7 +220,7 @@ body {
 
 /* Order */
 .order {
-  width: 84%;
+  width: 100%;
   margin-top: 0px;
   margin-left: 0px;
   flex-grow: 1;
@@ -420,10 +426,11 @@ body {
 }
 
 .nameInProduct {
- margin-right: 28px;
- font-size: 14px;font-weight: 700;line-height: 38px;
- color: black;
+  margin-right: 28px;
+  font-size: 14px;font-weight: 700;line-height: 38px;
+  color: black;
 }
+
 
 .buttonInProduct {
  width: 209px;height: 48px;
@@ -660,6 +667,31 @@ body {
 .box1InDialog {
   width: 95%;
   margin-top: 35px;
+}
+
+.passwordTextFieldInLoginPopup {
+  margin-top: 20px!important;
+}
+
+.DialogInLoginPopup .MuiFormLabel-root {
+  font-size: 15px !important;
+}
+
+
+
+/* Header */
+/* .stackInProduct {
+  margin-top: 65px;margin-bottom: 109px!important;
+  align-items: center;
+ } */
+.stackInProduct2 {
+  margin-right: 28px;
+}
+
+.NameAndLogoutInHeader {
+  margin-right: 28px;
+  font-size: 14px;font-weight: 700;line-height: 38px;
+  color: black
 }
 
 @media (max-width:1200px){
