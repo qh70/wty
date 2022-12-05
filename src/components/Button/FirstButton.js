@@ -1,16 +1,17 @@
 import { Button } from "@mui/material";
+import { useHistory } from "react-router-dom"
 
 const FirstButton = ({ goto }) => {
     
-    
+    const history = useHistory();
 
     function gotosomewhere (){
-        document.location = `/addnew${goto.toLowerCase()}`;
+      history.push(`/addnew${goto.toLowerCase()}`)
     }
 
   return (
     <div>
-      <Button className="FirstButton" onClick={gotosomewhere} label="ADD NEW ORDER" color="primary" variant="outlined">ADD NEW {goto}</Button>
+      <Button className="FirstButton" onClick={()=>{gotosomewhere()}} label="ADD NEW ORDER" color="primary" variant="outlined">ADD NEW {goto}</Button>
     </div>
   )
 }

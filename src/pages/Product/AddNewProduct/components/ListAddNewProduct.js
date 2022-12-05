@@ -24,7 +24,7 @@ import DateRangeIcon from '@mui/icons-material/DateRange';
 import { UserContext } from "../../../../UserContext"
 
 
-const ListAddNewProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder }) => {
+const ListAddNewProduct = ({ setOpen, setShowAddProduct }) => {
     
     // const [showAddProduct, setShowAddProduct] = useState(false);
 
@@ -32,12 +32,63 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder }
     
     const handleClickOpen = () => {setOpen(true);};
 
-    const { product11, setProduct11 } = useContext(UserContext);
-    console.log(useContext(UserContext))
+    // 每個TextField的值
+    const { 
+        wtcCode, setWtcCode,
+        luziCode, setLuziCode,
+        customerCode, setCustomerCode,
+        gender, setGender,
+        name, setName,
+        nameCN, setNameCN,
+        inspiredByDesigner, setInspiredByDesigner,
+        inspiredByDesignerCN, setInspiredByDesignerCN,
+        inspiredByBrand, setInspiredByBrand,
+        inspiredByBrandCN, setInspiredByBrandCN,
+        remarks, setRemarks 
+    } = useContext(UserContext);
 
-    function product11Change(e) {
-        setProduct11(e.target.value)
-        console.log(product11)
+    function wtcCodeChange(e) {
+        setWtcCode(e.target.value)
+    }
+
+    function luziCodeChange(e) {
+        setLuziCode(e.target.value)
+    }
+
+    function customerCodeChange(e) {
+        setCustomerCode(e.target.value)
+    }
+    
+    function genderChange(e) {
+        setGender(e.target.value)
+    }
+
+    function nameChange(e) {
+        setName(e.target.value)
+    }
+
+    function nameCNChange(e) {
+        setNameCN(e.target.value)
+    }
+
+    function inspiredByDesignerChange(e) {
+        setInspiredByDesigner(e.target.value)
+    }
+
+    function inspiredByDesignerCNChange(e) {
+        setInspiredByDesignerCN(e.target.value)
+    }
+
+    function inspiredByBrandChange(e) {
+        setInspiredByBrand(e.target.value)
+    }
+
+    function inspiredByBrandCNChange(e) {
+        setInspiredByBrandCN(e.target.value)
+    }
+
+    function remarksChange(e) {
+        setRemarks(e.target.value)
     }
 
   return (
@@ -48,20 +99,24 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder }
             <Grid container spacing={8}>
                 {/* <div className="rowInListForOrder"> */}
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
-                    <TextField className="textFieldInAddNewOrder" id="standard-basic" label="WTC code" variant="standard" fullWidth
-                        value={product11}
-                        onChange={product11Change}
-                        disabled={stateAllInAddNewOrder}
+                    <TextField 
+                        className="textFieldInAddNewOrder" id="standard-basic" label="WTC code" variant="standard" fullWidth
+                        value={wtcCode}
+                        onChange={wtcCodeChange}
                     />
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
-                    <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Luzi code" variant="standard" fullWidth
-                        disabled={stateAllInAddNewOrder}
+                    <TextField 
+                        className="textFieldInAddNewOrder" id="standard-basic" label="Luzi code" variant="standard" fullWidth
+                        value={luziCode}
+                        onChange={luziCodeChange}
                     />
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
-                    <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Customer code" variant="standard" fullWidth
-                        disabled={stateAllInAddNewOrder}
+                    <TextField 
+                        className="textFieldInAddNewOrder" id="standard-basic" label="Customer code" variant="standard" fullWidth
+                        value={customerCode}
+                        onChange={customerCodeChange}
                     />
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
@@ -70,10 +125,10 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder }
                         <Select
                             labelId="demo-simple-select-standard-label"
                             id="demo-simple-select-standard"
-                            // value={age}
-                            // onChange={handleChange}
+                            value={gender}
+                            onChange={genderChange}
                             label="Age"
-                            disabled={stateAllInAddNewOrder}
+                            
                         >
                             <MenuItem value="Male">Male</MenuItem>
                             <MenuItem value="Female">Female</MenuItem>
@@ -82,35 +137,44 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder }
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField 
-                        className="textFieldInAddNewOrder" 
-                        id="standard-basic" label="Name" variant="standard" 
-                        disabled={stateAllInAddNewOrder}
-                        fullWidth
+                        className="textFieldInAddNewOrder" id="standard-basic" label="Name" variant="standard" fullWidth
+                        value={name}
+                        onChange={nameChange}
                     />
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
-                    <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Name (CN)" variant="standard" fullWidth
-                        disabled={stateAllInAddNewOrder}
+                    <TextField 
+                        className="textFieldInAddNewOrder" id="standard-basic" label="Name (CN)" variant="standard" fullWidth
+                        value={nameCN}
+                        onChange={nameCNChange}                        
                     />
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
-                    <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Inspired by designer" variant="standard" date fullWidth
-                        disabled={stateAllInAddNewOrder}
+                    <TextField 
+                        className="textFieldInAddNewOrder" id="standard-basic" label="Inspired by designer" variant="standard" date fullWidth
+                        value={inspiredByDesigner}
+                        onChange={inspiredByDesignerChange} 
                     />
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
-                    <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Inspired by designer (CN)" variant="standard" fullWidth
-                        disabled={stateAllInAddNewOrder}
+                    <TextField 
+                        className="textFieldInAddNewOrder" id="standard-basic" label="Inspired by designer (CN)" variant="standard" fullWidth
+                        value={inspiredByDesignerCN}
+                        onChange={inspiredByDesignerCNChange} 
                     />
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
-                    <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Inspired by brand" variant="standard" date fullWidth
-                        disabled={stateAllInAddNewOrder}
+                    <TextField 
+                        className="textFieldInAddNewOrder" id="standard-basic" label="Inspired by brand" variant="standard" date fullWidth
+                        value={inspiredByBrand}
+                        onChange={inspiredByBrandChange} 
                     />
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
-                    <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Inspired by brand (CN)" variant="standard" fullWidth
-                        disabled={stateAllInAddNewOrder}
+                    <TextField 
+                        className="textFieldInAddNewOrder" id="standard-basic" label="Inspired by brand (CN)" variant="standard" fullWidth
+                        value={inspiredByBrandCN}
+                        onChange={inspiredByBrandCNChange} 
                     />
                 </Grid>
             </Grid>
@@ -131,7 +195,7 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder }
             <Grid container spacing={8}>
                 <Grid className="gridDescriptionOfGoodsInAddNewProduct" item xs={12} sm={12}>
                     <TextField className="last3TextFieldInAddNewOrder" id="standard-basic" label="Description of Goods" variant="standard" fullWidth
-                    disabled={stateAllInAddNewOrder}
+                    
                     />
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
@@ -146,7 +210,7 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder }
                             ),
                         }}
                         fullWidth
-                        disabled={stateAllInAddNewOrder}
+                        
                     />
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
@@ -161,7 +225,7 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder }
                             ),
                         }}
                         fullWidth
-                        disabled={stateAllInAddNewOrder}
+                        
                     />
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
@@ -176,7 +240,7 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder }
                             ),
                         }}
                         fullWidth
-                        disabled={stateAllInAddNewOrder}
+                        
                     />
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
@@ -191,7 +255,7 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder }
                             ),
                         }}
                         fullWidth
-                        disabled={stateAllInAddNewOrder}
+                        
                     />
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
@@ -206,7 +270,7 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder }
                             ),
                         }}
                         fullWidth
-                        disabled={stateAllInAddNewOrder}
+                        
                     />
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
@@ -221,7 +285,7 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder }
                             ),
                         }}
                         fullWidth
-                        disabled={stateAllInAddNewOrder}
+                        
                     />
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
@@ -236,12 +300,14 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder }
                             ),
                         }}
                         fullWidth
-                        disabled={stateAllInAddNewOrder}
+                        
                     />
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={12}>
-                    <TextField className="lastTextFieldInAddNewProduct" id="standard-basic" label="Remarks" variant="standard" fullWidth
-                    disabled={stateAllInAddNewOrder}
+                    <TextField 
+                        className="lastTextFieldInAddNewProduct" id="standard-basic" label="Remarks" variant="standard" fullWidth
+                        value={remarks}
+                        onChange={remarksChange}
                     />
                 </Grid>
             </Grid>

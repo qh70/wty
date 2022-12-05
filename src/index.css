@@ -133,10 +133,10 @@ body {
 }
 
 /* right */
-.right {
+/* .right {
   width: 100%;
   background-color: #F7F8FC;
-}
+} */
 
 /* pageAddNewOrder */
 
@@ -220,7 +220,7 @@ body {
 
 /* Order */
 .order {
-  width: 100%;
+  width: 84%;
   margin-top: 0px;
   margin-left: 0px;
   flex-grow: 1;
@@ -691,7 +691,11 @@ body {
 .NameAndLogoutInHeader {
   margin-right: 28px;
   font-size: 14px;font-weight: 700;line-height: 38px;
-  color: black
+  color: black;
+}
+/* 額外效果 */
+.pointer {
+  cursor: pointer;
 }
 
 @media (max-width:1200px){

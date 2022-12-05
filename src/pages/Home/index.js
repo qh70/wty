@@ -27,7 +27,19 @@ import LogoutPopup from "../../components/Dialog/LogoutPopup";
 
 const Home = () => {
     
-    const [ product11, setProduct11 ] = useState("");
+    // for page addnewproduct
+    const [ wtcCode, setWtcCode ] = useState("");
+    const [ luziCode, setLuziCode ] = useState("");
+    const [ customerCode, setCustomerCode ] = useState("");
+    const [ gender, setGender ] = useState("");
+    const [ name, setName ] = useState("");
+    const [ nameCN, setNameCN ] = useState("");
+    const [ inspiredByDesigner, setInspiredByDesigner ] = useState("");
+    const [ inspiredByDesignerCN, setInspiredByDesignerCN ] = useState("");
+    const [ inspiredByBrand, setInspiredByBrand ] = useState("");
+    const [ inspiredByBrandCN, setInspiredByBrandCN ] = useState("");
+    const [ remarks, setRemarks ] = useState("");
+    
 
     const [ login, setLogin ] = useState(false);
 
@@ -64,7 +76,19 @@ const Home = () => {
                         <AddNewClient />
                     </Route>
                     {/* product */}
-                    <UserContext.Provider value={{ product11, setProduct11 }}>
+                    <UserContext.Provider value={{ 
+                        wtcCode, setWtcCode,
+                        luziCode, setLuziCode,
+                        customerCode, setCustomerCode,
+                        gender, setGender,
+                        name, setName,
+                        nameCN, setNameCN,
+                        inspiredByDesigner, setInspiredByDesigner,
+                        inspiredByDesignerCN, setInspiredByDesignerCN,
+                        inspiredByBrand, setInspiredByBrand,
+                        inspiredByBrandCN, setInspiredByBrandCN,
+                        remarks, setRemarks
+                    }}>
                         <Route exact path="/product">
                             <Product/> 
                         </Route>
@@ -81,7 +105,6 @@ const Home = () => {
             </div>
         //   </div>
         }
-        
     </Router>
     
   )

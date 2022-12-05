@@ -41,6 +41,7 @@ const Header = () => {
 
   const showLogoutPopup = () => {
     setLogoutPopup(true);    
+    console.log("")
   }
 
   return (
@@ -54,7 +55,7 @@ const Header = () => {
             <div className="NameAndLogoutInHeader">Name</div>
             {/* {!login ?  */}
             {/* <div className="NameAndLogoutInHeader" onClick={() => {setLogoutPopupOpen(true)}}>Logout</div>  */}
-            <div className="NameAndLogoutInHeader" onClick={() => {showLogoutPopup()}}>Logout</div> 
+            <div className="NameAndLogoutInHeader pointer" onClick={() => {showLogoutPopup()}}>Logout</div> 
              {/* : null
             } */}
             <LogoutPopup/>

@@ -32,8 +32,19 @@ const ListUneditableProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrd
     
     const handleClickOpen = () => {setOpen(true);};
     
-    const {product11} = useContext(UserContext);
-    console.log(useContext(UserContext))
+    const {
+        wtcCode,
+        luziCode,
+        customerCode,
+        gender,
+        name,
+        nameCN,
+        inspiredByDesigner,
+        inspiredByDesignerCN,
+        inspiredByBrand,
+        inspiredByBrandCN,
+        remarks
+    } = useContext(UserContext);
 
   return (
     <div className="listInAddNewOrder">
@@ -44,15 +55,15 @@ const ListUneditableProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrd
                 {/* <div className="rowInListForOrder"> */}
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField className="textFieldInAddNewOrder" id="standard-basic" label="WTC code" variant="standard" fullWidth
-                        value = {product11}
-                        // InputProps={{
-                        //     readOnly: true,
-                        // }}
+                        value = {wtcCode}
+                        InputProps={{
+                            readOnly: true,
+                        }}
                     />
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Luzi code" variant="standard" fullWidth
-                        value=""
+                        value = {luziCode}
                         InputProps={{
                             readOnly: true,
                         }}
@@ -60,7 +71,7 @@ const ListUneditableProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrd
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Customer code" variant="standard" fullWidth
-                        value="Customer code #1234567"
+                        value = {customerCode}
                         InputProps={{
                             readOnly: true,
                         }}
@@ -68,7 +79,7 @@ const ListUneditableProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrd
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Gender" variant="standard" fullWidth
-                        value="Male"
+                        value = {gender}
                         InputProps={{
                             readOnly: true,
                         }}
@@ -78,7 +89,7 @@ const ListUneditableProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrd
                     <TextField 
                         className="textFieldInAddNewOrder" 
                         id="standard-basic" label="Name" variant="standard" fullWidth
-                        value=""
+                        value = {name}
                         InputProps={{
                             readOnly: true,
                         }}
@@ -86,7 +97,7 @@ const ListUneditableProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrd
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Name (CN)" variant="standard" fullWidth
-                        value=""
+                        value = {nameCN}
                         InputProps={{
                             readOnly: true,
                         }}
@@ -94,7 +105,7 @@ const ListUneditableProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrd
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Inspired by designer" variant="standard" date fullWidth
-                        value=""
+                        value = {inspiredByDesigner}
                         InputProps={{
                             readOnly: true,
                         }}
@@ -102,7 +113,7 @@ const ListUneditableProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrd
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Inspired by designer (CN)" variant="standard" fullWidth
-                        value=""
+                        value = {inspiredByDesignerCN}
                         InputProps={{
                             readOnly: true,
                         }}
@@ -110,7 +121,7 @@ const ListUneditableProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrd
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Inspired by brand" variant="standard" date fullWidth
-                        value=""
+                        value = {inspiredByBrand}
                         InputProps={{
                             readOnly: true,
                         }}
@@ -118,7 +129,8 @@ const ListUneditableProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrd
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Inspired by brand (CN)" variant="standard" fullWidth
-                        value=""
+                        value = {
+                            inspiredByBrandCN}
                         InputProps={{
                             readOnly: true,
                         }}
@@ -265,7 +277,7 @@ const ListUneditableProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrd
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={12}>
                     <TextField className="lastTextFieldInAddNewProduct" id="standard-basic" label="Remarks" variant="standard" fullWidth
-                    value=" "
+                    value = {remarks}
                     InputProps={{
                             readOnly: true,
                         }}
