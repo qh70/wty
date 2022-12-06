@@ -72,20 +72,20 @@ export default function LoginPopup({ proceedWithoutSaving, setProceedWithoutSavi
   };
 
   const clickingSignIn = () => {
-    console.log("into")
-    fetch("http://ec2-13-212-207-229.ap-southeast-1.compute.amazonaws.com:8088/rest/authenticate/user/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        "username":"charles",
-        "password":"abcd1234"
-      })
-    })
-    .then((response) => response.json())
-    .then((data) => {if (data.role === "SUPER_ADMIN"){setLogin(true);}});
-    
+    // console.log("into")
+    // fetch("http://ec2-13-212-207-229.ap-southeast-1.compute.amazonaws.com:8088/rest/authenticate/user/login", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json"
+    //   },
+    //   body: JSON.stringify({
+    //     "username":"charles",
+    //     "password":"abcd1234"
+    //   })
+    // })
+    // .then((response) => response.json())
+    // .then((data) => {if (data.role === "SUPER_ADMIN"){setLogin(true);}});
+    setLogin(true);
     // if (data.role === "SUPER_ADMIN")
     // setLogin(true);
   }
