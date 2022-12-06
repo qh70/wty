@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from "react";
 import { Box, TextField, MenuItem } from '@mui/material';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -71,23 +72,31 @@ export default function LoginPopup({ proceedWithoutSaving, setProceedWithoutSavi
     event.preventDefault();
   };
 
+  // set userName & password
+  const [ userName, setUserName ] = useState("charles");
+  const [ password, setPassword ] = useState("abcd1234");
+
+  function userNameChange(e) {
+    setUserName(e.target.value);
+  }
+
+  function passwordChange(e) {
+    setPassword(e.target.value);
+  }
+
   const clickingSignIn = () => {
-    // console.log("into")
-    // fetch("http://ec2-13-212-207-229.ap-southeast-1.compute.amazonaws.com:8088/rest/authenticate/user/login", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //   },
-    //   body: JSON.stringify({
-    //     "username":"charles",
-    //     "password":"abcd1234"
-    //   })
-    // })
-    // .then((response) => response.json())
-    // .then((data) => {if (data.role === "SUPER_ADMIN"){setLogin(true);}});
-    setLogin(true);
-    // if (data.role === "SUPER_ADMIN")
-    // setLogin(true);
+    fetch("http://ec2-13-212-207-229.ap-southeast-1.compute.amazonaws.com:8088/rest/authenticate/user/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        "username": userName,
+        "password": password
+      })
+    })
+    .then((response) => response.json())
+    .then((data) => {if (data.role === "SUPER_ADMIN"){setLogin(true);}});
   }
   
   return (
@@ -102,7 +111,11 @@ export default function LoginPopup({ proceedWithoutSaving, setProceedWithoutSavi
         <DialogTitle>Login</DialogTitle>
         <DialogContent>
           <FormControl fullWidth variant="standard">
-          <TextField label="User Name" variant="standard" fullWidth></TextField>
+          <TextField 
+            label="User Name" variant="standard" fullWidth
+            value={userName}
+            onChange={userNameChange}
+          />
           </FormControl>
           {/* <TextField className="passwordTextFieldInLoginPopup" label="Password" variant="standard" type="password" fullWidth></TextField> */}
           <FormControl fullWidth variant="standard" sx={{marginTop: 3}}>
@@ -110,8 +123,8 @@ export default function LoginPopup({ proceedWithoutSaving, setProceedWithoutSavi
             <Input
               id="standard-adornment-password"
               type={values.showPassword ? 'text' : 'password'}
-              value={values.password}
-              onChange={handleChange('password')}
+              value={password}
+              onChange={passwordChange}
               endAdornment={
                 <InputAdornment position="end">
                   <IconButton
