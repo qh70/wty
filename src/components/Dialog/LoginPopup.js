@@ -73,8 +73,8 @@ export default function LoginPopup({ proceedWithoutSaving, setProceedWithoutSavi
   };
 
   // set userName & password
-  const [ userName, setUserName ] = useState("charles");
-  const [ password, setPassword ] = useState("abcd1234");
+  const [ userName, setUserName ] = useState("");
+  const [ password, setPassword ] = useState("");
 
   function userNameChange(e) {
     setUserName(e.target.value);
@@ -85,18 +85,19 @@ export default function LoginPopup({ proceedWithoutSaving, setProceedWithoutSavi
   }
 
   const clickingSignIn = () => {
-    fetch("http://ec2-13-212-207-229.ap-southeast-1.compute.amazonaws.com:8088/rest/authenticate/user/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        "username": userName,
-        "password": password
-      })
-    })
-    .then((response) => response.json())
-    .then((data) => {if (data.role === "SUPER_ADMIN"){setLogin(true);}});
+    // fetch("http://ec2-13-212-207-229.ap-southeast-1.compute.amazonaws.com:8088/rest/authenticate/user/login", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json"
+    //   },
+    //   body: JSON.stringify({
+    //     "username": userName,
+    //     "password": password
+    //   })
+    // })
+    // .then((response) => response.json())
+    // .then((data) => {if (data.role === "SUPER_ADMIN"){setLogin(true);}});
+    setLogin(true);
   }
   
   return (
