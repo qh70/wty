@@ -1,29 +1,30 @@
 import { useState, useContext } from "react";
+import LeftNew from "./components/LeftNew";
+//Order
+import Order from "../Order/Order/Index";
+import AddNewOrder from "../../pages/Order/AddNewOrder";
+import EditOrder from "../../pages/Order/EditOrder";
 
-import Left from "./components/Left"
-import LeftNew from "./components/LeftNew"
-import Order from "../Order/Index"
-import Product from "../Product/Product/index"
-import User from "../User/User/index"
-import Client from "../Client/Client/index"
-import "../../index.css"
+//Product
+import Product from "../Product/Product/index";
+import AddNewProduct from "../Product/AddNewProduct";
+import EditProduct from "../Product/EditProduct";
+//User
+import User from "../User/User/index";
+import AddNewUser from "../User/AddNewUser";
+import EditUser from "../User/EditUser";
+//Clients
+import Client from "../Client/Client";
+import AddNewClient from "../Client/AddNewClient";
+import EditClient from "../Client/EditClient";
+
+import "../../index.css";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import AddNewOrder from "../Add New Order/index"
-import AddNewProduct from "../Product/AddNewProduct"
-import EditProduct from "../Product/EditProduct"
-import AddNewUser from "../User/AddNewUser"
-import AddNewClient from "../Client/AddNewClient"
 
-import { UserContext } from "../../UserContext"
+import { UserContext } from "../../UserContext";
 
-import LoginPopup from "../../components/Dialog/LoginPopup"
-import Header from "../../components/Header/Header"
-
-import { useEffect } from "react";
-import { useHistory, useLocation } from 'react-router-dom';
+import LoginPopup from "../../components/Dialog/LoginPopup";
 import { LoginContext } from "../../LoginContext";
-
-import LogoutPopup from "../../components/Dialog/LogoutPopup";
 
 const Home = () => {
     
@@ -54,51 +55,64 @@ const Home = () => {
                 {/* <Header/> */}
                 <Switch>
                     <LoginContext.Provider value={{ login, setLogin, logoutPopup, setLogoutPopup }}>
-                    {/* order */}
-                    <Route exact path="/order">
-                        <Order/> 
-                    </Route>
-                    <Route exact path="/addneworder">
-                        <AddNewOrder />
-                    </Route>
-                    {/* user */}
-                    <Route exact path="/user">
-                        <User/> 
-                    </Route>
-                    <Route exact path="/addnewuser">
-                        <AddNewUser />
-                    </Route>
-                    {/* clients */}
-                    <Route exact path="/clients">
-                        <Client/> 
-                    </Route>
-                    <Route exact path="/addnewclient">
-                        <AddNewClient />
-                    </Route>
-                    {/* product */}
-                    <UserContext.Provider value={{ 
-                        wtcCode, setWtcCode,
-                        luziCode, setLuziCode,
-                        customerCode, setCustomerCode,
-                        gender, setGender,
-                        name, setName,
-                        nameCN, setNameCN,
-                        inspiredByDesigner, setInspiredByDesigner,
-                        inspiredByDesignerCN, setInspiredByDesignerCN,
-                        inspiredByBrand, setInspiredByBrand,
-                        inspiredByBrandCN, setInspiredByBrandCN,
-                        remarks, setRemarks
-                    }}>
-                        <Route exact path="/product">
-                            <Product/> 
+
+                        {/* order */}
+                        <Route exact path="/order">
+                            <Order/> 
                         </Route>
-                        <Route exact path="/addnewproduct">
-                            <AddNewProduct/>
+                        <Route exact path="/addneworder">
+                            <AddNewOrder />
                         </Route>
-                        <Route exact path="/editproduct">
-                            <EditProduct/>
+                        <Route exact path="/editorder">
+                            <EditOrder />
                         </Route>
-                    </UserContext.Provider>
+
+                        {/* user */}
+                        <Route exact path="/user">
+                            <User/> 
+                        </Route>
+                        <Route exact path="/addnewuser">
+                            <AddNewUser />
+                        </Route>
+                        <Route exact path="/edituser">
+                            <EditUser />
+                        </Route>
+
+                        {/* clients */}
+                        <Route exact path="/clients">
+                            <Client/> 
+                        </Route>
+                        <Route exact path="/addnewclient">
+                            <AddNewClient />
+                        </Route>
+                        <Route exact path="/editclient">
+                            <EditClient />
+                        </Route>
+
+                        {/* product */}
+                        <UserContext.Provider value={{ 
+                            wtcCode, setWtcCode,
+                            luziCode, setLuziCode,
+                            customerCode, setCustomerCode,
+                            gender, setGender,
+                            name, setName,
+                            nameCN, setNameCN,
+                            inspiredByDesigner, setInspiredByDesigner,
+                            inspiredByDesignerCN, setInspiredByDesignerCN,
+                            inspiredByBrand, setInspiredByBrand,
+                            inspiredByBrandCN, setInspiredByBrandCN,
+                            remarks, setRemarks
+                        }}>
+                            <Route exact path="/product">
+                                <Product/> 
+                            </Route>
+                            <Route exact path="/addnewproduct">
+                                <AddNewProduct/>
+                            </Route>
+                            <Route exact path="/editproduct">
+                                <EditProduct/>
+                            </Route>
+                        </UserContext.Provider>
                     </LoginContext.Provider>
                     {/* <Route path="/try" exact component={Client} /> */}
                 </Switch>

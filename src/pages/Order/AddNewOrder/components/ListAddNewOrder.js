@@ -12,8 +12,8 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import dayjs from 'dayjs';
 import Button from "@mui/material/Button";
 import Input from '@mui/material/Input';
-import TableInAddNewOrder from "../../components/Table/TableInAddNewOrder";
-import TableInAddNewOrder2 from "../../components/Table/TableInAddNewOrder2";
+import TableInAddNewOrder from "../../../../components/Table/TableInAddNewOrder";
+import TableInAddNewOrder2 from "../../../../components/Table/TableInAddNewOrder2";
 import UploadFileIcon from '@mui/icons-material/UploadFile';
 import InputAdornment from '@mui/material/InputAdornment';
 import Grid from '@mui/material/Grid';
@@ -21,7 +21,7 @@ import Box from '@mui/material/Box';
 import DateRangeIcon from '@mui/icons-material/DateRange';
 
 
-const ListAddNewProduct = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllInAddNewOrder }) => {
+const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllInAddNewOrder }) => {
     
     // const [showAddProduct, setShowAddProduct] = useState(false);
 
@@ -303,4 +303,4 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct, setDeletepopup, stateAl
   )
 }
 
-export default ListAddNewProduct
+export default ListAddNewOrder

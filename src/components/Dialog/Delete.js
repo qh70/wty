@@ -1,22 +1,7 @@
 import * as React from 'react';
-import { Box, TextField, MenuItem } from '@mui/material';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import FormControl from '@mui/material/FormControl';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import InputLabel from '@mui/material/InputLabel';
-import Select from '@mui/material/Select';
-import Switch from '@mui/material/Switch';
-import Slider from '@mui/material/Slider';
-import InputAdornment from '@mui/material/InputAdornment';
-import SearchIcon from '@mui/icons-material/Search';
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
 
 export default function Delete({ deletepopup, setDeletepopup, modules }) {
   const [fullWidth, setFullWidth] = React.useState(true);

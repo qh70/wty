@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import MenuItem from '@mui/material/MenuItem';
 import Table from '@mui/material/Table';
 import TableHead from '@mui/material/TableHead';
@@ -26,11 +27,17 @@ const BtnNPurchaseOrderList = () => {
         setSelectInUser(event.target.value);
     };
 
+    const history = useHistory();
+
+    const goToEditUser = () => {
+        history.push("/edituser")
+    }
+
     return (
         <div>
             {/* <List orderList={orderList}/>     */}
             <div className="purchaseOrderList">
-                <div className="wordPurchaseOrderList">Purduct List</div>
+                <div className="wordPurchaseOrderList">Users List</div>
                 <div className="dropdownNTextareaInOrder">
                     
                     {/* <FormControl className="formControlInOrder" sx={{ m: 1 }}>
@@ -75,10 +82,10 @@ const BtnNPurchaseOrderList = () => {
                         <TableRow
                             key={row.name}
                         >
-                            <TableCell className="tableCellInOrder" component="th" scope="row">{row.LoginName}</TableCell>
-                            <TableCell className="tableCellInOrder" align="left">{row.UserName}</TableCell>
-                            <TableCell className="tableCellInOrder" align="left">{row.Email}</TableCell>
-                            <TableCell className="tableCellInOrder" align="left">{row.Role}</TableCell>
+                            <TableCell className="tableCellInOrder pointer" component="th" scope="row" onClick={goToEditUser}>{row.LoginName}</TableCell>
+                            <TableCell className="tableCellInOrder pointer" align="left" onClick={goToEditUser}>{row.UserName}</TableCell>
+                            <TableCell className="tableCellInOrder pointer" align="left" onClick={goToEditUser}>{row.Email}</TableCell>
+                            <TableCell className="tableCellInOrder pointer" align="left" onClick={goToEditUser}>{row.Role}</TableCell>
                         </TableRow>
                         ))}
                     </TableBody>

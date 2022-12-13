@@ -1,10 +1,8 @@
 import { useState  } from "react"
 import ListAddNewUser from "./components/ListAddNewUser"
-// import AddProduct from "../../components/Add Product/index"
 import Header from "../../../components/Header/Header"
 import ProceedWithoutSaving from "../../../components/Dialog/ProceedWithoutSaving"
 import { Button } from "@mui/material"
-import Delete from "../../../components/Dialog/Delete"
 
 const AddNewUser = () => {
 
@@ -12,9 +10,7 @@ const AddNewUser = () => {
 
     const [ open, setOpen] = useState(false);
     
-    const [ proceedWithoutSaving, setProceedWithoutSaving ] = useState(false);
-
-    const [ deletepopup, setDeletepopup] = useState(false); 
+    const [ proceedWithoutSaving, setProceedWithoutSaving ] = useState(false); 
 
     const [ stateAllInAddNewOrder, setStateAllInAddNewOrder] = useState(false);
     
@@ -27,14 +23,13 @@ const AddNewUser = () => {
   return (
     <div className="pageAddNewOrder">
       <ProceedWithoutSaving proceedWithoutSaving={proceedWithoutSaving} setProceedWithoutSaving={setProceedWithoutSaving}/>
-      <Delete deletepopup={deletepopup} setDeletepopup={setDeletepopup} modules="user"/>
       <Header/>
       <div className="threeButtonsInAddNewOrder">
         {!reset?
           <div>
             <Button className="buttonsInAddNewOrder" variant="outlined" color="secondary" onClick={setProceedWithoutSaving}>Save Draft</Button>
             <Button className="buttonsInAddNewOrder" variant="outlined" color="info" onClick={disableAllInAddNewOrder}>Confirm</Button>
-            <Button className="buttonsInAddNewOrder" variant="outlined" color="error" onClick={setDeletepopup}>Cancel</Button>
+            <Button className="buttonsInAddNewOrder" variant="outlined" color="error">Cancel</Button>
             <Button className="buttonRestInAddNewUser" variant="outlined" color="secondary" onClick={()=>setReset(true)}>RESET PASSWORD</Button>
           </div>
          :
@@ -50,7 +45,7 @@ const AddNewUser = () => {
           <div>
             <Button className="buttonsInAddNewOrder" variant="outlined" color="secondary" onClick={setProceedWithoutSaving}>Save Draft</Button>
             <Button className="buttonsInAddNewOrder" variant="outlined" color="info" onClick={disableAllInAddNewOrder}>Confirm</Button>
-            <Button className="buttonsInAddNewOrder" variant="outlined" color="error" onClick={setDeletepopup}>Cancel</Button>
+            <Button className="buttonsInAddNewOrder" variant="outlined" color="error">Cancel</Button>
           </div>
          :
           <div>

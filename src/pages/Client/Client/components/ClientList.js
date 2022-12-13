@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import { useHistory } from 'react-router-dom';
+
 import MenuItem from '@mui/material/MenuItem';
 import Table from '@mui/material/Table';
 import TableHead from '@mui/material/TableHead';
@@ -10,19 +10,6 @@ import TableBody from '@mui/material/TableBody';
 import Stack from '@mui/material/Stack';
 import Pagination from '@mui/material/Pagination';
 import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
-import Box from "@mui/material/Box";
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker'
-import { DesktopDatePicker } from '@mui/x-date-pickers';
-import { TextFieldProps } from "@mui/material";
-import dayjs from 'dayjs';
-import DateRangeIcon from '@mui/icons-material/DateRange';
-import InputAdornment from '@mui/material/InputAdornment';
-// import '@fontsource/roboto/300.css';
-// import '@fontsource/roboto/400.css';
-// import '@fontsource/roboto/500.css';
 
 function createData( LoginName, UserName, Email, Role ) {
     return { LoginName, UserName, Email, Role };
@@ -41,7 +28,10 @@ const BtnNPurchaseOrderList = () => {
         setSelectInClient(event.target.value);
     }; 
 
-    const [valueInOrder, setValueInOrder] = useState(new Date());
+    const history = useHistory();
+    const goToEditClient = () => {
+        history.push("/editclient")
+    }
 
     return (
         <div>
@@ -92,10 +82,10 @@ const BtnNPurchaseOrderList = () => {
                         <TableRow
                             key={row.name}
                         >
-                            <TableCell className="tableCellInOrder" component="th" scope="row">{row.LoginName}</TableCell>
-                            <TableCell className="tableCellInOrder" align="left">{row.UserName}</TableCell>
-                            <TableCell className="tableCellInOrder" align="left">{row.Email}</TableCell>
-                            <TableCell className="tableCellInOrder" align="left">{row.Role}</TableCell>
+                            <TableCell className="tableCellInOrder pointer" onClick={goToEditClient} component="th" scope="row">{row.LoginName}</TableCell>
+                            <TableCell className="tableCellInOrder pointer" onClick={goToEditClient} align="left">{row.UserName}</TableCell>
+                            <TableCell className="tableCellInOrder pointer" onClick={goToEditClient} align="left">{row.Email}</TableCell>
+                            <TableCell className="tableCellInOrder pointer" onClick={goToEditClient} align="left">{row.Role}</TableCell>
                         </TableRow>
                         ))}
                     </TableBody>

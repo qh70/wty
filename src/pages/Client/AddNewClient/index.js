@@ -1,20 +1,16 @@
 import { useState  } from "react"
 import ListAddNewClient from "./components/ListAddNewClient"
-// import AddProduct from "../../components/Add Product/index"
 import Header from "../../../components/Header/Header"
 import ProceedWithoutSaving from "../../../components/Dialog/ProceedWithoutSaving"
 import { Button } from "@mui/material"
-import Delete from "../../../components/Dialog/Delete"
 
-const AddNewUser = () => {
+const AddNewClient = () => {
 
     const [ showAddProduct, setShowAddProduct] = useState(false);
 
     const [ open, setOpen] = useState(false);
     
     const [ proceedWithoutSaving, setProceedWithoutSaving ] = useState(false);
-
-    const [ deletepopup, setDeletepopup] = useState(false); 
 
     const [ stateAllInAddNewOrder, setStateAllInAddNewOrder] = useState(false);
     
@@ -27,14 +23,13 @@ const AddNewUser = () => {
   return (
     <div className="pageAddNewOrder">
       <ProceedWithoutSaving proceedWithoutSaving={proceedWithoutSaving} setProceedWithoutSaving={setProceedWithoutSaving}/>
-      <Delete deletepopup={deletepopup} setDeletepopup={setDeletepopup} modules="user"/>
       <Header title={!reset?"Add New User":"Edit User Info"}/>
       <div className="threeButtonsInAddNewOrder">
         {!reset?
           <div>
             <Button className="buttonsInAddNewOrder" variant="outlined" color="secondary" onClick={setProceedWithoutSaving}>Save Draft</Button>
             <Button className="buttonsInAddNewOrder" variant="outlined" color="info" onClick={disableAllInAddNewOrder}>Confirm</Button>
-            <Button className="buttonsInAddNewOrder" variant="outlined" color="error" onClick={setDeletepopup}>Cancel</Button>
+            <Button className="buttonsInAddNewOrder" variant="outlined" color="error">Cancel</Button>
             <Button className="buttonRestInAddNewUser" variant="outlined" color="secondary" onClick={()=>setReset(true)}>RESET PASSWORD</Button>
           </div>
          :
@@ -50,7 +45,7 @@ const AddNewUser = () => {
           <div>
             <Button className="buttonsInAddNewOrder" variant="outlined" color="secondary" onClick={setProceedWithoutSaving}>Save Draft</Button>
             <Button className="buttonsInAddNewOrder" variant="outlined" color="info" onClick={disableAllInAddNewOrder}>Confirm</Button>
-            <Button className="buttonsInAddNewOrder" variant="outlined" color="error" onClick={setDeletepopup}>Cancel</Button>
+            <Button className="buttonsInAddNewOrder" variant="outlined" color="error">Cancel</Button>
           </div>
          :
           <div>
@@ -63,4 +58,4 @@ const AddNewUser = () => {
   )
 }
 
-export default AddNewUser
+export default AddNewClient

@@ -15,7 +15,7 @@ const TableInAddNewOrder = ({ setDeletepopup }) => {
     const handleClickDelete = () => {console.log(1);setDeletepopup(true);};
 
   return (
-    <Paper sx={{ width: '100%', paddingBottom: 3, overflow: 'hidden' }}>
+    <Paper sx={{ width: '100%', paddingBottom: 3, overflow: 'hidden' }} variant="none">
       <TableContainer>
         <Table className="TableInAddNewOrder" aria-label="simple table">
             <TableHead>

@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import { useHistory } from 'react-router-dom';
 import MenuItem from '@mui/material/MenuItem';
 import Table from '@mui/material/Table';
 import TableHead from '@mui/material/TableHead';
@@ -10,14 +9,9 @@ import TableBody from '@mui/material/TableBody';
 import Stack from '@mui/material/Stack';
 import Pagination from '@mui/material/Pagination';
 import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
-import Box from "@mui/material/Box";
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
-import { DesktopDatePicker } from '@mui/x-date-pickers';
-import { TextFieldProps } from "@mui/material";
-import dayjs from 'dayjs';
 import DateRangeIcon from '@mui/icons-material/DateRange';
 import InputAdornment from '@mui/material/InputAdornment';
 // import '@fontsource/roboto/300.css';
@@ -42,6 +36,12 @@ const BtnNPurchaseOrderList = () => {
     }; 
 
     const [valueInOrder, setValueInOrder] = useState(new Date());
+
+    const history = useHistory();
+
+    const goToEditOrder = () => {
+        history.push("/editorder")
+    }
 
     return (
         <div>
@@ -122,10 +122,10 @@ const BtnNPurchaseOrderList = () => {
                             key={row.name}
                             // sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
-                            <TableCell className="tableCellInOrder" component="th" scope="row">{row.name}</TableCell>
-                            <TableCell className="tableCellInOrder" align="left">{row.POno}</TableCell>
-                            <TableCell className="tableCellInOrder" align="left">{row.Attention}</TableCell>
-                            <TableCell className="lastTableCellInOrder" align="left">{row.Date}</TableCell>
+                            <TableCell onClick={goToEditOrder} className="tableCellInOrder pointer" component="th" scope="row">{row.name}</TableCell>
+                            <TableCell onClick={goToEditOrder} className="tableCellInOrder pointer" align="left">{row.POno}</TableCell>
+                            <TableCell onClick={goToEditOrder} className="tableCellInOrder pointer" align="left">{row.Attention}</TableCell>
+                            <TableCell onClick={goToEditOrder} className="lastTableCellInOrder pointer" align="left">{row.Date}</TableCell>
                         </TableRow>
                         ))}
                     </TableBody>
