@@ -1,4 +1,5 @@
 import { useState  } from "react"
+import { useHistory } from "react-router-dom";
 import ListAddNewUser from "./components/ListAddNewUser"
 import Header from "../../../components/Header/Header"
 import ProceedWithoutSaving from "../../../components/Dialog/ProceedWithoutSaving"
@@ -20,6 +21,13 @@ const AddNewUser = () => {
 
     const [ reset, setReset ] = useState(false);
 
+    // goToEditUser
+    let history = useHistory();
+
+    const goToEditUser = () => {
+        history.push("/edituser");
+    }
+
   return (
     <div className="pageAddNewOrder">
       <ProceedWithoutSaving proceedWithoutSaving={proceedWithoutSaving} setProceedWithoutSaving={setProceedWithoutSaving}/>
@@ -28,7 +36,7 @@ const AddNewUser = () => {
         {!reset?
           <div>
             <Button className="buttonsInAddNewOrder" variant="outlined" color="secondary" onClick={setProceedWithoutSaving}>Save Draft</Button>
-            <Button className="buttonsInAddNewOrder" variant="outlined" color="info" onClick={disableAllInAddNewOrder}>Confirm</Button>
+            <Button className="buttonsInAddNewOrder" variant="outlined" color="info" onClick={goToEditUser}>Confirm</Button>
             <Button className="buttonsInAddNewOrder" variant="outlined" color="error">Cancel</Button>
             <Button className="buttonRestInAddNewUser" variant="outlined" color="secondary" onClick={()=>setReset(true)}>RESET PASSWORD</Button>
           </div>
@@ -44,7 +52,7 @@ const AddNewUser = () => {
         {!reset?
           <div>
             <Button className="buttonsInAddNewOrder" variant="outlined" color="secondary" onClick={setProceedWithoutSaving}>Save Draft</Button>
-            <Button className="buttonsInAddNewOrder" variant="outlined" color="info" onClick={disableAllInAddNewOrder}>Confirm</Button>
+            <Button className="buttonsInAddNewOrder" variant="outlined" color="info" onClick={goToEditUser}>Confirm</Button>
             <Button className="buttonsInAddNewOrder" variant="outlined" color="error">Cancel</Button>
           </div>
          :

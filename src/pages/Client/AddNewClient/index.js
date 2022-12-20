@@ -4,6 +4,8 @@ import Header from "../../../components/Header/Header"
 import ProceedWithoutSaving from "../../../components/Dialog/ProceedWithoutSaving"
 import { Button } from "@mui/material"
 
+import { useHistory } from "react-router-dom";
+
 const AddNewClient = () => {
 
     const [ showAddProduct, setShowAddProduct] = useState(false);
@@ -12,10 +14,11 @@ const AddNewClient = () => {
     
     const [ proceedWithoutSaving, setProceedWithoutSaving ] = useState(false);
 
-    const [ stateAllInAddNewOrder, setStateAllInAddNewOrder] = useState(false);
+    // goToEditClient
+    let history = useHistory();
     
-    const disableAllInAddNewOrder = function () {
-      setStateAllInAddNewOrder(true);
+    const goToEditClient = () => {
+      history.push("/editclient");
     }
 
     const [ reset, setReset ] = useState(false);
@@ -28,29 +31,29 @@ const AddNewClient = () => {
         {!reset?
           <div>
             <Button className="buttonsInAddNewOrder" variant="outlined" color="secondary" onClick={setProceedWithoutSaving}>Save Draft</Button>
-            <Button className="buttonsInAddNewOrder" variant="outlined" color="info" onClick={disableAllInAddNewOrder}>Confirm</Button>
+            <Button className="buttonsInAddNewOrder" variant="outlined" color="info" onClick={goToEditClient}>Confirm</Button>
             <Button className="buttonsInAddNewOrder" variant="outlined" color="error">Cancel</Button>
             <Button className="buttonRestInAddNewUser" variant="outlined" color="secondary" onClick={()=>setReset(true)}>RESET PASSWORD</Button>
           </div>
          :
           <div>
             <Button className="buttonsInAddNewOrder" variant="outlined" color="info" onClick={()=>setReset(false)}>Save</Button>
-            <Button className="buttonsInAddNewOrder" variant="outlined" color="error" onClick={disableAllInAddNewOrder}>Cancel</Button>
+            <Button className="buttonsInAddNewOrder" variant="outlined" color="error">Cancel</Button>
           </div>
         }
       </div>
-      <ListAddNewClient setShowAddProduct={setShowAddProduct} setOpen={setOpen} stateAllInAddNewOrder={stateAllInAddNewOrder} reset={reset} setReset={setReset}/>
+      <ListAddNewClient setShowAddProduct={setShowAddProduct} setOpen={setOpen} reset={reset} setReset={setReset}/>
       <div className="threeButtonsInAddNewOrder">
         {!reset?
           <div>
             <Button className="buttonsInAddNewOrder" variant="outlined" color="secondary" onClick={setProceedWithoutSaving}>Save Draft</Button>
-            <Button className="buttonsInAddNewOrder" variant="outlined" color="info" onClick={disableAllInAddNewOrder}>Confirm</Button>
+            <Button className="buttonsInAddNewOrder" variant="outlined" color="info" onClick={goToEditClient}>Confirm</Button>
             <Button className="buttonsInAddNewOrder" variant="outlined" color="error">Cancel</Button>
           </div>
          :
           <div>
             <Button className="buttonsInAddNewOrder" variant="outlined" color="info" onClick={()=>setReset(false)}>Save</Button>
-            <Button className="buttonsInAddNewOrder" variant="outlined" color="error" onClick={disableAllInAddNewOrder}>Cancel</Button>
+            <Button className="buttonsInAddNewOrder" variant="outlined" color="error">Cancel</Button>
           </div>
         }
       </div>

@@ -1,4 +1,5 @@
-import { useState  } from "react"
+import { useState  } from "react";
+import { useHistory } from "react-router-dom";
 import ListAddNewOrder from "./components/ListAddNewOrder"
 import Header from "../../../components/Header/Header"
 import MaxWidthDialog from "../../../components/Dialog"
@@ -14,9 +15,12 @@ const AddNewOrder = () => {
     const [deletepopup, setDeletepopup] = useState(false);  
 
     const [ stateAllInAddNewOrder, setStateAllInAddNewOrder] = useState(false);
-    
-    const disableAllInAddNewOrder = function () {
-      setStateAllInAddNewOrder(true);
+
+    // goToEditOrder
+    let history = useHistory();
+
+    const goToEditOrder = () => {
+        history.push("/editorder");
     }
 
   return (
@@ -26,14 +30,14 @@ const AddNewOrder = () => {
         <Header/>
         <div className="threeButtonsInAddNewOrder">
             <Button className="buttonsInAddNewOrder" variant="outlined" color="secondary">Save Draft</Button>
-            <Button className="buttonsInAddNewOrder" variant="outlined" color="info" onClick={disableAllInAddNewOrder}>Confirm</Button>
+            <Button className="buttonsInAddNewOrder" variant="outlined" color="info" onClick={goToEditOrder} >Confirm</Button>
             <Button className="buttonsInAddNewOrder" variant="outlined" color="error">Cancel</Button>
             {/* <button className="buttons" onClick={handleClickOpen}>Dialog</button> */}
         </div>
         <ListAddNewOrder setShowAddProduct={setShowAddProduct} setOpen={setOpen} setDeletepopup={setDeletepopup} stateAllInAddNewOrder={stateAllInAddNewOrder}/>
         <div className="threeButtonsInAddNewOrder">
             <Button className="buttonsInAddNewOrder" variant="outlined" color="secondary" >Save Draft</Button>
-            <Button className="buttonsInAddNewOrder" variant="outlined" color="info">Confirm</Button>
+            <Button className="buttonsInAddNewOrder" variant="outlined" color="info" onClick={goToEditOrder} >Confirm</Button>
             <Button className="buttonsInAddNewOrder" variant="outlined" color="error">Cancel</Button>
             {/* <button className="buttons" onClick={handleClickOpen}>Dialog</button> */}
         </div>

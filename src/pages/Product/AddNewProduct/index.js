@@ -1,10 +1,10 @@
 import { useState  } from "react"
+import { useHistory } from "react-router-dom";
 import ListAddNewProduct from "./components/ListAddNewProduct"
 import Header from "../../../components/Header/Header"
 import ProceedWithoutSaving from "../../../components/Dialog/ProceedWithoutSaving"
 import { Button } from "@mui/material"
 
-import { useHistory } from "react-router-dom";
 
 const AddNewProduct = () => {
 
@@ -21,6 +21,7 @@ const AddNewProduct = () => {
     //   setStateAllInAddNewOrder(true);
     // }
 
+    // goToEditProduct
     let history = useHistory();
 
     const goToEditProduct = () => {

@@ -37,10 +37,10 @@ const TableInAddNewOrder = ({ setDeletepopup }) => {
                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                     >
                         <TableCell className="tableCellInOrder" component="th" scope="row">{row.Item}</TableCell>
-                        <div className="ButtonsInTableInAddNewOrder">
+                        <TableCell className="tableCellInOrder">
                             <Button variant="outlined">EDIT</Button>
                             <Button className="buttonDELETEInTableInAddNewOrder" variant="outlined" onClick={handleClickDelete}>DELETE</Button>
-                        </div>                
+                        </TableCell>                
                         <TableCell className="tableCellInOrder" align="right">{row.ProductName}</TableCell>
                         <TableCell className="tableCellInOrder" align="right">{row.DesignerName}</TableCell>
                         <TableCell className="tableCellInOrder" align="right">{row.BrandName}</TableCell>

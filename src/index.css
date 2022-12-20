@@ -330,7 +330,7 @@ body {
 }
 
 .ButtonsInTableInAddNewOrder {
-  display: flex;
+  display: flex!important;
   margin-top: 12%;margin-left: -3vw;
 }
 
