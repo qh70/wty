@@ -809,6 +809,14 @@ body {
     position: fixed;left: -2%
   }
 
+  .fourRoutesInMobileModules {
+    margin-left: 80px;
+  }
+
+  .singleRouteInMobileModules{
+    font-size: small;
+  }
+
   .logoNWordInOrder {
     color: white;display: flex;
   }

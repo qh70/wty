@@ -24,13 +24,11 @@ import DateRangeIcon from '@mui/icons-material/DateRange';
 import { UserContext } from "../../../../UserContext"
 
 
-const ListAddNewProduct = ({ setOpen, setShowAddProduct }) => {
+const ListAddNewProduct = ({ setShowAddProduct }) => {
     
     // const [showAddProduct, setShowAddProduct] = useState(false);
 
     const [value, setValue] = useState(new Date());
-    
-    const handleClickOpen = () => {setOpen(true);};
 
     // 每個TextField的值
     const { 
@@ -300,7 +298,6 @@ const ListAddNewProduct = ({ setOpen, setShowAddProduct }) => {
                             ),
                         }}
                         fullWidth
-                        
                     />
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={12}>

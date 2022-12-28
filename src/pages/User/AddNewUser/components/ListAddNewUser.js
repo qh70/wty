@@ -21,13 +21,11 @@ import Box from '@mui/material/Box';
 import DateRangeIcon from '@mui/icons-material/DateRange';
 
 
-const ListAddNewUser = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder, reset, setReset }) => {
+const ListAddNewUser = ({ setShowAddProduct, stateAllInAddNewOrder, reset, setReset }) => {
     
     // const [showAddProduct, setShowAddProduct] = useState(false);
 
     const [value, setValue] = useState(new Date());
-    
-    const handleClickOpen = () => {setOpen(true);};
 
   return (
     <div className="listInAddNewOrder">

@@ -8,8 +8,6 @@ import { Button } from "@mui/material"
 const AddNewUser = () => {
 
     const [ showAddProduct, setShowAddProduct] = useState(false);
-
-    const [ open, setOpen] = useState(false);
     
     const [ proceedWithoutSaving, setProceedWithoutSaving ] = useState(false); 
 
@@ -47,7 +45,7 @@ const AddNewUser = () => {
           </div>
         }
       </div>
-      <ListAddNewUser setShowAddProduct={setShowAddProduct} setOpen={setOpen} stateAllInAddNewOrder={stateAllInAddNewOrder} reset={reset} setReset={setReset}/>
+      <ListAddNewUser setShowAddProduct={setShowAddProduct} stateAllInAddNewOrder={stateAllInAddNewOrder} reset={reset} setReset={setReset}/>
       <div className="threeButtonsInAddNewOrder">
         {!reset?
           <div>

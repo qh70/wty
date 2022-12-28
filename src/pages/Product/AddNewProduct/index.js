@@ -9,8 +9,6 @@ import { Button } from "@mui/material"
 const AddNewProduct = () => {
 
     const [showAddProduct, setShowAddProduct] = useState(false);
-
-    const [open, setOpen] = useState(false);
     
     const [ proceedWithoutSaving, setProceedWithoutSaving ] = useState(false);
 
@@ -38,7 +36,7 @@ const AddNewProduct = () => {
           <Button className="buttonsInAddNewOrder" variant="outlined" color="error">Cancel</Button>
           {/* <button className="buttons" onClick={handleClickOpen}>Dialog</button> */}
       </div>
-      <ListAddNewProduct setShowAddProduct={setShowAddProduct} setOpen={setOpen} />
+      <ListAddNewProduct setShowAddProduct={setShowAddProduct}/>
       <div className="threeButtonsInAddNewOrder">
           <Button className="buttonsInAddNewOrder" variant="outlined" color="secondary" >Save Draft</Button>
           <Button className="buttonsInAddNewOrder" variant="outlined" color="info" onClick={goToEditProduct}>Confirm</Button>

@@ -42,7 +42,7 @@ const AddNewClient = () => {
           </div>
         }
       </div>
-      <ListAddNewClient setShowAddProduct={setShowAddProduct} setOpen={setOpen} reset={reset} setReset={setReset}/>
+      <ListAddNewClient setShowAddProduct={setShowAddProduct} reset={reset} setReset={setReset}/>
       <div className="threeButtonsInAddNewOrder">
         {!reset?
           <div>
