@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 import { useHistory } from "react-router-dom"
 
-const FirstButton = ({ goto }) => {
+const FirstButton = ({ goto, token }) => {
     
     const history = useHistory();
 

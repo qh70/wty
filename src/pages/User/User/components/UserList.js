@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import MenuItem from '@mui/material/MenuItem';
 import Table from '@mui/material/Table';
@@ -9,6 +9,8 @@ import TableBody from '@mui/material/TableBody';
 import Stack from '@mui/material/Stack';
 import Pagination from '@mui/material/Pagination';
 import TextField from '@mui/material/TextField';
+
+import { GetContext } from "../../../../GetContext";
 
 function createData( LoginName, UserName, Email, Role ) {
     return { LoginName, UserName, Email, Role };
@@ -32,6 +34,8 @@ const BtnNPurchaseOrderList = () => {
     const goToEditUser = () => {
         history.push("/edituser")
     }
+
+    const { userResponse } = useContext(GetContext); 
 
     return (
         <div>
@@ -78,14 +82,14 @@ const BtnNPurchaseOrderList = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map((row) => (
+                        {userResponse.map((row) => (
                         <TableRow
                             key={row.name}
                         >
-                            <TableCell className="tableCellInOrder pointer" component="th" scope="row" onClick={goToEditUser}>{row.LoginName}</TableCell>
-                            <TableCell className="tableCellInOrder pointer" align="left" onClick={goToEditUser}>{row.UserName}</TableCell>
-                            <TableCell className="tableCellInOrder pointer" align="left" onClick={goToEditUser}>{row.Email}</TableCell>
-                            <TableCell className="tableCellInOrder pointer" align="left" onClick={goToEditUser}>{row.Role}</TableCell>
+                            <TableCell className="tableCellInOrder pointer" component="th" scope="row" onClick={goToEditUser}>{row.name}</TableCell>
+                            <TableCell className="tableCellInOrder pointer" align="left" onClick={goToEditUser}>{row.username}</TableCell>
+                            <TableCell className="tableCellInOrder pointer" align="left" onClick={goToEditUser}>{row.email}</TableCell>
+                            <TableCell className="tableCellInOrder pointer" align="left" onClick={goToEditUser}>{row.userRoleId}</TableCell>
                         </TableRow>
                         ))}
                     </TableBody>

@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
+import { useHistory } from "react-router-dom"
 import { Box, TextField, MenuItem } from '@mui/material';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -20,15 +21,18 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import { height } from '@mui/system';
 
+import { GetContext } from "../../GetContext";
+
 // for password input
 import Input from '@mui/material/Input';
 import IconButton from '@mui/material/IconButton';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
-export default function LoginPopup({ proceedWithoutSaving, setProceedWithoutSaving, login, setLogin }) {
+export default function LoginPopup({ proceedWithoutSaving, setProceedWithoutSaving, login }) {
   const [fullWidth, setFullWidth] = React.useState(true);
   const [maxWidth, setMaxWidth] = React.useState('md');
+  const history = useHistory();
 
   const handleClose = () => {
     
@@ -49,7 +53,7 @@ export default function LoginPopup({ proceedWithoutSaving, setProceedWithoutSavi
     return `${value}`;
   }
   // for password input
-  const [values, setValues] = React.useState({
+  const [values, setValues] = useState({
     amount: '',
     password: '',
     weight: '',
@@ -73,8 +77,10 @@ export default function LoginPopup({ proceedWithoutSaving, setProceedWithoutSavi
   };
 
   // set userName & password
-  const [ userName, setUserName ] = useState("");
-  const [ password, setPassword ] = useState("");
+  const [ userName, setUserName ] = useState("charles");
+  const [ password, setPassword ] = useState("abcd1234");
+
+  const { token, setToken, setLogin, orderResponse, setOrderResponse , productResponse, setProductResponse,  setUserResponse, setClientsResponse } = useContext(GetContext); //props from Context
 
   function userNameChange(e) {
     setUserName(e.target.value);
@@ -83,22 +89,87 @@ export default function LoginPopup({ proceedWithoutSaving, setProceedWithoutSavi
   function passwordChange(e) {
     setPassword(e.target.value);
   }
+  // 當按下SIGN IN， token改變後，去order取資料
+  useEffect(() => {
+    fetch("http://192.168.0.8:8089/rest/admin/salesOrder/?currentPage=0&pageSize=10", {
+        method: "GET",
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      })
+      .then((response) => response.json())
+      .then((data) => {setOrderResponse(data.items)
+    });   
+
+    fetch("http://192.168.0.8:8089/rest/admin/product/?currentPage=0&pageSize=10", {
+        method: "GET",
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      })
+      .then((response) => response.json())
+      .then((data) => {setProductResponse(data.items)});  
+
+    fetch("http://192.168.0.8:8089/rest/admin/users/?currentPage=0&pageSize=10", {
+        method: "GET",
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      })
+      .then((response) => response.json())
+      .then((data) => {setUserResponse(data.items)
+    });  
+
+    fetch("http://192.168.0.8:8089/rest/admin/customer/?currentPage=0&pageSize=10", {
+        method: "GET",
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      })
+      .then((response) => response.json())
+      .then((data) => {setClientsResponse(data.items)
+    });  
+
+  }, [token])
+
+  // 當token改變，去/order
+  useEffect(() => {
+    if (token != null){
+      console.log(productResponse)
+      setLogin(true);
+      history.push("/order");
+    }    
+  }, [orderResponse])
+
+  
 
   const clickingSignIn = () => {
-    // fetch("http://ec2-13-212-207-229.ap-southeast-1.compute.amazonaws.com:8088/rest/authenticate/user/login", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //   },
-    //   body: JSON.stringify({
-    //     "username": userName,
-    //     "password": password
-    //   })
-    // })
-    // .then((response) => response.json())
-    // .then((data) => {if (data.role === "SUPER_ADMIN"){setLogin(true);}});
-    setLogin(true);
+    fetch("http://192.168.0.8:8089/rest/authenticate/user/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        "username": userName,
+        "password": password
+      })
+    })
+    .then((response) => response.json())
+    .then((data) => {setToken(data.token)});
   }
+
+    const clickingCancel = () => {
+      fetch("http://192.168.0.8:8089/rest/admin/users/?currentPage=0&pageSize=10", {
+        method: "GET",
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      })
+      .then((response) => response.json())
+      // .then((data) => {if (data.token){setLogin(true);setToken(data.token);}});
+      .then((data) => {console.log(data.items)});
+    }
+  
   
   return (
     <React.Fragment>
@@ -143,7 +214,7 @@ export default function LoginPopup({ proceedWithoutSaving, setProceedWithoutSavi
         
         <DialogActions>
           <Button color="primary" onClick={()=>{clickingSignIn()}}>SIGN IN</Button>
-          <Button color="warning">CANCEL</Button>
+          <Button color="warning" onClick={()=>{clickingCancel()}}>CANCEL</Button>
         </DialogActions>
       </Dialog>
     </React.Fragment>

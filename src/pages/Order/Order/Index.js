@@ -11,12 +11,12 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import FirstButton from '../../../components/Button/FirstButton';
 
 
-const Order = () => {
+const Order = ({token}) => {
 
   return (
     <div className="order">
       <Header/>
-      <FirstButton goto="Order"/>
+      <FirstButton goto="Order" token={token}/>
       <BtnNPurchaseOrderList/>
     </div>
   )

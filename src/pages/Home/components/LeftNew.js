@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import Item from './Item'
 import List from '@mui/material/List';
 import DateRangeIcon from '@mui/icons-material/DateRange';
@@ -8,6 +8,8 @@ import AutoAwesomeMosaicIcon from '@mui/icons-material/AutoAwesomeMosaic';
 import { ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import { useHistory, useLocation } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
+
+import { GetContext } from "../../../GetContext";
 
 // 本來嘗試useReducer，但後來感覺useState比較合適
 // function reducer({state}) {
@@ -84,6 +86,25 @@ const LeftNew = () => {
       console.log(1)
       setState4RoutesInMobileModules(!state4RoutesInMobileModules);
     }
+
+    const { token ,productResponse, setProductResponse } = useContext(GetContext); //props from Context
+
+    // 按下Product
+    const clickProduct = () => {
+      fetch("http://192.168.0.8:8089/rest/admin/product/?currentPage=0&pageSize=10", {
+        method: "GET",
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      })
+      .then((response) => response.json())
+      // .then((data) => {if (data.token){setLogin(true);setToken(data.token);}});
+      .then((data) => {setProductResponse(data.items)});
+    }
+
+    useEffect(() => {
+      history.push("/product");
+    }, [productResponse])
 
   return (
     <div className="leftNew">

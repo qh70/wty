@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import MenuItem from '@mui/material/MenuItem';
 import Table from '@mui/material/Table';
@@ -14,6 +14,8 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import DateRangeIcon from '@mui/icons-material/DateRange';
 import InputAdornment from '@mui/material/InputAdornment';
+
+import { GetContext } from '../../../../GetContext';
 // import '@fontsource/roboto/300.css';
 // import '@fontsource/roboto/400.css';
 // import '@fontsource/roboto/500.css';
@@ -42,6 +44,10 @@ const BtnNPurchaseOrderList = () => {
     const goToEditOrder = () => {
         history.push("/editorder")
     }
+
+    const { orderResponse } = useContext(GetContext); //props from Context
+
+    // orderResponse.map((row)=>{console.log(row)})
 
     return (
         <div>
@@ -117,15 +123,15 @@ const BtnNPurchaseOrderList = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map((row) => (
+                        {orderResponse.map((row) => (
                         <TableRow
-                            key={row.name}
+                            key={row.clientCustomerCode}
                             // sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
-                            <TableCell onClick={goToEditOrder} className="tableCellInOrder pointer" component="th" scope="row">{row.name}</TableCell>
-                            <TableCell onClick={goToEditOrder} className="tableCellInOrder pointer" align="left">{row.POno}</TableCell>
-                            <TableCell onClick={goToEditOrder} className="tableCellInOrder pointer" align="left">{row.Attention}</TableCell>
-                            <TableCell onClick={goToEditOrder} className="lastTableCellInOrder pointer" align="left">{row.Date}</TableCell>
+                            <TableCell onClick={goToEditOrder} className="tableCellInOrder pointer" component="th" scope="row">{row.clientCustomerCode}</TableCell>
+                            <TableCell onClick={goToEditOrder} className="tableCellInOrder pointer" align="left">{row.poNo}</TableCell>
+                            <TableCell onClick={goToEditOrder} className="tableCellInOrder pointer" align="left">{row.attn}</TableCell>
+                            <TableCell onClick={goToEditOrder} className="lastTableCellInOrder pointer" align="left">{row.issueDate}</TableCell>
                         </TableRow>
                         ))}
                     </TableBody>

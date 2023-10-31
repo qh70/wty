@@ -20,11 +20,13 @@ import EditClient from "../Client/EditClient";
 
 import "../../index.css";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
+//Context
 import { UserContext } from "../../UserContext";
+import { LoginContext } from "../../LoginContext";
+import { GetContext } from "../../GetContext";
 
 import LoginPopup from "../../components/Dialog/LoginPopup";
-import { LoginContext } from "../../LoginContext";
+
 
 const Home = () => {
     
@@ -44,11 +46,23 @@ const Home = () => {
 
     const [ login, setLogin ] = useState(false);
 
+    const [token, setToken ]= useState(null);
+
     const [ logoutPopup, setLogoutPopup ] = useState(false)
+
+    // 4 modules API
+    const [ orderResponse, setOrderResponse ] = useState(null) 
+    const [ productResponse, setProductResponse ] = useState(null) 
+    const [ userResponse, setUserResponse ] = useState(null) 
+    const [ clientsResponse, setClientsResponse ] = useState(null) 
 
   return (
     <Router>
-        {!login?<LoginPopup setLogin={setLogin}/>
+        <GetContext.Provider value={{ 
+            setLogin, token, setToken, 
+            orderResponse, setOrderResponse, productResponse, setProductResponse, userResponse,setUserResponse, clientsResponse, setClientsResponse 
+        }}>
+        {!login?<LoginPopup/>
          :<div className="wholePicture">
             <LeftNew/>
             {/* <div className="right"> */}
@@ -58,7 +72,7 @@ const Home = () => {
 
                         {/* order */}
                         <Route exact path="/order">
-                            <Order/> 
+                            <Order token={token}/> 
                         </Route>
                         <Route exact path="/addneworder">
                             <AddNewOrder />
@@ -119,6 +133,7 @@ const Home = () => {
             </div>
         //   </div>
         }
+        </GetContext.Provider>
     </Router>
     
   )

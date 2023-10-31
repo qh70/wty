@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import MenuItem from '@mui/material/MenuItem';
 import Table from '@mui/material/Table';
@@ -10,16 +10,13 @@ import Stack from '@mui/material/Stack';
 import Pagination from '@mui/material/Pagination';
 import TextField from '@mui/material/TextField';
 
+import { GetContext } from "../../../../GetContext";
+
 function createData( ProductName, DescriptionProduct ) {
     return { ProductName, DescriptionProduct };
 };
 
-const rows = [
-    createData("Pink Angel", "Pink Angel xxxxxxxxxx Pink Angel xxxxxxxxxx Pink Angel xxxxxxxxxx Pink Angel xxxxxxxxxx"),
-    createData("CST002", "Pink Angel xxxxxxxxxx Pink Angel xxxxxxxxxx Pink Angel xxxxxxxxxx Pink Angel xxxxxxxxxx"),
-];
-
-const BtnNPurchaseOrderList = () => {
+const ProductList = () => {
 
     const [selectInOrder, setSelectInOrder] = useState("Product Name");
   
@@ -34,6 +31,9 @@ const BtnNPurchaseOrderList = () => {
     const goToEditProduct = () => {
         history.push("/editproduct");
     }
+
+    const { productResponse } = useContext(GetContext); 
+    
 
     return (
         <div>
@@ -82,13 +82,13 @@ const BtnNPurchaseOrderList = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map((row) => (
+                        {productResponse.map((row) => (
                         <TableRow
-                            key={row.name}
+                            key={row.productNameEn}
                             // sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
-                            <TableCell className="tableCellInProduct" component="th" scope="row" onClick={goToEditProduct}>{row.ProductName}</TableCell>
-                            <TableCell className="tableCellInProduct" align="left" onClick={goToEditProduct}>{row.DescriptionProduct}</TableCell>
+                            <TableCell className="tableCellInProduct" component="th" scope="row" onClick={goToEditProduct}>{row.productNameEn}</TableCell>
+                            <TableCell className="tableCellInProduct" align="left" onClick={goToEditProduct}>{row.longDescEn}</TableCell>
                         </TableRow>
                         ))}
                     </TableBody>
@@ -107,4 +107,4 @@ const BtnNPurchaseOrderList = () => {
     )
 }
 
-export default BtnNPurchaseOrderList
+export default ProductList

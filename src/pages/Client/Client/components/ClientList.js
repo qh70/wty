@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import MenuItem from '@mui/material/MenuItem';
@@ -11,14 +11,11 @@ import Stack from '@mui/material/Stack';
 import Pagination from '@mui/material/Pagination';
 import TextField from '@mui/material/TextField';
 
+import { GetContext } from "../../../../GetContext";
+
 function createData( LoginName, UserName, Email, Role ) {
     return { LoginName, UserName, Email, Role };
 };
-
-const rows = [
-    createData("CST001", "Dior-000010", "Dior Company", "Hong Kong" ),
-    createData("CST001", "Dior-000022", "Dior Company", "Hong Kong" ),
-];
 
 const BtnNPurchaseOrderList = () => {
 
@@ -32,6 +29,8 @@ const BtnNPurchaseOrderList = () => {
     const goToEditClient = () => {
         history.push("/editclient")
     }
+
+    const { clientsResponse } = useContext(GetContext); 
 
     return (
         <div>
@@ -78,14 +77,14 @@ const BtnNPurchaseOrderList = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map((row) => (
+                        {clientsResponse.map((row) => (
                         <TableRow
                             key={row.name}
                         >
-                            <TableCell className="tableCellInOrder pointer" onClick={goToEditClient} component="th" scope="row">{row.LoginName}</TableCell>
-                            <TableCell className="tableCellInOrder pointer" onClick={goToEditClient} align="left">{row.UserName}</TableCell>
-                            <TableCell className="tableCellInOrder pointer" onClick={goToEditClient} align="left">{row.Email}</TableCell>
-                            <TableCell className="tableCellInOrder pointer" onClick={goToEditClient} align="left">{row.Role}</TableCell>
+                            <TableCell className="tableCellInOrder pointer" onClick={goToEditClient} component="th" scope="row">{row.customerNameEn}</TableCell>
+                            <TableCell className="tableCellInOrder pointer" onClick={goToEditClient} align="left">{row.customerNameTc}</TableCell>
+                            <TableCell className="tableCellInOrder pointer" onClick={goToEditClient} align="left">{row.email}</TableCell>
+                            <TableCell className="tableCellInOrder pointer" onClick={goToEditClient} align="left">{row.customerId}</TableCell>
                         </TableRow>
                         ))}
                     </TableBody>
