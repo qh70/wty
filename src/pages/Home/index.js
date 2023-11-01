@@ -56,11 +56,15 @@ const Home = () => {
     const [ userResponse, setUserResponse ] = useState(null) 
     const [ clientsResponse, setClientsResponse ] = useState(null) 
 
+    // index of data
+    const [ indexOfData, setIndexOfData ] = useState(null)
+
   return (
     <Router>
         <GetContext.Provider value={{ 
             setLogin, token, setToken, 
-            orderResponse, setOrderResponse, productResponse, setProductResponse, userResponse,setUserResponse, clientsResponse, setClientsResponse 
+            orderResponse, setOrderResponse, productResponse, setProductResponse, userResponse,setUserResponse, clientsResponse, setClientsResponse, 
+            indexOfData, setIndexOfData 
         }}>
         {!login?<LoginPopup/>
          :<div className="wholePicture">

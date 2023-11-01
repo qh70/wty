@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { TextField } from "@mui/material"
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
@@ -20,6 +20,7 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import DateRangeIcon from '@mui/icons-material/DateRange';
 
+import { GetContext } from "../../../../GetContext"
 
 const ListEditClient = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder, reset, setReset }) => {
     
@@ -28,6 +29,10 @@ const ListEditClient = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder, res
     const [value, setValue] = useState(new Date());
     
     const handleClickOpen = () => {setOpen(true);};
+
+    const { clientsResponse, indexOfData } = useContext(GetContext); 
+    const thisClients = clientsResponse[indexOfData];
+    console.log(thisClients);
 
   return (
     <div className="listInAddNewOrder">
@@ -39,6 +44,7 @@ const ListEditClient = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder, res
                         {/* <div className="rowInListForOrder"> */}
                         <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                             <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Customer Code" variant="standard" fullWidth="50%"
+                                value = {thisClients.customerCode}
                                 disabled={stateAllInAddNewOrder}
                             />
                         </Grid>

@@ -23,6 +23,8 @@ import DateRangeIcon from '@mui/icons-material/DateRange';
 // useContext
 import { UserContext } from "../../../../UserContext"
 
+import { GetContext } from "../../../../GetContext"
+
 
 const ListUneditableProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder }) => {
     
@@ -46,16 +48,19 @@ const ListUneditableProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrd
         remarks
     } = useContext(UserContext);
 
+    const { productResponse, indexOfData } = useContext(GetContext); 
+    const thisProduct = productResponse[indexOfData];
+
   return (
     <div className="listInAddNewOrder">
-        <a className="wordProductNHashtags">Product ######</a>
+        <a className="wordProductNHashtags">{thisProduct.productCode}</a>
         {/* <div className="listForOrder"> */}
         <Box className="listForOrder" disabled>
             <Grid container spacing={8}>
                 {/* <div className="rowInListForOrder"> */}
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField className="textFieldInAddNewOrder" id="standard-basic" label="WTC code" variant="standard" fullWidth
-                        value = {wtcCode}
+                        value = {thisProduct.wyt}
                         InputProps={{
                             readOnly: true,
                         }}
@@ -63,7 +68,7 @@ const ListUneditableProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrd
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Luzi code" variant="standard" fullWidth
-                        value = {luziCode}
+                        value = {thisProduct.luzi}
                         InputProps={{
                             readOnly: true,
                         }}
@@ -71,7 +76,7 @@ const ListUneditableProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrd
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Customer code" variant="standard" fullWidth
-                        value = {customerCode}
+                        value = {thisProduct.productCode}
                         InputProps={{
                             readOnly: true,
                         }}
@@ -79,7 +84,7 @@ const ListUneditableProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrd
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Gender" variant="standard" fullWidth
-                        value = {gender}
+                        value = {thisProduct.sex}
                         InputProps={{
                             readOnly: true,
                         }}
@@ -89,7 +94,7 @@ const ListUneditableProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrd
                     <TextField 
                         className="textFieldInAddNewOrder" 
                         id="standard-basic" label="Name" variant="standard" fullWidth
-                        value = {name}
+                        value = {thisProduct.productNameEn}
                         InputProps={{
                             readOnly: true,
                         }}
@@ -97,7 +102,7 @@ const ListUneditableProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrd
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Name (CN)" variant="standard" fullWidth
-                        value = {nameCN}
+                        value = {thisProduct.productNameSc}
                         InputProps={{
                             readOnly: true,
                         }}
@@ -105,7 +110,7 @@ const ListUneditableProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrd
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Inspired by designer" variant="standard" date fullWidth
-                        value = {inspiredByDesigner}
+                        value = {thisProduct.designerEN}
                         InputProps={{
                             readOnly: true,
                         }}
@@ -113,7 +118,7 @@ const ListUneditableProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrd
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Inspired by designer (CN)" variant="standard" fullWidth
-                        value = {inspiredByDesignerCN}
+                        value = {thisProduct.designerSC}
                         InputProps={{
                             readOnly: true,
                         }}
@@ -121,7 +126,7 @@ const ListUneditableProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrd
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Inspired by brand" variant="standard" date fullWidth
-                        value = {inspiredByBrand}
+                        value = {thisProduct.brandEN}
                         InputProps={{
                             readOnly: true,
                         }}
@@ -129,8 +134,7 @@ const ListUneditableProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrd
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Inspired by brand (CN)" variant="standard" fullWidth
-                        value = {
-                            inspiredByBrandCN}
+                        value = {thisProduct.brandSC}
                         InputProps={{
                             readOnly: true,
                         }}

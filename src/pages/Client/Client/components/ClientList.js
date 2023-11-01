@@ -30,7 +30,7 @@ const BtnNPurchaseOrderList = () => {
         history.push("/editclient")
     }
 
-    const { clientsResponse } = useContext(GetContext); 
+    const { clientsResponse, setIndexOfData } = useContext(GetContext); 
 
     return (
         <div>
@@ -77,9 +77,12 @@ const BtnNPurchaseOrderList = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {clientsResponse.map((row) => (
+                        {clientsResponse.map((row, index) => (
                         <TableRow
-                            key={row.name}
+                            key={index}
+                            onClick={() => {
+                                setIndexOfData(index);
+                            }}
                         >
                             <TableCell className="tableCellInOrder pointer" onClick={goToEditClient} component="th" scope="row">{row.customerNameEn}</TableCell>
                             <TableCell className="tableCellInOrder pointer" onClick={goToEditClient} align="left">{row.customerNameTc}</TableCell>

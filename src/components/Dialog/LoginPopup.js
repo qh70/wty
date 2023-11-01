@@ -28,6 +28,8 @@ import Input from '@mui/material/Input';
 import IconButton from '@mui/material/IconButton';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+// API網址
+import { API_HOST } from '../../global/constants';
 
 export default function LoginPopup({ proceedWithoutSaving, setProceedWithoutSaving, login }) {
   const [fullWidth, setFullWidth] = React.useState(true);
@@ -91,7 +93,7 @@ export default function LoginPopup({ proceedWithoutSaving, setProceedWithoutSavi
   }
   // 當按下SIGN IN， token改變後，去order取資料
   useEffect(() => {
-    fetch("http://192.168.0.8:8089/rest/admin/salesOrder/?currentPage=0&pageSize=10", {
+    fetch(`${API_HOST}/salesOrder/?currentPage=0&pageSize=10`, {
         method: "GET",
         headers: {
           "Authorization": `Bearer ${token}`
@@ -101,7 +103,7 @@ export default function LoginPopup({ proceedWithoutSaving, setProceedWithoutSavi
       .then((data) => {setOrderResponse(data.items)
     });   
 
-    fetch("http://192.168.0.8:8089/rest/admin/product/?currentPage=0&pageSize=10", {
+    fetch(`${API_HOST}/product/?currentPage=0&pageSize=10`, {
         method: "GET",
         headers: {
           "Authorization": `Bearer ${token}`
@@ -110,7 +112,7 @@ export default function LoginPopup({ proceedWithoutSaving, setProceedWithoutSavi
       .then((response) => response.json())
       .then((data) => {setProductResponse(data.items)});  
 
-    fetch("http://192.168.0.8:8089/rest/admin/users/?currentPage=0&pageSize=10", {
+    fetch(`${API_HOST}/users/?currentPage=0&pageSize=10`, {
         method: "GET",
         headers: {
           "Authorization": `Bearer ${token}`
@@ -120,7 +122,7 @@ export default function LoginPopup({ proceedWithoutSaving, setProceedWithoutSavi
       .then((data) => {setUserResponse(data.items)
     });  
 
-    fetch("http://192.168.0.8:8089/rest/admin/customer/?currentPage=0&pageSize=10", {
+    fetch(`${API_HOST}/customer/?currentPage=0&pageSize=10`, {
         method: "GET",
         headers: {
           "Authorization": `Bearer ${token}`

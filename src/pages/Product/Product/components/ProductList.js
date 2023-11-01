@@ -32,7 +32,7 @@ const ProductList = () => {
         history.push("/editproduct");
     }
 
-    const { productResponse } = useContext(GetContext); 
+    const { productResponse, indexOfData, setIndexOfData } = useContext(GetContext); 
     
 
     return (
@@ -82,10 +82,13 @@ const ProductList = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {productResponse.map((row) => (
+                        {productResponse.map((row, index) => (
                         <TableRow
-                            key={row.productNameEn}
+                            key={index}
                             // sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                            onClick={() => {
+                                setIndexOfData(index);
+                            }}
                         >
                             <TableCell className="tableCellInProduct" component="th" scope="row" onClick={goToEditProduct}>{row.productNameEn}</TableCell>
                             <TableCell className="tableCellInProduct" align="left" onClick={goToEditProduct}>{row.longDescEn}</TableCell>

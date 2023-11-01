@@ -45,7 +45,7 @@ const BtnNPurchaseOrderList = () => {
         history.push("/editorder")
     }
 
-    const { orderResponse } = useContext(GetContext); //props from Context
+    const { orderResponse, setIndexOfData } = useContext(GetContext); //props from Context
 
     // orderResponse.map((row)=>{console.log(row)})
 
@@ -123,10 +123,13 @@ const BtnNPurchaseOrderList = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {orderResponse.map((row) => (
+                        {orderResponse.map((row, index) => (
                         <TableRow
-                            key={row.clientCustomerCode}
+                            key={index}
                             // sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                            onClick={() => {
+                                setIndexOfData(index);
+                            }}
                         >
                             <TableCell onClick={goToEditOrder} className="tableCellInOrder pointer" component="th" scope="row">{row.clientCustomerCode}</TableCell>
                             <TableCell onClick={goToEditOrder} className="tableCellInOrder pointer" align="left">{row.poNo}</TableCell>
