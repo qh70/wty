@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 
 import TextField from '@mui/material/TextField';
 // import FormHelperText from '@mui/material/FormHelperText';
@@ -10,8 +11,13 @@ import ClientList from "./components/ClientList"
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import FirstButton from '../../../components/Button/FirstButton';
 
+import { GetContext } from '../../../GetContext';
 
 const Client = () => {
+
+  const { setEditable } = useContext(GetContext)
+
+  setEditable(false)
 
   return (
     <div className="order">

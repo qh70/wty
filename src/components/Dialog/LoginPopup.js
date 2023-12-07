@@ -104,13 +104,13 @@ export default function LoginPopup({ proceedWithoutSaving, setProceedWithoutSavi
     });   
 
     fetch(`${API_HOST}/product/?currentPage=0&pageSize=10`, {
-        method: "GET",
-        headers: {
-          "Authorization": `Bearer ${token}`
-        }
-      })
-      .then((response) => response.json())
-      .then((data) => {setProductResponse(data.items)});  
+      method: "GET",
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    })
+    .then((response) => response.json())
+    .then((data) => {setProductResponse(data.items)});  
 
     fetch(`${API_HOST}/users/?currentPage=0&pageSize=10`, {
         method: "GET",
@@ -137,7 +137,6 @@ export default function LoginPopup({ proceedWithoutSaving, setProceedWithoutSavi
   // 當token改變，去/order
   useEffect(() => {
     if (token != null){
-      console.log(productResponse)
       setLogin(true);
       history.push("/order");
     }    
@@ -161,15 +160,27 @@ export default function LoginPopup({ proceedWithoutSaving, setProceedWithoutSavi
   }
 
     const clickingCancel = () => {
-      fetch("http://192.168.0.8:8089/rest/admin/users/?currentPage=0&pageSize=10", {
+
+      fetch(`${API_HOST}/salesOrder/?currentPage=0&pageSize=10`, {
         method: "GET",
         headers: {
           "Authorization": `Bearer ${token}`
         }
       })
       .then((response) => response.json())
+      .then((data) => {setProductResponse(data.items);console.log(JSON.stringify(data))});
+
+
+      fetch("http://192.168.0.8:8089/rest/admin/salesOrder/?currentPage=0&pageSize=10", {
+        method: "GET",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+          "Content-Type": "application/json"
+        }
+      })
+      .then((response) => response.json())
       // .then((data) => {if (data.token){setLogin(true);setToken(data.token);}});
-      .then((data) => {console.log(data.items)});
+      .then((data) => {console.log(data.items[0])});
     }
   
   

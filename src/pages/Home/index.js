@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import LeftNew from "./components/LeftNew";
 //Order
 import Order from "../Order/Order/Index";
@@ -24,14 +24,32 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { UserContext } from "../../UserContext";
 import { LoginContext } from "../../LoginContext";
 import { GetContext } from "../../GetContext";
+import { OrderContext } from "../../OrderContext";
 
 import LoginPopup from "../../components/Dialog/LoginPopup";
 
 
 const Home = () => {
+
+    // for page order
+    const [ tryup, setTryup ] = useState();
+    const [ customerCodeAddNewOrder, setCustomerCodeAddNewOrder ] = useState("")
+    const [ poNoAddNewOrder, setPoNoAddNewOrder ] = useState()
+    const [ attnAddNewOrder, setAttnAddNewOrder ] = useState()
+    const [ titleAddNewOrder, setTitleAddNewOrder ] = useState()
+    const [ telAddNewOrder, setTelAddNewOrder ] = useState()
+    const [ emailAddNewOrder, setEmailAddNewOrder ] = useState()
+    const [ ordernumberAddNewOrder, setOrdernumberAddNewOrder ] = useState()
+    const [ faxAddNewOrder, setFaxAddNewOrder ] = useState()
+    const [ filepoAddNewOrder, setFilepoAddNewOrder ] = useState()
+    const [ fileRefAddNewOrder, setFileRefAddNewOrder ] = useState()
+    const [ fileInvoiceAddNewOrder, setFileInvoiceAddNewOrder ] = useState()
+    const [ filePackingListAddNewOrder, setFilePackingListAddNewOrder ] = useState()
+    const [ fileWaybillAddNewOrder, setFileWaybillAddNewOrder ] = useState()
+    const [ fileUploadothersAddNewOrder, setFileUploadothersAddNewOrder ] = useState()
     
     // for page addnewproduct
-    const [ wtcCode, setWtcCode ] = useState("");
+    const [ wtcCode, setWtcCode ] = useState();
     const [ luziCode, setLuziCode ] = useState("");
     const [ customerCode, setCustomerCode ] = useState("");
     const [ gender, setGender ] = useState("");
@@ -41,6 +59,7 @@ const Home = () => {
     const [ inspiredByDesignerCN, setInspiredByDesignerCN ] = useState("");
     const [ inspiredByBrand, setInspiredByBrand ] = useState("");
     const [ inspiredByBrandCN, setInspiredByBrandCN ] = useState("");
+    const [ discriptionOfGoods, setDiscriptionOfGoods ] = useState("");
     const [ remarks, setRemarks ] = useState("");
     
 
@@ -59,12 +78,16 @@ const Home = () => {
     // index of data
     const [ indexOfData, setIndexOfData ] = useState(null)
 
+    // 按下EDIT鍵後可編輯
+    const [ editable, setEditable ] = useState(false);
+
   return (
     <Router>
         <GetContext.Provider value={{ 
             setLogin, token, setToken, 
             orderResponse, setOrderResponse, productResponse, setProductResponse, userResponse,setUserResponse, clientsResponse, setClientsResponse, 
-            indexOfData, setIndexOfData 
+            indexOfData, setIndexOfData,
+            editable, setEditable
         }}>
         {!login?<LoginPopup/>
          :<div className="wholePicture">
@@ -75,15 +98,33 @@ const Home = () => {
                     <LoginContext.Provider value={{ login, setLogin, logoutPopup, setLogoutPopup }}>
 
                         {/* order */}
-                        <Route exact path="/order">
-                            <Order token={token}/> 
-                        </Route>
-                        <Route exact path="/addneworder">
-                            <AddNewOrder />
-                        </Route>
-                        <Route exact path="/editorder">
-                            <EditOrder />
-                        </Route>
+                        <OrderContext.Provider value={{ 
+                            customerCodeAddNewOrder, setCustomerCodeAddNewOrder,
+                            poNoAddNewOrder, setPoNoAddNewOrder,
+                            attnAddNewOrder, setAttnAddNewOrder,
+                            titleAddNewOrder, setTitleAddNewOrder,
+                            telAddNewOrder, setTelAddNewOrder,
+                            emailAddNewOrder, setEmailAddNewOrder,
+                            ordernumberAddNewOrder, setOrdernumberAddNewOrder,
+                            faxAddNewOrder, setFaxAddNewOrder,
+                            //6 Files
+                            filepoAddNewOrder, setFilepoAddNewOrder,
+                            fileRefAddNewOrder, setFileRefAddNewOrder,
+                            fileInvoiceAddNewOrder, setFileInvoiceAddNewOrder,
+                            filePackingListAddNewOrder, setFilePackingListAddNewOrder,
+                            fileWaybillAddNewOrder, setFileWaybillAddNewOrder,
+                            fileUploadothersAddNewOrder, setFileUploadothersAddNewOrder
+                        }}>
+                            <Route exact path="/order">
+                                <Order token={token}/> 
+                            </Route>
+                            <Route exact path="/addneworder">
+                                <AddNewOrder />
+                            </Route>
+                            <Route exact path="/editorder">
+                                <EditOrder />
+                            </Route>
+                        </OrderContext.Provider>
 
                         {/* user */}
                         <Route exact path="/user">
@@ -119,7 +160,10 @@ const Home = () => {
                             inspiredByDesignerCN, setInspiredByDesignerCN,
                             inspiredByBrand, setInspiredByBrand,
                             inspiredByBrandCN, setInspiredByBrandCN,
-                            remarks, setRemarks
+                            discriptionOfGoods, setDiscriptionOfGoods,
+                            remarks, setRemarks,
+
+                            tryup, setTryup
                         }}>
                             <Route exact path="/product">
                                 <Product/> 

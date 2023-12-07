@@ -42,7 +42,10 @@ const ListAddNewProduct = ({ setShowAddProduct }) => {
         inspiredByDesignerCN, setInspiredByDesignerCN,
         inspiredByBrand, setInspiredByBrand,
         inspiredByBrandCN, setInspiredByBrandCN,
-        remarks, setRemarks 
+        discriptionOfGoods, setDiscriptionOfGoods,
+        remarks, setRemarks,
+
+        tryup, setTryup
     } = useContext(UserContext);
 
     function wtcCodeChange(e) {
@@ -85,9 +88,29 @@ const ListAddNewProduct = ({ setShowAddProduct }) => {
         setInspiredByBrandCN(e.target.value)
     }
 
+    function discriptionOfGoodsChange(e) {
+        setDiscriptionOfGoods(e.target.value)
+    }
+
     function remarksChange(e) {
         setRemarks(e.target.value)
     }
+
+    const formdata = new FormData()
+
+    function tryupChange(e) {
+        setTryup(e.target.files)
+        console.log(e.target.files)
+    }
+
+    function testfile(){
+        formdata.append("file", tryup)
+        for (var pair of formdata.entries()){
+            console.log(pair[0])
+        }
+    }
+
+    
 
   return (
     <div className="listInAddNewOrder">
@@ -126,7 +149,6 @@ const ListAddNewProduct = ({ setShowAddProduct }) => {
                             value={gender}
                             onChange={genderChange}
                             label="Age"
-                            
                         >
                             <MenuItem value="Male">Male</MenuItem>
                             <MenuItem value="Female">Female</MenuItem>
@@ -193,7 +215,8 @@ const ListAddNewProduct = ({ setShowAddProduct }) => {
             <Grid container spacing={8}>
                 <Grid className="gridDescriptionOfGoodsInAddNewProduct" item xs={12} sm={12}>
                     <TextField className="last3TextFieldInAddNewOrder" id="standard-basic" label="Description of Goods" variant="standard" fullWidth
-                    
+                        value={discriptionOfGoods}
+                        onChange={discriptionOfGoodsChange}
                     />
                 </Grid>
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
@@ -207,6 +230,8 @@ const ListAddNewProduct = ({ setShowAddProduct }) => {
                             </InputAdornment>
                             ),
                         }}
+                        value={tryup?tryup["name"]:""}
+                        onChange={tryupChange}
                         fullWidth
                         
                     />
@@ -222,6 +247,7 @@ const ListAddNewProduct = ({ setShowAddProduct }) => {
                             </InputAdornment>
                             ),
                         }}
+                        onClick={testfile}
                         fullWidth
                         
                     />

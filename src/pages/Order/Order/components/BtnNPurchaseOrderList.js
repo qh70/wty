@@ -20,14 +20,10 @@ import { GetContext } from '../../../../GetContext';
 // import '@fontsource/roboto/400.css';
 // import '@fontsource/roboto/500.css';
 
+
 function createData(name, POno, Attention, Date) {
     return { name, POno, Attention, Date };
 };
-
-const rows = [
-    createData("CST001", "Chanel-000010", "Wai, Benny", "02 Aug 2021"),
-    createData("CST002", "Chanel-000011", "Wai, Benny", "01 Aug 2021"),
-];
 
 const BtnNPurchaseOrderList = () => {
 
@@ -46,6 +42,8 @@ const BtnNPurchaseOrderList = () => {
     }
 
     const { orderResponse, setIndexOfData } = useContext(GetContext); //props from Context
+
+    console.log(orderResponse)
 
     // orderResponse.map((row)=>{console.log(row)})
 

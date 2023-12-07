@@ -9,9 +9,27 @@ import Header from "../../../components/Header/Header"
 import ProductList from "./components/ProductList"
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import FirstButton from '../../../components/Button/FirstButton';
+import { useEffect,useContext } from 'react';
+import { API_HOST } from '../../../global/constants';
 
+import { GetContext } from "../../../GetContext";
 
 const Product = () => {
+
+  const { token, setProductResponse, setEditable } = useContext(GetContext); //props from Context
+
+  setEditable(false)
+
+  useEffect(()=>{
+    fetch(`${API_HOST}/product/?currentPage=0&pageSize=10`, {
+      method: "GET",
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    })
+    .then((response) => response.json())
+    .then((data) => {setProductResponse(data.items);console.log(JSON.stringify(data))});  
+  }, [])
 
   return (
     <div className="product">

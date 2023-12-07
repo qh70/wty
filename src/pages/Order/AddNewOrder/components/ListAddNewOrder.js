@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState ,useContext } from "react";
 import { TextField } from "@mui/material"
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
@@ -20,6 +20,9 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import DateRangeIcon from '@mui/icons-material/DateRange';
 
+import { OrderContext } from "../../../../OrderContext";
+import { GetContext } from "../../../../GetContext";
+
 
 const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllInAddNewOrder }) => {
     
@@ -29,6 +32,121 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
     
     const handleClickOpen = () => {setOpen(true);};
 
+    const { 
+        customerCodeAddNewOrder, setCustomerCodeAddNewOrder,
+        poNoAddNewOrder, setPoNoAddNewOrder,
+        attnAddNewOrder, setAttnAddNewOrder,
+        titleAddNewOrder, setTitleAddNewOrder,
+        telAddNewOrder, setTelAddNewOrder,
+        emailAddNewOrder, setEmailAddNewOrder,
+        ordernumberAddNewOrder, setOrdernumberAddNewOrder,
+        faxAddNewOrder, setFaxAddNewOrder,
+        //6 Files
+        filepoAddNewOrder, setFilepoAddNewOrder,
+        fileRefAddNewOrder, setFileRefAddNewOrder,
+        fileInvoiceAddNewOrder, setFileInvoiceAddNewOrder,
+        filePackingListAddNewOrder, setFilePackingListAddNewOrder,
+        fileWaybillAddNewOrder, setFileWaybillAddNewOrder,
+        fileUploadothersAddNewOrder, setFileUploadothersAddNewOrder
+    } = useContext(OrderContext);
+
+    const { token } = useContext(GetContext)
+
+    const form = new FormData()
+
+    const json = JSON.stringify({
+        "customRefId": "customRefId2",
+        "poNo": "poNohere0445",
+        "customerId": 1,
+        "issueDate": "2023-06-05",
+        "revisionCount": 1,
+        "userId": 1,
+        "locationId": 1,
+        "localeId": "tc",
+        "attn": "attn",
+        "remark": "remark",
+        "currency": "hkd",
+        "totalAmount": 111.22,
+        "status": "A",
+        "createBy": "U:1",
+        "createTime": "2023-10-19 05:56:07",
+        "updateBy": "U:1",
+        "updateTime": "2023-10-19 05:56:07",
+        "customerCode" : customerCodeAddNewOrder
+    })
+
+    const blob = new Blob([json], {
+        type : "application/json",
+    });
+
+    const customerCodeAddNewOrderChange = (e) => {
+        setCustomerCodeAddNewOrder(e.target.value)
+    }
+
+    const poNoAddNewOrderChange = (e) => {
+        setPoNoAddNewOrder(e.target.value)
+    }
+    const attnAddNewOrderOnchange = (e) => {
+        setAttnAddNewOrder(e.target.value)
+    }
+    const titleAddNewOrderOnchange = (e) => {
+        setTitleAddNewOrder(e.target.value)
+    }
+    const telAddNewOrderOnchange = (e) => {
+        setTelAddNewOrder(e.target.value)
+    }
+    const emailAddNewOrderOnchange = (e) => {
+        setEmailAddNewOrder(e.target.value)
+    }
+    const ordernumberAddNewOrderOnchange = (e) => {
+        setOrdernumberAddNewOrder(e.target.value)
+    }
+    const faxAddNewOrderOnchange = (e) => {
+        setFaxAddNewOrder(e.target.value)
+    }
+
+    const filepoAddNewOrderOnChange = (e) => {
+        setFilepoAddNewOrder(e.target.files[0])
+        // form.append("salesOrderItems", e.target.files[0])
+        // form.append("salesOrder", blob)
+        // console.log(form.get("salesOrder"))
+        // fetch("http://192.168.0.8:8089/rest/admin/salesOrder/full/", {
+        //     method: "POST",
+        //     headers: {
+        //     "Authorization": `Bearer ${token}`
+        //     },            
+        //     body : form
+        // })
+        // .then((response) => response.json())
+        // .then((data) => {console.log(data)});
+
+        // fetch("http://192.168.0.8:8089/rest/admin/salesOrder/?currentPage=0&pageSize=10", {
+        //     method: "GET",
+        //     headers: {
+        //     "Authorization": `Bearer ${token}`,
+        //     "Content-Type": "application/json"
+        //     }
+        // })
+        // .then((response) => response.json())
+        // // .then((data) => {if (data.token){setLogin(true);setToken(data.token);}});
+        // .then((data) => {console.log(data.items[0])});
+    }
+    const fileRefAddNewOrderOnChange = (e) => {
+        setFileRefAddNewOrder(e.target.files[0])
+    }
+    const fileInvoiceAddNewOrderOnChange = (e) => {
+        setFileInvoiceAddNewOrder(e.target.files[0])
+    }
+    const filePackingListAddNewOrderOnChange = (e) => {
+        setFilePackingListAddNewOrder(e.target.files[0])
+    }
+    const fileWaybillAddNewOrderOnChange = (e) => {
+        setFileWaybillAddNewOrder(e.target.files[0])
+    }
+    const fileUploadothersAddNewOrderOnChange = (e) => {
+        setFileUploadothersAddNewOrder(e.target.files[0])
+    }
+
   return (
     <div className="listInAddNewOrder">
         <a className="wordProductNHashtags">Order ######</a>
@@ -37,17 +155,23 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
                 <Grid container spacing={8}>
                     {/* <div className="rowInListForOrder"> */}
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
-                        <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Customer Code" variant="standard" fullWidth="50%"
+                        <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Customer Code" variant="standard" fullWidth
+                            value={customerCodeAddNewOrder}
+                            onChange={customerCodeAddNewOrderChange}
                             disabled={stateAllInAddNewOrder}
                         />
                     </Grid>
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                         <TextField className="textFieldInAddNewOrder" id="standard-basic" label="P/O No." variant="standard" fullWidth
+                            value={poNoAddNewOrder}
+                            onChange={poNoAddNewOrderChange}
                             disabled={stateAllInAddNewOrder}
                         />
                     </Grid>
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                         <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Attn" variant="standard" fullWidth
+                            value={attnAddNewOrder}
+                            onChange={attnAddNewOrderOnchange}
                             disabled={stateAllInAddNewOrder}
                         />
                     </Grid>
@@ -57,10 +181,11 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
                             <Select
                                 labelId="demo-simple-select-standard-label"
                                 id="demo-simple-select-standard"
-                                // value={age}
-                                // onChange={handleChange}
+                                value={titleAddNewOrder}
+                                onChange={titleAddNewOrderOnchange}
                                 label="Age"
                                 disabled={stateAllInAddNewOrder}
+                                defaultValue={""}
                             >
                                 <MenuItem value="Mr.">Mr.</MenuItem>
                                 <MenuItem value="Mrs.">Mrs.</MenuItem>
@@ -70,9 +195,10 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                         <TextField 
                             className="textFieldInAddNewOrder" 
-                            id="standard-basic" label="Telephone" variant="standard" 
-                            disabled={stateAllInAddNewOrder}
-                            fullWidth
+                            id="standard-basic" label="Telephone" variant="standard" fullWidth
+                            value={telAddNewOrder}
+                            onChange={telAddNewOrderOnchange}
+                            disabled={stateAllInAddNewOrder}                            
                         />
                     </Grid>
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
@@ -115,16 +241,22 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
                     </Grid>
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                         <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Email" variant="standard" fullWidth
+                            value={emailAddNewOrder}
+                            onChange={emailAddNewOrderOnchange}
                             disabled={stateAllInAddNewOrder}
                         />
                     </Grid>
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
-                        <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Order Number" variant="standard" date fullWidth
+                        <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Order Number" variant="standard" fullWidth
+                            value={ordernumberAddNewOrder}
+                            onChange={ordernumberAddNewOrderOnchange}
                             disabled={stateAllInAddNewOrder}
                         />
                     </Grid>
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                         <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Fax" variant="standard" fullWidth
+                            value={faxAddNewOrder}
+                            onChange={faxAddNewOrderOnchange}
                             disabled={stateAllInAddNewOrder}
                         />
                     </Grid>
@@ -141,6 +273,8 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
                                 </InputAdornment>
                                 ),
                             }}
+                            value={filepoAddNewOrder?filepoAddNewOrder.filename:""}
+                            onChange={filepoAddNewOrderOnChange}
                             fullWidth
                             disabled={stateAllInAddNewOrder}
                         />
@@ -156,6 +290,8 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
                                 </InputAdornment>
                                 ),
                             }}
+                            value={fileRefAddNewOrder?fileRefAddNewOrder.filename:""}
+                            onChange={fileRefAddNewOrderOnChange}
                             fullWidth
                             disabled={stateAllInAddNewOrder}
                         />
@@ -171,6 +307,8 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
                                 </InputAdornment>
                                 ),
                             }}
+                            value={fileInvoiceAddNewOrder?fileInvoiceAddNewOrder.filename:""}
+                            onChange={fileInvoiceAddNewOrderOnChange}
                             fullWidth
                             disabled={stateAllInAddNewOrder}
                         />
@@ -186,6 +324,8 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
                                 </InputAdornment>
                                 ),
                             }}
+                            value={filePackingListAddNewOrder?filePackingListAddNewOrder.filename:""}
+                            onChange={filePackingListAddNewOrderOnChange}
                             fullWidth
                             disabled={stateAllInAddNewOrder}
                         />
@@ -201,6 +341,8 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
                                 </InputAdornment>
                                 ),
                             }}
+                            value={fileWaybillAddNewOrder?fileWaybillAddNewOrder.filename:""}
+                            onChange={fileWaybillAddNewOrderOnChange}
                             fullWidth
                             disabled={stateAllInAddNewOrder}
                         />
@@ -216,6 +358,8 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
                                 </InputAdornment>
                                 ),
                             }}
+                            value={fileUploadothersAddNewOrder?fileUploadothersAddNewOrder.filename:""}
+                            onChange={fileUploadothersAddNewOrderOnChange}
                             fullWidth
                             disabled={stateAllInAddNewOrder}
                         />

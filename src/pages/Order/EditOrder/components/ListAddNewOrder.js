@@ -31,9 +31,8 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
     
     const handleClickOpen = () => {setOpen(true);};
 
-    const { orderResponse, indexOfData } = useContext(GetContext); 
+    const { orderResponse, indexOfData, editable } = useContext(GetContext); 
     const thisOrder = orderResponse[indexOfData];
-    console.log(thisOrder);
 
   return (
     <div className="listInAddNewOrder">
@@ -45,18 +44,30 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                         <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Customer Code" variant="standard" fullWidth="50%"
                             value = {thisOrder.customerCode}
+                            InputProps={{
+                                readOnly: !editable,
+                                disableUnderline: !editable
+                            }}
                             disabled={stateAllInAddNewOrder}
                         />
                     </Grid>
                     <Grid className = "gridsInAddNewOrder" item xs={12} sm={6}>
                         <TextField className="textFieldInAddNewOrder" id="standard-basic" label="P/O No." variant="standard" fullWidth
                             value = {thisOrder.poNo}
+                            InputProps={{
+                                readOnly: !editable,
+                                disableUnderline: !editable
+                            }}
                             disabled = {stateAllInAddNewOrder}
                         />
                     </Grid>
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                         <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Attn" variant="standard" fullWidth
                             value = {thisOrder.attn}
+                            InputProps={{
+                                readOnly: !editable,
+                                disableUnderline: !editable
+                            }}
                             disabled = {stateAllInAddNewOrder}
                         />
                     </Grid>
@@ -64,12 +75,16 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
                         <FormControl className="textFieldInAddNewOrder" variant="standard" fullWidth>
                             <InputLabel id="demo-simple-select-standard-label">Select a Title</InputLabel>
                             <Select
-                                value = {thisOrder.title}
                                 labelId = "demo-simple-select-standard-label"
                                 id ="demo-simple-select-standard"
                                 // value={age}
                                 // onChange={handleChange}
                                 label = "Age"
+                                value = {thisOrder.title}
+                                InputProps={{
+                                    readOnly: !editable,
+                                    disableUnderline: !editable
+                                }}
                                 disabled = {stateAllInAddNewOrder}
                             >
                                 <MenuItem value="Mr.">Mr.</MenuItem>
@@ -81,8 +96,12 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
                         <TextField 
                             className="textFieldInAddNewOrder" 
                             id="standard-basic" label="Telephone" variant="standard" 
-                            disabled={stateAllInAddNewOrder}
                             value = {thisOrder.tel}
+                            InputProps={{
+                                readOnly: !editable,
+                                disableUnderline: !editable
+                            }}
+                            disabled={stateAllInAddNewOrder}
                             fullWidth
                         />
                     </Grid>
@@ -96,6 +115,10 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
                                 value = {thisOrder.issueDate}
                                 onChange={(newValue) => {
                                     setValue(newValue);
+                                }}
+                                InputProps={{
+                                    readOnly: !editable,
+                                    disableUnderline: !editable
                                 }}
                                 renderInput={(params) => 
                                     <TextField 
@@ -127,19 +150,28 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                         <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Email" variant="standard" fullWidth
                             value = {thisOrder.email}
-                            disabled={stateAllInAddNewOrder}
+                            InputProps={{
+                                readOnly: !editable,
+                                disableUnderline: !editable
+                            }}
                         />
                     </Grid>
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                         <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Order Number" variant="standard" date fullWidth
                             value = "?"
-                            disabled={stateAllInAddNewOrder}
+                            InputProps={{
+                                readOnly: !editable,
+                                disableUnderline: !editable
+                            }}
                         />
                     </Grid>
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                         <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Fax" variant="standard" fullWidth
                             value = {thisOrder.fax}
-                            disabled={stateAllInAddNewOrder}
+                            InputProps={{
+                                readOnly: !editable,
+                                disableUnderline: !editable
+                            }}
                         />
                     </Grid>
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
@@ -156,7 +188,7 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
                                 ),
                             }}
                             fullWidth
-                            disabled={stateAllInAddNewOrder}
+                            
                         />
                     </Grid>
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
