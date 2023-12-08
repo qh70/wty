@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import MenuItem from '@mui/material/MenuItem';
 import Table from '@mui/material/Table';
@@ -14,6 +14,9 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import DateRangeIcon from '@mui/icons-material/DateRange';
 import InputAdornment from '@mui/material/InputAdornment';
+
+// API網址
+import { API_HOST } from '../../../../global/constants';
 
 import { GetContext } from '../../../../GetContext';
 // import '@fontsource/roboto/300.css';
@@ -41,9 +44,32 @@ const BtnNPurchaseOrderList = () => {
         history.push("/editorder")
     }
 
-    const { orderResponse, setIndexOfData } = useContext(GetContext); //props from Context
+    const { token, orderResponse, setOrderResponse, setIndexOfData } = useContext(GetContext); //props from Context
 
-    console.log(orderResponse)
+    // 更改頁碼後去後端fetch該頁會有的資料
+    const [ current, setCurrent ] = useState(1);
+
+    const handlePageChange = (page) => {
+        console.log(page.nativeEvent.target.innerText)
+        setCurrent(page.nativeEvent.target.innerText);
+    };
+    
+    useEffect(()=>{
+        console.log(current)
+    }, [current])
+
+    useEffect (()=>{
+        console.log(current)
+        fetch(`${API_HOST}/salesOrder/?currentPage=${current-1}&pageSize=10`, {
+            method: "GET",
+            headers: {
+              "Authorization": `Bearer ${token}`
+            }
+          })
+          .then((response) => response.json())
+          .then((data) => {setOrderResponse(data.items)
+        });  
+    }, [current])
 
     // orderResponse.map((row)=>{console.log(row)})
 
@@ -145,7 +171,7 @@ const BtnNPurchaseOrderList = () => {
                 </div> */}
             </div>
             <Stack className="stackInOrder">
-                <Pagination count={10} />
+                <Pagination count={10} onChange={handlePageChange}/>
             </Stack>
         </div>
     )
