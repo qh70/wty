@@ -32,7 +32,8 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
     const handleClickOpen = () => {setOpen(true);};
 
     const { orderResponse, indexOfData, editable } = useContext(GetContext); 
-    const thisOrder = orderResponse[indexOfData];
+    // console.log(orderResponse.find(order => order.salesOrderId === 44))
+    const thisOrder = orderResponse.find(order => order.salesOrderId === indexOfData);
 
   return (
     <div className="listInAddNewOrder">

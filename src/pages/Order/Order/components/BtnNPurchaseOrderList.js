@@ -50,16 +50,10 @@ const BtnNPurchaseOrderList = () => {
     const [ current, setCurrent ] = useState(1);
 
     const handlePageChange = (page) => {
-        console.log(page.nativeEvent.target.innerText)
         setCurrent(page.nativeEvent.target.innerText);
     };
-    
-    useEffect(()=>{
-        console.log(current)
-    }, [current])
 
     useEffect (()=>{
-        console.log(current)
         fetch(`${API_HOST}/salesOrder/?currentPage=${current-1}&pageSize=10`, {
             method: "GET",
             headers: {
@@ -71,6 +65,7 @@ const BtnNPurchaseOrderList = () => {
         });  
     }, [current])
 
+    console.log(orderResponse)
     // orderResponse.map((row)=>{console.log(row)})
 
     return (
@@ -149,10 +144,10 @@ const BtnNPurchaseOrderList = () => {
                     <TableBody>
                         {orderResponse.map((row, index) => (
                         <TableRow
-                            key={index}
+                            key={row.salesOrderId}
                             // sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             onClick={() => {
-                                setIndexOfData(index);
+                                setIndexOfData(row.salesOrderId);
                             }}
                         >
                             <TableCell onClick={goToEditOrder} className="tableCellInOrder pointer" component="th" scope="row">{row.clientCustomerCode}</TableCell>
