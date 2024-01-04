@@ -63,9 +63,20 @@ const BtnNPurchaseOrderList = () => {
           .then((response) => response.json())
           .then((data) => {setOrderResponse(data.items)
         });  
+
+        fetch(`${API_HOST}/salesOrder/download/13/po`, {
+            method: "GET",
+            headers: {
+              "Authorization": `Bearer ${token}`
+            }
+          })
+          .then((response) => response.json())
+          .then((data) => {console.log(data)
+        });  
+
     }, [current])
 
-    console.log(orderResponse)
+    // console.log(orderResponse)
     // orderResponse.map((row)=>{console.log(row)})
 
     return (
@@ -148,12 +159,21 @@ const BtnNPurchaseOrderList = () => {
                             // sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             onClick={() => {
                                 setIndexOfData(row.salesOrderId);
+                                fetch(`${API_HOST}/salesOrder/${row.salesOrderId}`, {
+                                    method: "GET",
+                                    headers: {
+                                      "Authorization": `Bearer ${token}`
+                                    }
+                                  })
+                                  .then((response) => response.json())
+                                  .then((data) => {setOrderResponse(data);goToEditOrder()
+                                }); 
                             }}
                         >
-                            <TableCell onClick={goToEditOrder} className="tableCellInOrder pointer" component="th" scope="row">{row.clientCustomerCode}</TableCell>
-                            <TableCell onClick={goToEditOrder} className="tableCellInOrder pointer" align="left">{row.poNo}</TableCell>
-                            <TableCell onClick={goToEditOrder} className="tableCellInOrder pointer" align="left">{row.attn}</TableCell>
-                            <TableCell onClick={goToEditOrder} className="lastTableCellInOrder pointer" align="left">{row.issueDate}</TableCell>
+                            <TableCell className="tableCellInOrder pointer" component="th" scope="row">{row.clientCustomerCode}</TableCell>
+                            <TableCell className="tableCellInOrder pointer" align="left">{row.poNo}</TableCell>
+                            <TableCell className="tableCellInOrder pointer" align="left">{row.attn}</TableCell>
+                            <TableCell className="lastTableCellInOrder pointer" align="left">{row.issueDate}</TableCell>
                         </TableRow>
                         ))}
                     </TableBody>

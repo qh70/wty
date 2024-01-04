@@ -93,45 +93,46 @@ export default function LoginPopup({ proceedWithoutSaving, setProceedWithoutSavi
   }
   // 當按下SIGN IN， token改變後，去order取資料
   useEffect(() => {
-    fetch(`${API_HOST}/salesOrder/?currentPage=0&pageSize=10`, {
+    if(token){
+      fetch(`${API_HOST}/salesOrder/?currentPage=0&pageSize=10`, {
+          method: "GET",
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
+        })
+        .then((response) => response.json())
+        .then((data) => {setOrderResponse(data.items)
+      });   
+
+      fetch(`${API_HOST}/product/?currentPage=0&pageSize=10`, {
         method: "GET",
         headers: {
           "Authorization": `Bearer ${token}`
         }
       })
       .then((response) => response.json())
-      .then((data) => {setOrderResponse(data.items)
-    });   
+      .then((data) => {setProductResponse(data.items)});  
 
-    fetch(`${API_HOST}/product/?currentPage=0&pageSize=10`, {
-      method: "GET",
-      headers: {
-        "Authorization": `Bearer ${token}`
-      }
-    })
-    .then((response) => response.json())
-    .then((data) => {setProductResponse(data.items)});  
+      fetch(`${API_HOST}/users/?currentPage=0&pageSize=10`, {
+          method: "GET",
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
+        })
+        .then((response) => response.json())
+        .then((data) => {setUserResponse(data.items)
+      });  
 
-    fetch(`${API_HOST}/users/?currentPage=0&pageSize=10`, {
-        method: "GET",
-        headers: {
-          "Authorization": `Bearer ${token}`
-        }
-      })
-      .then((response) => response.json())
-      .then((data) => {setUserResponse(data.items)
-    });  
-
-    fetch(`${API_HOST}/customer/?currentPage=0&pageSize=10`, {
-        method: "GET",
-        headers: {
-          "Authorization": `Bearer ${token}`
-        }
-      })
-      .then((response) => response.json())
-      .then((data) => {setClientsResponse(data.items)
-    });  
-
+      fetch(`${API_HOST}/customer/?currentPage=0&pageSize=10`, {
+          method: "GET",
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
+        })
+        .then((response) => response.json())
+        .then((data) => {setClientsResponse(data.items)
+      });  
+    }
   }, [token])
 
   // 當token改變，去/order

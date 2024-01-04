@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useEffect, useContext } from 'react';
 
 import TextField from '@mui/material/TextField';
 // import FormHelperText from '@mui/material/FormHelperText';
@@ -17,7 +17,9 @@ const Order = ({token}) => {
 
   const { setEditable } = useContext(GetContext)
 
-  setEditable(false)
+  useEffect(() => {
+    setEditable(false);
+  }, []);
 
   return (
     <div className="order">

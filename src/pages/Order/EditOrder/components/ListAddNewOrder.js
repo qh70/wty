@@ -21,6 +21,7 @@ import Box from '@mui/material/Box';
 import DateRangeIcon from '@mui/icons-material/DateRange';
 
 import { GetContext } from "../../../../GetContext"
+import { OrderContext } from "../../../../OrderContext";
 
 
 const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllInAddNewOrder }) => {
@@ -31,9 +32,19 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
     
     const handleClickOpen = () => {setOpen(true);};
 
+    const { 
+        filepoEditOrder, setFilepoEditOrder
+    } = useContext(OrderContext);
+
     const { orderResponse, indexOfData, editable } = useContext(GetContext); 
     // console.log(orderResponse.find(order => order.salesOrderId === 44))
-    const thisOrder = orderResponse.find(order => order.salesOrderId === indexOfData);
+    const thisOrder = 'order'
+    // const thisOrder = orderResponse.find(order => order.salesOrderId === indexOfData);
+
+    const filepoEditOrderOnChange = (e) => {
+        setFilepoEditOrder(e.target.files[0])
+    }
+    console.log(orderResponse.salesOrderFiles.po)
 
   return (
     <div className="listInAddNewOrder">
@@ -43,8 +54,8 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
                 <Grid container spacing={8}>
                     {/* <div className="rowInListForOrder"> */}
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
-                        <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Customer Code" variant="standard" fullWidth="50%"
-                            value = {thisOrder.customerCode}
+                        <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Customer Code" variant="standard" fullWidth
+                            value = {orderResponse.customerCode}
                             InputProps={{
                                 readOnly: !editable,
                                 disableUnderline: !editable
@@ -54,7 +65,7 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
                     </Grid>
                     <Grid className = "gridsInAddNewOrder" item xs={12} sm={6}>
                         <TextField className="textFieldInAddNewOrder" id="standard-basic" label="P/O No." variant="standard" fullWidth
-                            value = {thisOrder.poNo}
+                            value = {orderResponse.poNo}
                             InputProps={{
                                 readOnly: !editable,
                                 disableUnderline: !editable
@@ -64,7 +75,7 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
                     </Grid>
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                         <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Attn" variant="standard" fullWidth
-                            value = {thisOrder.attn}
+                            value = {orderResponse.attn}
                             InputProps={{
                                 readOnly: !editable,
                                 disableUnderline: !editable
@@ -81,7 +92,7 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
                                 // value={age}
                                 // onChange={handleChange}
                                 label = "Age"
-                                value = {thisOrder.title}
+                                value = {orderResponse.title}
                                 InputProps={{
                                     readOnly: !editable,
                                     disableUnderline: !editable
@@ -97,7 +108,7 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
                         <TextField 
                             className="textFieldInAddNewOrder" 
                             id="standard-basic" label="Telephone" variant="standard" 
-                            value = {thisOrder.tel}
+                            value = {orderResponse.tel}
                             InputProps={{
                                 readOnly: !editable,
                                 disableUnderline: !editable
@@ -113,7 +124,7 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
                                 label="Select the date"
                                 openTo="day"
                                 views={['year', 'month', 'day']}
-                                value = {thisOrder.issueDate}
+                                value = {orderResponse.issueDate}
                                 onChange={(newValue) => {
                                     setValue(newValue);
                                 }}
@@ -150,7 +161,7 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
                     </Grid>
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                         <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Email" variant="standard" fullWidth
-                            value = {thisOrder.email}
+                            value = {orderResponse.email}
                             InputProps={{
                                 readOnly: !editable,
                                 disableUnderline: !editable
@@ -168,7 +179,7 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
                     </Grid>
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                         <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Fax" variant="standard" fullWidth
-                            value = {thisOrder.fax}
+                            value = {orderResponse.fax}
                             InputProps={{
                                 readOnly: !editable,
                                 disableUnderline: !editable
@@ -180,7 +191,11 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                         <TextField 
                             className="textFieldInAddNewOrder" 
-                            id="standard-basic" label="Customer P/O" variant="outlined" type="file"
+                            id="standard-basic" label="Customer P/O" variant="outlined" type={editable?'file':null}
+                            value={editable&&filepoEditOrder?filepoEditOrder.filename
+                                :editable&&!filepoEditOrder?null
+                                :orderResponse.salesOrderFiles.po.originalName}
+                            onChange={filepoEditOrderOnChange}
                             InputProps={{
                                 startAdornment: (
                                 <InputAdornment position="start">

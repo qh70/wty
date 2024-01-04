@@ -18,7 +18,11 @@ const Product = () => {
 
   const { token, setProductResponse, setEditable } = useContext(GetContext); //props from Context
 
-  setEditable(false)
+  useEffect(() => {
+    setEditable(false);
+  }, []);
+
+  
 
   useEffect(()=>{
     fetch(`${API_HOST}/product/?currentPage=0&pageSize=10`, {
@@ -28,7 +32,7 @@ const Product = () => {
       }
     })
     .then((response) => response.json())
-    .then((data) => {setProductResponse(data.items);console.log(JSON.stringify(data))});  
+    .then((data) => {setProductResponse(data.items)});  
   }, [])
 
   return (
