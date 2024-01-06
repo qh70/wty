@@ -44,7 +44,6 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
     const filepoEditOrderOnChange = (e) => {
         setFilepoEditOrder(e.target.files[0])
     }
-    console.log(orderResponse.salesOrderFiles.po)
 
   return (
     <div className="listInAddNewOrder">

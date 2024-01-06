@@ -84,11 +84,10 @@ const AddNewOrder = () => {
         form.append("waybill", fileWaybillAddNewOrder)
         form.append("others", fileUploadothersAddNewOrder)
         form.append("salesOrder", blob)
-        console.log(form.get("salesOrder"))
         fetch("http://192.168.0.8:8089/rest/admin/salesOrder/full/", {
             method: "POST",
             headers: {
-            "Authorization": `Bearer ${token}`
+                "Authorization": `Bearer ${token}`
             },            
             body : form
         })
