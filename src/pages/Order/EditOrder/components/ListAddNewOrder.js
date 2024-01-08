@@ -33,7 +33,8 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
     const handleClickOpen = () => {setOpen(true);};
 
     const { 
-        filepoEditOrder, setFilepoEditOrder
+        filePoEditOrder, setFilePoEditOrder,
+        filecustomerRefEditOrder, setFilecustomerRefEditOrder
     } = useContext(OrderContext);
 
     const { orderResponse, indexOfData, editable } = useContext(GetContext); 
@@ -41,8 +42,8 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
     const thisOrder = 'order'
     // const thisOrder = orderResponse.find(order => order.salesOrderId === indexOfData);
 
-    const filepoEditOrderOnChange = (e) => {
-        setFilepoEditOrder(e.target.files[0])
+    const filePoEditOrderOnChange = (e) => {
+        setFilePoEditOrder(e.target.files[0])
     }
 
   return (
@@ -191,11 +192,12 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
                         <TextField 
                             className="textFieldInAddNewOrder" 
                             id="standard-basic" label="Customer P/O" variant="outlined" type={editable?'file':null}
-                            value={editable&&filepoEditOrder?filepoEditOrder.filename
-                                :editable&&!filepoEditOrder?null
+                            value={editable&&filePoEditOrder?filePoEditOrder.filename
+                                :editable&&!filePoEditOrder?null
                                 :orderResponse.salesOrderFiles.po.originalName}
-                            onChange={filepoEditOrderOnChange}
+                            onChange={filePoEditOrderOnChange}
                             InputProps={{
+                                readOnly: !editable,
                                 startAdornment: (
                                 <InputAdornment position="start">
                                     <UploadFileIcon />
@@ -209,7 +211,27 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                         <TextField 
                             className="textFieldInAddNewOrder" 
-                            id="standard-basic" label="Upload Customer Reference" variant="outlined" type="file"
+                            id="standard-basic" label="Upload Customer Reference" variant="outlined" type={editable?'file':null}
+                            value={editable&&filecustomerRefEditOrder?filecustomerRefEditOrder.filename
+                                :editable&&!filecustomerRefEditOrder?null
+                                :orderResponse.salesOrderFiles.customerRef.originalName}
+                            // onChange={filecustomerRefEditOrderOnChange}
+                            InputProps={{
+                                readOnly: !editable,
+                                startAdornment: (
+                                <InputAdornment position="start">
+                                    <UploadFileIcon />
+                                </InputAdornment>
+                                ),
+                            }}
+                            fullWidth
+                            disabled={stateAllInAddNewOrder}
+                        />
+                    </Grid>
+                    <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
+                        <TextField 
+                            className="textFieldInAddNewOrder" 
+                            id="standard-basic" label="Upload Invoice" variant="outlined" type={editable?'file':null}
                             InputProps={{
                                 startAdornment: (
                                 <InputAdornment position="start">
@@ -224,7 +246,7 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                         <TextField 
                             className="textFieldInAddNewOrder" 
-                            id="standard-basic" label="Upload Invoice" variant="outlined" type="file"
+                            id="standard-basic" label="Upload Packing List " variant="outlined" type={editable?'file':null}
                             InputProps={{
                                 startAdornment: (
                                 <InputAdornment position="start">
@@ -239,7 +261,7 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                         <TextField 
                             className="textFieldInAddNewOrder" 
-                            id="standard-basic" label="Upload Packing List " variant="outlined" type="file"
+                            id="standard-basic" label="Upload Waybill" variant="outlined" type={editable?'file':null}
                             InputProps={{
                                 startAdornment: (
                                 <InputAdornment position="start">
@@ -254,22 +276,7 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                         <TextField 
                             className="textFieldInAddNewOrder" 
-                            id="standard-basic" label="Upload Waybill" variant="outlined" type="file"
-                            InputProps={{
-                                startAdornment: (
-                                <InputAdornment position="start">
-                                    <UploadFileIcon />
-                                </InputAdornment>
-                                ),
-                            }}
-                            fullWidth
-                            disabled={stateAllInAddNewOrder}
-                        />
-                    </Grid>
-                    <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
-                        <TextField 
-                            className="textFieldInAddNewOrder" 
-                            id="standard-basic" label="Upload Others" variant="outlined" type="file"
+                            id="standard-basic" label="Upload Others" variant="outlined" type={editable?'file':null}
                             InputProps={{
                                 startAdornment: (
                                 <InputAdornment position="start">

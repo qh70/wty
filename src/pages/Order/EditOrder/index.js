@@ -10,11 +10,10 @@ import { OrderContext } from "../../../OrderContext"
 
 const AddNewOrder = () => {
 
-  
-    const {  token, editable, setEditable } = useContext(GetContext);
+    const {  token, editable, setEditable, indexOfData } = useContext(GetContext);
 
     const { 
-      filepoEditOrder,
+      filePoEditOrder,
       customerCodeAddNewOrder,
       poNoAddNewOrder,
       attnAddNewOrder,
@@ -79,10 +78,10 @@ const AddNewOrder = () => {
         type : "application/json",
       });
 
-      form.append("po", filepoEditOrder)
+      form.append("po", filePoEditOrder)
       form.append("salesOrder", blob)
 
-      fetch("http://192.168.0.8:8089/rest/admin/salesOrder/full/13?", {
+      fetch(`http://192.168.0.8:8089/rest/admin/salesOrder/full/${indexOfData}?`, {
         method : "PUT",
         headers : {
           "Authorization": `Bearer ${token}`,
@@ -92,7 +91,6 @@ const AddNewOrder = () => {
       .then((response) => response.json())
       .then((data) => console.log(data,"save6"))
       .catch((error)=>{console.log(error);});
-
     }
 
   return (

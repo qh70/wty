@@ -48,7 +48,7 @@ const Home = () => {
     const [ fileWaybillAddNewOrder, setFileWaybillAddNewOrder ] = useState()
     const [ fileUploadothersAddNewOrder, setFileUploadothersAddNewOrder ] = useState()
     // for Edit Order
-    const [ filepoEditOrder, setFilepoEditOrder ] = useState(null)
+    const [ filePoEditOrder, setFilePoEditOrder ] = useState(null)
     
     // for page addnewproduct
     const [ wtcCode, setWtcCode ] = useState();
@@ -117,7 +117,13 @@ const Home = () => {
                             fileWaybillAddNewOrder, setFileWaybillAddNewOrder,
                             fileUploadothersAddNewOrder, setFileUploadothersAddNewOrder,
                             // for Edit Order
-                            filepoEditOrder, setFilepoEditOrder
+                            filePoEditOrder, setFilePoEditOrder,
+                            // filecustomerRefEditOrder, setFilecustomerRefEditOrder,
+                            // fileinvoiceEditOrder, setFileinvoiceEditOrder,
+                            // filepackingListEditOrder,
+                            // filewaybillEditOrder,
+                            // fileothersEditOrder,
+
                         }}>
                             <Route exact path="/order">
                                 <Order token={token}/> 

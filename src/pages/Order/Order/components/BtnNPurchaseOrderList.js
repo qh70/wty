@@ -63,17 +63,6 @@ const BtnNPurchaseOrderList = () => {
           .then((response) => response.json())
           .then((data) => {setOrderResponse(data.items)
         });  
-
-        fetch(`${API_HOST}/salesOrder/download/13/po`, {
-            method: "GET",
-            headers: {
-              "Authorization": `Bearer ${token}`
-            }
-          })
-          .then((response) => response.json())
-          .then((data) => {console.log(data)
-        });  
-
     }, [current])
 
     // console.log(orderResponse)
