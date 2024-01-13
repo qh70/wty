@@ -73,6 +73,7 @@ const Home = () => {
 
     // 4 modules API
     const [ orderResponse, setOrderResponse ] = useState(null) 
+    const [ singleOrderResponse, setSingleOrderResponse ] = useState(null) 
     const [ productResponse, setProductResponse ] = useState(null) 
     const [ userResponse, setUserResponse ] = useState(null) 
     const [ clientsResponse, setClientsResponse ] = useState(null) 
@@ -87,7 +88,8 @@ const Home = () => {
     <Router>
         <GetContext.Provider value={{ 
             setLogin, token, setToken, 
-            orderResponse, setOrderResponse, productResponse, setProductResponse, userResponse,setUserResponse, clientsResponse, setClientsResponse, 
+            orderResponse, setOrderResponse, singleOrderResponse, setSingleOrderResponse, 
+            productResponse, setProductResponse, userResponse,setUserResponse, clientsResponse, setClientsResponse, 
             indexOfData, setIndexOfData,
             editable, setEditable
         }}>

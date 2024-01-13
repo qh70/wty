@@ -83,11 +83,31 @@ const LeftNew = () => {
     const [ state4RoutesInMobileModules, setState4RoutesInMobileModules ] = useState(false);
     
     const show4RoutesInMobileModules = () => {
-      console.log(1)
       setState4RoutesInMobileModules(!state4RoutesInMobileModules);
     }
 
-    const { token ,productResponse, setProductResponse } = useContext(GetContext); //props from Context
+    const { token ,setOrderResponse ,productResponse, setProductResponse } = useContext(GetContext); //props from Context
+
+    const goToEditOrder = () => {
+      history.push("/editorder")
+    }
+
+    const goToOrder = () => {
+      history.push("/order")
+    }
+
+    // 按下Order
+    const clickOrder = () => {
+      fetch("http://192.168.0.8:8089/rest/admin/salesOrder/?currentPage=0&pageSize=10", {
+        method: "GET",
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      })
+      .then((response) => response.json())
+      // .then((data) => {if (data.token){setLogin(true);setToken(data.token);}});
+      .then((data) => {console.log(data.items);setOrderResponse(data.items);goToOrder()});
+    }
 
     // 按下Product
     const clickProduct = () => {
@@ -114,7 +134,7 @@ const LeftNew = () => {
               <MenuIcon className="MenuIconInOrder hideOver600" onClick={show4RoutesInMobileModules}/>
               {state4RoutesInMobileModules?
                 <div className="fourRoutesInMobileModules">
-                  <div className="singleRouteInMobileModules" onClick={() => history.push("/order")}>order</div>
+                  <div className="singleRouteInMobileModules" onClick={clickOrder}>order</div>
                   <div className="singleRouteInMobileModules" onClick={() => history.push("/product")}>product</div>
                   <div className="singleRouteInMobileModules" onClick={() => history.push("/user")}>user</div>
                   <div className="singleRouteInMobileModules" onClick={() => history.push("/clients")}>client</div>

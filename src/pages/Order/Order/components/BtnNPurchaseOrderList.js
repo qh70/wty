@@ -44,7 +44,7 @@ const BtnNPurchaseOrderList = () => {
         history.push("/editorder")
     }
 
-    const { token, orderResponse, setOrderResponse, setIndexOfData } = useContext(GetContext); //props from Context
+    const { token, orderResponse, setOrderResponse, setSingleOrderResponse, setIndexOfData } = useContext(GetContext); //props from Context
 
     // 更改頁碼後去後端fetch該頁會有的資料
     const [ current, setCurrent ] = useState(1);
@@ -64,9 +64,6 @@ const BtnNPurchaseOrderList = () => {
           .then((data) => {setOrderResponse(data.items)
         });  
     }, [current])
-
-    // console.log(orderResponse)
-    // orderResponse.map((row)=>{console.log(row)})
 
     return (
         <div>
@@ -155,11 +152,11 @@ const BtnNPurchaseOrderList = () => {
                                     }
                                   })
                                   .then((response) => response.json())
-                                  .then((data) => {setOrderResponse(data);goToEditOrder()
+                                  .then((data) => {setSingleOrderResponse(data);goToEditOrder()
                                 }); 
                             }}
                         >
-                            <TableCell className="tableCellInOrder pointer" component="th" scope="row">{row.clientCustomerCode}</TableCell>
+                            <TableCell className="tableCellInOrder pointer" component="th" scope="row">{row.customerCode}</TableCell>
                             <TableCell className="tableCellInOrder pointer" align="left">{row.poNo}</TableCell>
                             <TableCell className="tableCellInOrder pointer" align="left">{row.attn}</TableCell>
                             <TableCell className="lastTableCellInOrder pointer" align="left">{row.issueDate}</TableCell>

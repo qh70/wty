@@ -46,7 +46,7 @@ export default function Delete({ deletepopup, setDeletepopup, modules }) {
         },
       })
       .then((response) => response.json())
-      .then((data) => console.log(data,"delete6"))
+      .then((data) => {console.log(data,"delete6");history.push('/order')})
       .catch((error)=>{console.log(error);});
       // alert("product deleted");
       // history.push("/product")
