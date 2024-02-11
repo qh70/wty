@@ -106,7 +106,7 @@ const LeftNew = () => {
       })
       .then((response) => response.json())
       // .then((data) => {if (data.token){setLogin(true);setToken(data.token);}});
-      .then((data) => {console.log(data.items);setOrderResponse(data.items);goToOrder()});
+      .then((data) => {setOrderResponse(data.items);goToOrder()});
     }
 
     // 按下Product

@@ -47,7 +47,15 @@ const AddNewProduct = () => {
       inspiredByBrand, setInspiredByBrand,
       inspiredByBrandCN, setInspiredByBrandCN,
       discriptionOfGoods, setDiscriptionOfGoods,
-      remarks, setRemarks 
+      remarks, setRemarks,
+
+      fileCoaAddNewProduct,
+      fileCoaCnAddNewProduct,
+      fileMsdsAddNewProduct,
+      fileMsdsCnAddNewProduct,
+      fileFragranceProfileAddNewProduct,
+      fileIfraCertAddNewProduct,
+      fileAllergyListAddNewProduct
      } = useContext(UserContext);
 
     // async function saveNewProduct () {
@@ -64,46 +72,74 @@ const AddNewProduct = () => {
     // }
 
     const saveNewProduct = () => {
-      fetch("http://192.168.0.8:8089/rest/admin/product/", {
-        method : "POST",
-        headers : {
-          "Authorization": `Bearer ${token}`,
-          "Content-type" : "application/json"
-        },
-        body : JSON.stringify({
-          "productId": 6,
-          "productCode": customerCode?customerCode:"string",
-          "productNameEn": name?name:"string",
-          "productNameTc": "string",
-          "productNameSc": nameCN?nameCN:"string",
-          "longDescEn": discriptionOfGoods?discriptionOfGoods:"string",
-          "longDescTc": "string",
-          "longDescSc": "string",
-          "price": 0,
-          "status": "A",
-          "createBy": "U:1",
-          "createTime": "2023-11-06 16:41:02",
-          "updateBy": "U:1",
-          "updateTime": "2023-11-06 16:41:02",
-          "color": "string",
-          "size": "string",
-          "weight": "string",
-          "wyt": wtcCode?wtcCode:"string",
-          "luzi": luziCode?luziCode:"string",
-          "sex": gender?gender:"string",
-          "remark": remarks?remarks:"string",
-          "brandEN": inspiredByBrand?inspiredByBrand:"string",
-          "brandTC": "string",
-          "brandSC": inspiredByBrandCN?inspiredByBrandCN:"string",
-          "designerEN": inspiredByDesigner?inspiredByDesigner:"string",
-          "designerTC": "string",
-          "designerSC": inspiredByDesignerCN?inspiredByDesignerCN:"string"
-        })
-      })
-      .then((response) => response.json())
-      .then((data) => console.log(data,"save6"))
-      .catch((error)=>{console.log(error);});
-      alert("Draft Saved")
+      const json = JSON.stringify({
+        "productCode": customerCode?customerCode:"string",
+        "productNameEn": name?name:"string",
+        "productNameTc": "string",
+        "productNameSc": nameCN?nameCN:"string",
+        "longDescEn": discriptionOfGoods?discriptionOfGoods:"string",
+        "longDescTc": "string",
+        "longDescSc": "string",
+        "price": 0,
+        "status": "A",
+        "createBy": "U:1",
+        "createTime": "2023-11-06 16:41:02",
+        "updateBy": "U:1",
+        "updateTime": "2023-11-06 16:41:02",
+        "color": "string",
+        "size": "string",
+        "weight": "string",
+        "wyt": wtcCode?wtcCode:"string",
+        "luzi": luziCode?luziCode:"string",
+        "sex": gender?gender:"string",
+        "remark": remarks?remarks:"string",
+        "brandEN": inspiredByBrand?inspiredByBrand:"string",
+        "brandTC": "string",
+        "brandSC": inspiredByBrandCN?inspiredByBrandCN:"string",
+        "designerEN": inspiredByDesigner?inspiredByDesigner:"string",
+        "designerTC": "string",
+        "designerSC": inspiredByDesignerCN?inspiredByDesignerCN:"string"
+    })
+    
+    const form = new FormData()
+    const blob = new Blob([json], {
+        type : "application/json",
+    });
+
+    form.append("coa", fileCoaAddNewProduct)
+    form.append("coaCn", fileCoaCnAddNewProduct)
+    form.append("msds", fileMsdsAddNewProduct)
+    form.append("msdsCn", fileMsdsCnAddNewProduct)
+    form.append("fragranceProfile", fileFragranceProfileAddNewProduct)
+    form.append("ifraCert", fileIfraCertAddNewProduct)
+    form.append("allergyList", fileAllergyListAddNewProduct)
+    form.append("product", blob)
+    fetch("http://192.168.0.8:8089/rest/admin/product/full/", {
+        method: "POST",
+        headers: {
+            "Authorization": `Bearer ${token}`
+        },            
+        body : form
+    })
+    .then((response) => response.json())
+    .then((data) => {console.log(data, 'save product')})
+    .catch((error)=>{console.log(error);});
+    alert("Draft Saved");
+
+      // fetch("http://192.168.0.8:8089/rest/admin/product/", {
+      //   method : "POST",
+      //   headers : {
+      //     "Authorization": `Bearer ${token}`,
+      //     "Content-type" : "application/json"
+      //   },
+      //   body : JSON.stringify({
+          
+      //   })
+      // })
+      // .then((response) => response.json())
+      // .then((data) => console.log(data,"save6"))
+      
+      
     }
 
   return (

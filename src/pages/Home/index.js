@@ -32,7 +32,6 @@ import LoginPopup from "../../components/Dialog/LoginPopup";
 const Home = () => {
 
     // for page order
-    const [ tryup, setTryup ] = useState();
     const [ customerCodeAddNewOrder, setCustomerCodeAddNewOrder ] = useState("")
     const [ poNoAddNewOrder, setPoNoAddNewOrder ] = useState()
     const [ attnAddNewOrder, setAttnAddNewOrder ] = useState()
@@ -49,6 +48,11 @@ const Home = () => {
     const [ fileUploadothersAddNewOrder, setFileUploadothersAddNewOrder ] = useState()
     // for Edit Order
     const [ filePoEditOrder, setFilePoEditOrder ] = useState(null)
+    const [ fileCustomerRefEditOrder, setFileCustomerRefEditOrder ] = useState(null)
+    const [ fileInvoiceEditOrder, setFileInvoiceEditOrder ] = useState(null)
+    const [ filePackingListEditOrder, setFilePackingListEditOrder ] = useState(null)
+    const [ fileWaybillEditOrder, setFileWaybillEditOrder ] = useState(null)
+    const [ fileOthersEditOrder, setFileOthersEditOrder ] = useState(null)
     
     // for page addnewproduct
     const [ wtcCode, setWtcCode ] = useState();
@@ -64,6 +68,22 @@ const Home = () => {
     const [ discriptionOfGoods, setDiscriptionOfGoods ] = useState("");
     const [ remarks, setRemarks ] = useState("");
     
+    const [ fileCoaAddNewProduct, setFileCoaAddNewProduct ] = useState();
+    const [ fileCoaCnAddNewProduct, setFileCoaCnAddNewProduct ] = useState();
+    const [ fileMsdsAddNewProduct, setFileMsdsAddNewProduct ] = useState();
+    const [ fileMsdsCnAddNewProduct, setFileMsdsCnAddNewProduct ] = useState();
+    const [ fileFragranceProfileAddNewProduct, setFileFragranceProfileAddNewProduct ] = useState();
+    const [ fileIfraCertAddNewProduct, setFileIfraCertAddNewProduct ] = useState();
+    const [ fileAllergyListAddNewProduct, setFileAllergyListAddNewProduct ] = useState();        
+
+    // for page editproduct
+    const [ fileCoaEditProduct, setFileCoaEditProduct ] = useState(null);
+    const [ fileCoaCnEditProduct, setFileCoaCnEditProduct ] = useState(null);
+    const [ fileMsdsEditProduct, setFileMsdsEditProduct ] = useState(null);
+    const [ fileMsdsCnEditProduct, setFileMsdsCnEditProduct ] = useState(null);
+    const [ fileFragranceProfileEditProduct, setFileFragranceProfileEditProduct ] = useState(null);
+    const [ fileIfraCertEditProduct, setFileIfraCertEditProduct ] = useState(null);
+    const [ fileAllergyListEditProduct, setFileAllergyListEditProduct ] = useState(null);
 
     const [ login, setLogin ] = useState(false);
 
@@ -75,6 +95,7 @@ const Home = () => {
     const [ orderResponse, setOrderResponse ] = useState(null) 
     const [ singleOrderResponse, setSingleOrderResponse ] = useState(null) 
     const [ productResponse, setProductResponse ] = useState(null) 
+    const [ singleProductResponse, setSingleProductResponse ] = useState(null) 
     const [ userResponse, setUserResponse ] = useState(null) 
     const [ clientsResponse, setClientsResponse ] = useState(null) 
 
@@ -89,7 +110,8 @@ const Home = () => {
         <GetContext.Provider value={{ 
             setLogin, token, setToken, 
             orderResponse, setOrderResponse, singleOrderResponse, setSingleOrderResponse, 
-            productResponse, setProductResponse, userResponse,setUserResponse, clientsResponse, setClientsResponse, 
+            productResponse, setProductResponse, singleProductResponse, setSingleProductResponse,
+            userResponse,setUserResponse, clientsResponse, setClientsResponse, 
             indexOfData, setIndexOfData,
             editable, setEditable
         }}>
@@ -120,12 +142,11 @@ const Home = () => {
                             fileUploadothersAddNewOrder, setFileUploadothersAddNewOrder,
                             // for Edit Order
                             filePoEditOrder, setFilePoEditOrder,
-                            // filecustomerRefEditOrder, setFilecustomerRefEditOrder,
-                            // fileinvoiceEditOrder, setFileinvoiceEditOrder,
-                            // filepackingListEditOrder,
-                            // filewaybillEditOrder,
-                            // fileothersEditOrder,
-
+                            fileCustomerRefEditOrder, setFileCustomerRefEditOrder,
+                            fileInvoiceEditOrder,setFileInvoiceEditOrder,
+                            filePackingListEditOrder, setFilePackingListEditOrder,
+                            fileWaybillEditOrder, setFileWaybillEditOrder,
+                            fileOthersEditOrder, setFileOthersEditOrder
                         }}>
                             <Route exact path="/order">
                                 <Order token={token}/> 
@@ -174,8 +195,22 @@ const Home = () => {
                             inspiredByBrandCN, setInspiredByBrandCN,
                             discriptionOfGoods, setDiscriptionOfGoods,
                             remarks, setRemarks,
-
-                            tryup, setTryup
+                            // Add
+                            fileCoaAddNewProduct, setFileCoaAddNewProduct,
+                            fileCoaCnAddNewProduct, setFileCoaCnAddNewProduct,
+                            fileMsdsAddNewProduct, setFileMsdsAddNewProduct,
+                            fileMsdsCnAddNewProduct, setFileMsdsCnAddNewProduct,
+                            fileFragranceProfileAddNewProduct, setFileFragranceProfileAddNewProduct,
+                            fileIfraCertAddNewProduct, setFileIfraCertAddNewProduct,
+                            fileAllergyListAddNewProduct, setFileAllergyListAddNewProduct,
+                            // Edit
+                            fileCoaEditProduct, setFileCoaEditProduct,
+                            fileCoaCnEditProduct, setFileCoaCnEditProduct,
+                            fileMsdsEditProduct, setFileMsdsEditProduct,
+                            fileMsdsCnEditProduct, setFileMsdsCnEditProduct,
+                            fileFragranceProfileEditProduct, setFileFragranceProfileEditProduct,
+                            fileIfraCertEditProduct, setFileIfraCertEditProduct,
+                            fileAllergyListEditProduct, setFileAllergyListEditProduct,  
                         }}>
                             <Route exact path="/product">
                                 <Product/> 

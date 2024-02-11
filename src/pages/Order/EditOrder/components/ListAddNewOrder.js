@@ -34,7 +34,11 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
 
     const { 
         filePoEditOrder, setFilePoEditOrder,
-        filecustomerRefEditOrder, setFilecustomerRefEditOrder
+        fileCustomerRefEditOrder, setFileCustomerRefEditOrder,
+        fileInvoiceEditOrder, setFileInvoiceEditOrder,
+        filePackingListEditOrder, setFilePackingListEditOrder,
+        fileWaybillEditOrder, setFileWaybillEditOrder,
+        fileOthersEditOrder, setFileOthersEditOrder
     } = useContext(OrderContext);
 
     const { orderResponse, singleOrderResponse, indexOfData, editable } = useContext(GetContext); 
@@ -44,6 +48,26 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
 
     const filePoEditOrderOnChange = (e) => {
         setFilePoEditOrder(e.target.files[0])
+    }
+
+    const fileCustomerRefEditOrderOnChange = (e) => {
+        setFileCustomerRefEditOrder(e.target.files[0])
+    }
+
+    const fileInvoiceEditOrderOnChange = (e) => {
+        setFileInvoiceEditOrder(e.target.files[0])
+    }
+
+    const filePackingListEditOrderOnChange = (e) => {
+        setFilePackingListEditOrder(e.target.files[0])
+    }
+
+    const fileWaybillEditOrderOnChange = (e) => {
+        setFileWaybillEditOrder(e.target.files[0])
+    }
+
+    const fileOthersEditOrderOnChange = (e) => {
+        setFileOthersEditOrder(e.target.files[0])
     }
 
   return (
@@ -207,19 +231,18 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
                                 ),
                             }}
                             fullWidth
-                            
                         />
                     </Grid>
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                         <TextField 
                             className="textFieldInAddNewOrder" 
                             id="standard-basic" label="Upload Customer Reference" variant="outlined" type={editable?'file':null}
-                            value={editable&&filecustomerRefEditOrder?filecustomerRefEditOrder.filename
-                                :editable&&!filecustomerRefEditOrder?null
+                            value={editable&&fileCustomerRefEditOrder?fileCustomerRefEditOrder.filename
+                                :editable&&!fileCustomerRefEditOrder?null
                                 :singleOrderResponse.salesOrderFiles.customerRef?singleOrderResponse.salesOrderFiles.customerRef.originalName
                                 :null
                             }
-                            // onChange={filecustomerRefEditOrderOnChange}
+                            onChange={fileCustomerRefEditOrderOnChange}
                             InputProps={{
                                 readOnly: !editable,
                                 startAdornment: (
@@ -229,13 +252,18 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
                                 ),
                             }}
                             fullWidth
-                            disabled={stateAllInAddNewOrder}
                         />
                     </Grid>
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                         <TextField 
                             className="textFieldInAddNewOrder" 
                             id="standard-basic" label="Upload Invoice" variant="outlined" type={editable?'file':null}
+                            value={editable&&fileInvoiceEditOrder?fileInvoiceEditOrder.filename
+                                :editable&&!fileInvoiceEditOrder?null
+                                :singleOrderResponse.salesOrderFiles.invoice?singleOrderResponse.salesOrderFiles.invoice.originalName
+                                :null
+                            }
+                            onChange={fileInvoiceEditOrderOnChange}
                             InputProps={{
                                 startAdornment: (
                                 <InputAdornment position="start">
@@ -244,13 +272,19 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
                                 ),
                             }}
                             fullWidth
-                            disabled={stateAllInAddNewOrder}
+                            // disabled={stateAllInAddNewOrder}
                         />
                     </Grid>
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                         <TextField 
                             className="textFieldInAddNewOrder" 
                             id="standard-basic" label="Upload Packing List " variant="outlined" type={editable?'file':null}
+                            value={editable&&filePackingListEditOrder?filePackingListEditOrder.filename
+                                :editable&&!filePackingListEditOrder?null
+                                :singleOrderResponse.salesOrderFiles.packingList?singleOrderResponse.salesOrderFiles.packingList.originalName
+                                :null
+                            }
+                            onChange={filePackingListEditOrderOnChange}
                             InputProps={{
                                 startAdornment: (
                                 <InputAdornment position="start">
@@ -259,13 +293,19 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
                                 ),
                             }}
                             fullWidth
-                            disabled={stateAllInAddNewOrder}
+                            // disabled={stateAllInAddNewOrder}
                         />
                     </Grid>
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                         <TextField 
                             className="textFieldInAddNewOrder" 
                             id="standard-basic" label="Upload Waybill" variant="outlined" type={editable?'file':null}
+                            value={editable&&fileWaybillEditOrder?fileWaybillEditOrder.filename
+                                :editable&&!fileWaybillEditOrder?null
+                                :singleOrderResponse.salesOrderFiles.waybill?singleOrderResponse.salesOrderFiles.waybill.originalName
+                                :null
+                            }
+                            onChange={fileWaybillEditOrderOnChange}
                             InputProps={{
                                 startAdornment: (
                                 <InputAdornment position="start">
@@ -274,13 +314,19 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
                                 ),
                             }}
                             fullWidth
-                            disabled={stateAllInAddNewOrder}
+                            // disabled={stateAllInAddNewOrder}
                         />
                     </Grid>
                     <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                         <TextField 
                             className="textFieldInAddNewOrder" 
                             id="standard-basic" label="Upload Others" variant="outlined" type={editable?'file':null}
+                            value={editable&&fileOthersEditOrder?fileOthersEditOrder.filename
+                                :editable&&!fileOthersEditOrder?null
+                                :singleOrderResponse.salesOrderFiles.others?singleOrderResponse.salesOrderFiles.others.originalName
+                                :null
+                            }
+                            onChange={fileOthersEditOrderOnChange}
                             InputProps={{
                                 startAdornment: (
                                 <InputAdornment position="start">
@@ -289,7 +335,7 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
                                 ),
                             }}
                             fullWidth
-                            disabled={stateAllInAddNewOrder}
+                            // disabled={stateAllInAddNewOrder}
                         />
                     </Grid>
                 </Grid>

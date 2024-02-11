@@ -10,6 +10,9 @@ import Stack from '@mui/material/Stack';
 import Pagination from '@mui/material/Pagination';
 import TextField from '@mui/material/TextField';
 
+// API網址
+import { API_HOST } from '../../../../global/constants';
+
 import { GetContext } from "../../../../GetContext";
 
 function createData( ProductName, DescriptionProduct ) {
@@ -32,7 +35,7 @@ const ProductList = () => {
         history.push("/editproduct");
     }
 
-    const { productResponse, indexOfData, setIndexOfData } = useContext(GetContext); 
+    const { token, productResponse, setSingleProductResponse, indexOfData, setIndexOfData } = useContext(GetContext); 
     
 
     return (
@@ -87,11 +90,20 @@ const ProductList = () => {
                             key={index}
                             // sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             onClick={() => {
-                                setIndexOfData(index);
+                                setIndexOfData(row.productId);
+                                fetch(`${API_HOST}/product/${row.productId}`, {
+                                    method: "GET",
+                                    headers: {
+                                      "Authorization": `Bearer ${token}`
+                                    }
+                                  })
+                                  .then((response) => response.json())
+                                  .then((data) => {setSingleProductResponse(data);console.log(data);goToEditProduct()
+                                });
                             }}
                         >
-                            <TableCell className="tableCellInProduct" component="th" scope="row" onClick={goToEditProduct}>{row.productNameEn}</TableCell>
-                            <TableCell className="tableCellInProduct" align="left" onClick={goToEditProduct}>{row.longDescEn}</TableCell>
+                            <TableCell className="tableCellInProduct" component="th" scope="row">{row.productNameEn}</TableCell>
+                            <TableCell className="tableCellInProduct" align="left">{row.longDescEn}</TableCell>
                         </TableRow>
                         ))}
                     </TableBody>

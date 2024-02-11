@@ -45,7 +45,13 @@ const ListAddNewProduct = ({ setShowAddProduct }) => {
         discriptionOfGoods, setDiscriptionOfGoods,
         remarks, setRemarks,
 
-        tryup, setTryup
+        fileCoaAddNewProduct, setFileCoaAddNewProduct,
+        fileCoaCnAddNewProduct, setFileCoaCnAddNewProduct,
+        fileMsdsAddNewProduct, setFileMsdsAddNewProduct,
+        fileMsdsCnAddNewProduct, setFileMsdsCnAddNewProduct,
+        fileFragranceProfileAddNewProduct, setFileFragranceProfileAddNewProduct,
+        fileIfraCertAddNewProduct, setFileIfraCertAddNewProduct,
+        fileAllergyListAddNewProduct, setFileAllergyListAddNewProduct
     } = useContext(UserContext);
 
     function wtcCodeChange(e) {
@@ -98,19 +104,33 @@ const ListAddNewProduct = ({ setShowAddProduct }) => {
 
     const formdata = new FormData()
 
-    function tryupChange(e) {
-        setTryup(e.target.files)
-        console.log(e.target.files)
+    function fileCoaAddNewProductOnChange(e) {
+        setFileCoaAddNewProduct(e.target.files[0])
     }
 
-    function testfile(){
-        formdata.append("file", tryup)
-        for (var pair of formdata.entries()){
-            console.log(pair[0])
-        }
+    function fileCoaCnAddNewProductOnChange(e) {
+        setFileCoaCnAddNewProduct(e.target.files[0])
     }
 
-    
+    function fileMsdsAddNewProductOnChange(e) {
+        setFileMsdsAddNewProduct(e.target.files[0])
+    }
+
+    function fileMsdsCnAddNewProductOnChange(e) {
+        setFileMsdsCnAddNewProduct(e.target.files[0])
+    }
+
+    function fileFragranceProfileAddNewProductOnChange(e) {
+        setFileFragranceProfileAddNewProduct(e.target.files[0])
+    }
+
+    function fileIfraCertAddNewProductOnChange(e) {
+        setFileIfraCertAddNewProduct(e.target.files[0])
+    }
+
+    function fileAllergyListAddNewProductOnChange(e) {
+        setFileAllergyListAddNewProduct(e.target.files[0])
+    }    
 
   return (
     <div className="listInAddNewOrder">
@@ -223,6 +243,8 @@ const ListAddNewProduct = ({ setShowAddProduct }) => {
                     <TextField 
                         className="textFieldInAddNewOrder" 
                         id="standard-basic" label="Upload COA" variant="outlined" type="file"
+                        value={fileCoaAddNewProduct?fileCoaAddNewProduct.filename:""}
+                        onChange={fileCoaAddNewProductOnChange}
                         InputProps={{
                             startAdornment: (
                             <InputAdornment position="start">
@@ -230,8 +252,6 @@ const ListAddNewProduct = ({ setShowAddProduct }) => {
                             </InputAdornment>
                             ),
                         }}
-                        value={tryup?tryup["name"]:""}
-                        onChange={tryupChange}
                         fullWidth
                         
                     />
@@ -240,6 +260,8 @@ const ListAddNewProduct = ({ setShowAddProduct }) => {
                     <TextField 
                         className="textFieldInAddNewOrder" 
                         id="standard-basic" label="Upload COA (CN)" variant="outlined" type="file"
+                        value={fileCoaCnAddNewProduct?fileCoaCnAddNewProduct.filename:""}
+                        onChange={fileCoaCnAddNewProductOnChange}
                         InputProps={{
                             startAdornment: (
                             <InputAdornment position="start">
@@ -247,7 +269,7 @@ const ListAddNewProduct = ({ setShowAddProduct }) => {
                             </InputAdornment>
                             ),
                         }}
-                        onClick={testfile}
+                        // onClick={testfile}
                         fullWidth
                         
                     />
@@ -256,6 +278,8 @@ const ListAddNewProduct = ({ setShowAddProduct }) => {
                     <TextField 
                         className="textFieldInAddNewOrder" 
                         id="standard-basic" label="Upload MSDS" variant="outlined" type="file"
+                        value={fileMsdsAddNewProduct?fileMsdsAddNewProduct.filename:""}
+                        onChange={fileMsdsAddNewProductOnChange}
                         InputProps={{
                             startAdornment: (
                             <InputAdornment position="start">
@@ -271,6 +295,8 @@ const ListAddNewProduct = ({ setShowAddProduct }) => {
                     <TextField 
                         className="textFieldInAddNewOrder" 
                         id="standard-basic" label="Upload MSDS (CN)" variant="outlined" type="file"
+                        value={fileMsdsCnAddNewProduct?fileMsdsCnAddNewProduct.filename:""}
+                        onChange={fileMsdsCnAddNewProductOnChange}
                         InputProps={{
                             startAdornment: (
                             <InputAdornment position="start">
@@ -286,6 +312,8 @@ const ListAddNewProduct = ({ setShowAddProduct }) => {
                     <TextField 
                         className="textFieldInAddNewOrder" 
                         id="standard-basic" label="Upload Fragrance profile" variant="outlined" type="file"
+                        value={fileFragranceProfileAddNewProduct?fileFragranceProfileAddNewProduct.filename:""}
+                        onChange={fileFragranceProfileAddNewProductOnChange}
                         InputProps={{
                             startAdornment: (
                             <InputAdornment position="start">
@@ -301,6 +329,8 @@ const ListAddNewProduct = ({ setShowAddProduct }) => {
                     <TextField 
                         className="textFieldInAddNewOrder" 
                         id="standard-basic" label="Upload IFRA Cert" variant="outlined" type="file"
+                        value={fileIfraCertAddNewProduct?fileIfraCertAddNewProduct.filename:""}
+                        onChange={fileIfraCertAddNewProductOnChange}
                         InputProps={{
                             startAdornment: (
                             <InputAdornment position="start">
@@ -316,6 +346,8 @@ const ListAddNewProduct = ({ setShowAddProduct }) => {
                     <TextField 
                         className="textFieldInAddNewOrder" 
                         id="standard-basic" label="Upload 26 allergy list" variant="outlined" type="file"
+                        value={fileAllergyListAddNewProduct?fileAllergyListAddNewProduct.filename:""}
+                        onChange={fileAllergyListAddNewProductOnChange}
                         InputProps={{
                             startAdornment: (
                             <InputAdornment position="start">

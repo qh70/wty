@@ -13,7 +13,8 @@ const AddNewProduct = () => {
 
   const {
     token,
-    editable, setEditable
+    editable, setEditable,
+    indexOfData
   } = useContext(GetContext);
 
   const {
@@ -28,7 +29,14 @@ const AddNewProduct = () => {
     inspiredByBrand, setInspiredByBrand,
     inspiredByBrandCN, setInspiredByBrandCN,
     discriptionOfGoods, setDiscriptionOfGoods,
-    remarks, setRemarks
+    remarks, setRemarks,
+    fileCoaEditProduct,
+    fileCoaCnEditProduct,
+    fileMsdsEditProduct,
+    fileMsdsCnEditProduct,
+    fileFragranceProfileEditProduct,
+    fileIfraCertEditProduct,
+    fileAllergyListEditProduct
   } = useContext(UserContext);
 
     const [showAddProduct, setShowAddProduct] = useState(false);
@@ -46,44 +54,59 @@ const AddNewProduct = () => {
     }
 
     const clickSaveInEditProduct = ()=>{
-      fetch("http://192.168.0.8:8089/rest/admin/product/1", {
+      const form = new FormData()
+
+      const json = JSON.stringify({
+        "productCode": customerCode?customerCode:"string",
+        "productNameEn": name?name:"string",
+        "productNameTc": "string",
+        "productNameSc": nameCN?nameCN:"string",
+        "longDescEn": discriptionOfGoods?discriptionOfGoods:"string",
+        "longDescTc": "string",
+        "longDescSc": "string",
+        "price": 0,
+        "status": "A",
+        "createBy": "U:1",
+        "createTime": "2023-11-06 16:41:02",
+        "updateBy": "U:1",
+        "updateTime": "2023-11-06 16:41:02",
+        "color": "string",
+        "size": "string",
+        "weight": "string",
+        "wyt": "string",
+        "luzi": luziCode?luziCode:"string",
+        "sex": gender?gender:"string",
+        "remark": remarks?remarks:"string",
+        "brandEN": inspiredByBrand?inspiredByBrand:"string",
+        "brandTC": "string",
+        "brandSC": inspiredByBrandCN?inspiredByBrandCN:"string",
+        "designerEN": inspiredByDesigner?inspiredByDesigner:"string",
+        "designerTC": "string",
+        "designerSC": inspiredByDesignerCN?inspiredByDesignerCN:"string"
+      })
+
+      const blob = new Blob([json], {
+        type : "application/json",
+      });
+
+      form.append("coa", fileCoaEditProduct)
+      form.append("coaCn", fileCoaCnEditProduct)
+      form.append("msds", fileMsdsEditProduct)
+      form.append("msdsCn", fileMsdsCnEditProduct)
+      form.append("fragranceProfile", fileFragranceProfileEditProduct)
+      form.append("ifraCert", fileIfraCertEditProduct)
+      form.append("allergyList", fileAllergyListEditProduct)
+      form.append("product", blob)
+
+      fetch(`http://192.168.0.8:8089/rest/admin/product/full/${indexOfData}?`, {
         method : "PUT",
         headers : {
-          "Authorization": `Bearer ${token}`,
-          "Content-type" : "application/json"
+          "Authorization": `Bearer ${token}`
         },
-        body : JSON.stringify({
-          "productId": 1,
-          "productCode": customerCode?customerCode:"string",
-          "productNameEn": name?name:"string",
-          "productNameTc": "string",
-          "productNameSc": nameCN?nameCN:"string",
-          "longDescEn": discriptionOfGoods?discriptionOfGoods:"string",
-          "longDescTc": "string",
-          "longDescSc": "string",
-          "price": 0,
-          "status": "A",
-          "createBy": "U:1",
-          "createTime": "2023-11-06 16:41:02",
-          "updateBy": "U:1",
-          "updateTime": "2023-11-06 16:41:02",
-          "color": "string",
-          "size": "string",
-          "weight": "string",
-          "wyt": "string",
-          "luzi": luziCode?luziCode:"string",
-          "sex": gender?gender:"string",
-          "remark": remarks?remarks:"string",
-          "brandEN": inspiredByBrand?inspiredByBrand:"string",
-          "brandTC": "string",
-          "brandSC": inspiredByBrandCN?inspiredByBrandCN:"string",
-          "designerEN": inspiredByDesigner?inspiredByDesigner:"string",
-          "designerTC": "string",
-          "designerSC": inspiredByDesignerCN?inspiredByDesignerCN:"string"
-        })
+        body : form
       })
       .then((response) => response.json())
-      .then((data) => console.log(data,"save6"))
+      .then((data) => console.log(data,"saveEdditProduct"))
       .catch((error)=>{console.log(error);});
     }
 

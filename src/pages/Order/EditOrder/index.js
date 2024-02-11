@@ -13,7 +13,13 @@ const AddNewOrder = () => {
     const {  token, editable, setEditable, indexOfData } = useContext(GetContext);
 
     const { 
+      // Files
       filePoEditOrder,
+      fileCustomerRefEditOrder,
+      fileInvoiceEditOrder,
+      filePackingListEditOrder,
+      fileWaybillEditOrder,
+      fileOthersEditOrder,
       customerCodeAddNewOrder,
       poNoAddNewOrder,
       attnAddNewOrder,
@@ -32,19 +38,17 @@ const AddNewOrder = () => {
 
     } = useContext(OrderContext);
 
-    const [showAddProduct, setShowAddProduct] = useState(false);
+    const [ showAddProduct, setShowAddProduct ] = useState(false);
 
-    const [open, setOpen] = useState(false);
+    const [ open, setOpen ] = useState(false);
 
-    const [deletepopup, setDeletepopup] = useState(false);  
+    const [ deletepopup, setDeletepopup ] = useState(false);  
 
     const [ stateAllInAddNewOrder, setStateAllInAddNewOrder] = useState(false);
     
     const disableAllInAddNewOrder = function () {
       setStateAllInAddNewOrder(true);
     }
-
-    
 
     const clickSaveInEditOrder = () => {
       const form = new FormData()
@@ -79,6 +83,11 @@ const AddNewOrder = () => {
       });
 
       form.append("po", filePoEditOrder)
+      form.append("customerRef", fileCustomerRefEditOrder)
+      form.append("invoice", fileInvoiceEditOrder)
+      form.append("packingList", filePackingListEditOrder)
+      form.append("waybill", fileWaybillEditOrder)
+      form.append("others", fileOthersEditOrder)
       form.append("salesOrder", blob)
 
       fetch(`http://192.168.0.8:8089/rest/admin/salesOrder/full/${indexOfData}?`, {

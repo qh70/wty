@@ -37,8 +37,8 @@ export default function Delete({ deletepopup, setDeletepopup, modules }) {
   function deleteProduct(){
     const URL = window.location.href;// 取得當前網址
     // URL.slice(URL.indexOf("edit") + 4) = 在哪個module的字串
-    console.log(indexOfData)
     const deletepage = URL.slice(URL.indexOf("edit") + 4) === "order"?"salesOrder":URL.slice(URL.indexOf("edit") + 4)
+
     fetch(`http://192.168.0.8:8089/rest/admin/${deletepage}/${indexOfData}`, {
         method : "DELETE",
         headers : {
@@ -46,7 +46,7 @@ export default function Delete({ deletepopup, setDeletepopup, modules }) {
         },
       })
       .then((response) => response.json())
-      .then((data) => {console.log(data,"delete6");history.push('/order')})
+      .then((data) => {console.log(data,"delete");history.push('/order')})
       .catch((error)=>{console.log(error);});
       // alert("product deleted");
       // history.push("/product")

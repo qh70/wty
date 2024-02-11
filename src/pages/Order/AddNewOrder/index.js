@@ -47,8 +47,6 @@ const AddNewOrder = () => {
     } = useContext(OrderContext);
 
     const saveDraftInAddNewOrder = () => {
-        const form = new FormData()
-
         const json = JSON.stringify({
             "customRefId": "customRefId2",
             "poNo": poNoAddNewOrder?poNoAddNewOrder:"null",
@@ -73,7 +71,8 @@ const AddNewOrder = () => {
             "email": emailAddNewOrder?emailAddNewOrder:"null",
             "fax": faxAddNewOrder?faxAddNewOrder:"null"
         })
-
+        
+        const form = new FormData()
         const blob = new Blob([json], {
             type : "application/json",
         });

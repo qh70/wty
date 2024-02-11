@@ -47,24 +47,32 @@ const ListUneditableProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrd
         inspiredByBrand, setInspiredByBrand,
         inspiredByBrandCN, setInspiredByBrandCN,
         discriptionOfGoods, setDiscriptionOfGoods,
-        remarks, setRemarks
+        remarks, setRemarks,
+        // Files
+        fileCoaEditProduct, setFileCoaEditProduct,
+        fileCoaCnEditProduct, setFileCoaCnEditProduct,
+        fileMsdsEditProduct, setFileMsdsEditProduct,
+        fileMsdsCnEditProduct, setFileMsdsCnEditProduct,
+        fileFragranceProfileEditProduct, setFileFragranceProfileEditProduct,
+        fileIfraCertEditProduct, setFileIfraCertEditProduct,
+        fileAllergyListEditProduct, setFileAllergyListEditProduct
     } = useContext(UserContext);
 
-    const { productResponse, indexOfData, editable } = useContext(GetContext); 
-    const thisProduct = productResponse[indexOfData];
+    const { productResponse, singleProductResponse, indexOfData, editable } = useContext(GetContext); 
+    // const thisProduct = productResponse[indexOfData];
     useEffect(()=>{
-        setWtcCode(thisProduct.wyt)
-        setLuziCode(thisProduct.luzi)
-        setCustomerCode(thisProduct.productCode)
-        setGender(thisProduct.sex)
-        setName(thisProduct.productNameEn)
-        setNameCN(thisProduct.productNameEnSC)
-        setInspiredByDesigner(thisProduct.designerEN)
-        setInspiredByDesignerCN(thisProduct.designerSC)
-        setInspiredByBrand(thisProduct.brandEN)
-        setInspiredByBrandCN(thisProduct.brandSC)
-        setDiscriptionOfGoods(thisProduct.longDescEn)
-        setRemarks(thisProduct.remark)
+        setWtcCode(singleProductResponse.wyt)
+        setLuziCode(singleProductResponse.luzi)
+        setCustomerCode(singleProductResponse.productCode)
+        setGender(singleProductResponse.sex)
+        setName(singleProductResponse.productNameEn)
+        setNameCN(singleProductResponse.productNameEnSC)
+        setInspiredByDesigner(singleProductResponse.designerEN)
+        setInspiredByDesignerCN(singleProductResponse.designerSC)
+        setInspiredByBrand(singleProductResponse.brandEN)
+        setInspiredByBrandCN(singleProductResponse.brandSC)
+        setDiscriptionOfGoods(singleProductResponse.longDescEn)
+        setRemarks(singleProductResponse.remark)
     },[])
     
     function wtcCodeChange(e) {
@@ -114,10 +122,38 @@ const ListUneditableProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrd
     function remarksChange(e) {
         setRemarks(e.target.value)
     }
+    // Files
+    const fileCoaEditProductOnChange = (e) => {
+        setFileCoaEditProduct(e.target.files[0])
+    }
+
+    const fileCoaCnEditProductOnChange = (e) => {
+        setFileCoaCnEditProduct(e.target.files[0])
+    }
+
+    const fileMsdsEditProductOnChange = (e) => {
+        setFileMsdsEditProduct(e.target.files[0])
+    }
+
+    const fileMsdsCnEditProductOnChange = (e) => {
+        setFileMsdsCnEditProduct(e.target.files[0])
+    }
+
+    const fileFragranceProfileEditProductOnChange = (e) => {
+        setFileFragranceProfileEditProduct(e.target.files[0])
+    }
+
+    const fileIfraCertEditProductOnChange = (e) => {
+        setFileIfraCertEditProduct(e.target.files[0])
+    }
+
+    const fileAllergyListEditProductOnChange = (e) => {
+        setFileAllergyListEditProduct(e.target.files[0])
+    }
 
   return (
     <div className="listInAddNewOrder">
-        <a className="wordProductNHashtags">{thisProduct.productCode}</a>
+        <a className="wordProductNHashtags">{singleProductResponse.productCode}</a>
         {/* <div className="listForOrder"> */}
         <Box className="listForOrder" disabled>
             <Grid container spacing={8}>
@@ -256,8 +292,13 @@ const ListUneditableProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrd
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField 
                         className="textFieldInAddNewOrder" 
-                        id="standard-basic" label="Upload COA" variant="outlined"
-                        value="coa.pdf"
+                        id="standard-basic" label="Upload COA" variant="outlined" type={editable?'file':null}
+                        value={editable&&fileCoaEditProduct?fileCoaEditProduct.fileName
+                            :editable&&!fileCoaEditProduct?null
+                            :singleProductResponse.productFiles.coa?singleProductResponse.productFiles.coa.originalName
+                            :null
+                        }
+                        onChange={fileCoaEditProductOnChange}
                         InputProps={{
                             readOnly: !editable,
                             startAdornment: (
@@ -272,8 +313,13 @@ const ListUneditableProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrd
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField 
                         className="textFieldInAddNewOrder" 
-                        id="standard-basic" label="Upload COA (CN)" variant="outlined"
-                        value="coa-cn.pdf"
+                        id="standard-basic" label="Upload COA (CN)" variant="outlined" type={editable?'file':null}
+                        value={editable&&fileCoaCnEditProduct?fileCoaCnEditProduct.fileName
+                            :editable&&!fileCoaCnEditProduct?null
+                            :singleProductResponse.productFiles.coaCn?singleProductResponse.productFiles.coaCn.originalName
+                            :null
+                        }
+                        onChange={fileCoaCnEditProductOnChange}
                         InputProps={{
                             readOnly: !editable,
                             startAdornment: (
@@ -288,8 +334,13 @@ const ListUneditableProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrd
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField 
                         className="textFieldInAddNewOrder" 
-                        id="standard-basic" label="Upload MSDS" variant="outlined"
-                        value="msds.pdf"
+                        id="standard-basic" label="Upload MSDS" variant="outlined" type={editable?'file':null}
+                        value={editable&&fileMsdsEditProduct?fileMsdsEditProduct.fileName
+                            :editable&&!fileMsdsEditProduct?null
+                            :singleProductResponse.productFiles.msds?singleProductResponse.productFiles.msds.originalName
+                            :null
+                        }
+                        onChange={fileMsdsEditProductOnChange}
                         InputProps={{
                             readOnly: !editable,
                             startAdornment: (
@@ -304,8 +355,13 @@ const ListUneditableProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrd
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField 
                         className="textFieldInAddNewOrder" 
-                        id="standard-basic" label="Upload MSDS (CN)" variant="outlined"
-                        value="msds-cn.pdf"
+                        id="standard-basic" label="Upload MSDS (CN)" variant="outlined" type={editable?'file':null}
+                        value={editable&&fileMsdsCnEditProduct?fileMsdsCnEditProduct.fileName
+                            :editable&&!fileMsdsCnEditProduct?null
+                            :singleProductResponse.productFiles.msdsCn?singleProductResponse.productFiles.msdsCn.originalName
+                            :null
+                        }
+                        onChange={fileMsdsCnEditProductOnChange}
                         InputProps={{
                             readOnly: !editable,
                             startAdornment: (
@@ -320,8 +376,13 @@ const ListUneditableProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrd
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField 
                         className="textFieldInAddNewOrder" 
-                        id="standard-basic" label="Upload Fragrance profile" variant="outlined"
-                        value="fragranceprofile.pdf"
+                        id="standard-basic" label="Upload Fragrance profile" variant="outlined" type={editable?'file':null}
+                        value={editable&&fileFragranceProfileEditProduct?fileFragranceProfileEditProduct.fileName
+                            :editable&&!fileFragranceProfileEditProduct?null
+                            :singleProductResponse.productFiles.fragranceProfile?singleProductResponse.productFiles.fragranceProfile.originalName
+                            :null
+                        }
+                        onChange={fileFragranceProfileEditProductOnChange}
                         InputProps={{
                             readOnly: !editable,
                             startAdornment: (
@@ -336,8 +397,13 @@ const ListUneditableProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrd
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField 
                         className="textFieldInAddNewOrder" 
-                        id="standard-basic" label="Upload IFRA Cert" variant="outlined"
-                        value="CustomerRef.pdf"
+                        id="standard-basic" label="Upload IFRA Cert" variant="outlined" type={editable?'file':null}
+                        value={editable&&fileIfraCertEditProduct?fileIfraCertEditProduct.fileName
+                            :editable&&!fileIfraCertEditProduct?null
+                            :singleProductResponse.productFiles.ifraCert?singleProductResponse.productFiles.ifraCert.originalName
+                            :null
+                        }
+                        onChange={fileIfraCertEditProductOnChange}
                         InputProps={{
                             readOnly: !editable,
                             startAdornment: (
@@ -352,8 +418,13 @@ const ListUneditableProduct = ({ setOpen, setShowAddProduct, stateAllInAddNewOrd
                 <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                     <TextField 
                         className="textFieldInAddNewOrder" 
-                        id="standard-basic" label="Upload 26 allergy list" variant="outlined"
-                        value="26allergylist.pdf"
+                        id="standard-basic" label="Upload 26 allergy list" variant="outlined" type={editable?'file':null}
+                        value={editable&&fileAllergyListEditProduct?fileAllergyListEditProduct.fileName
+                            :editable&&!fileAllergyListEditProduct?null
+                            :singleProductResponse.productFiles.allergyList?singleProductResponse.productFiles.allergyList.originalName
+                            :null
+                        }
+                        onChange={fileAllergyListEditProductOnChange}
                         InputProps={{
                             readOnly: !editable,
                             startAdornment: (
