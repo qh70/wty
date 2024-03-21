@@ -21,10 +21,11 @@ import EditClient from "../Client/EditClient";
 import "../../index.css";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 //Context
-import { UserContext } from "../../UserContext";
 import { LoginContext } from "../../LoginContext";
 import { GetContext } from "../../GetContext";
 import { OrderContext } from "../../OrderContext";
+import { ProductContext } from "../../ProductContext";
+import { UserContext } from "../../UserContext";
 
 import LoginPopup from "../../components/Dialog/LoginPopup";
 
@@ -37,6 +38,7 @@ const Home = () => {
     const [ attnAddNewOrder, setAttnAddNewOrder ] = useState()
     const [ titleAddNewOrder, setTitleAddNewOrder ] = useState()
     const [ telAddNewOrder, setTelAddNewOrder ] = useState()
+    const [ dateAddNewOrder, setDateAddNewOrder ] = useState()
     const [ emailAddNewOrder, setEmailAddNewOrder ] = useState()
     const [ ordernumberAddNewOrder, setOrdernumberAddNewOrder ] = useState()
     const [ faxAddNewOrder, setFaxAddNewOrder ] = useState()
@@ -85,6 +87,16 @@ const Home = () => {
     const [ fileIfraCertEditProduct, setFileIfraCertEditProduct ] = useState(null);
     const [ fileAllergyListEditProduct, setFileAllergyListEditProduct ] = useState(null);
 
+    // for page User
+    const [ loginNameUser, setLoginNameUser ] = useState(null);
+    const [ emailUser, setEmailUser ] = useState(null);
+    const [ passwordUser, setPasswordUser ] = useState(null);
+    const [ confirmPasswordUser, setConfirmPasswordUser ] = useState(null);
+    const [ firstNameUser, setFirstNameUser ] = useState(null);
+    const [ lastNameUser, setLastNameUser ] = useState(null);
+    const [ initialUser, setInitialUser ] = useState(null);
+    const [ phoneUser, setPhoneUser ] = useState(null);
+
     const [ login, setLogin ] = useState(false);
 
     const [token, setToken ]= useState(null);
@@ -97,6 +109,7 @@ const Home = () => {
     const [ productResponse, setProductResponse ] = useState(null) 
     const [ singleProductResponse, setSingleProductResponse ] = useState(null) 
     const [ userResponse, setUserResponse ] = useState(null) 
+    const [ singleUserResponse, setSingleUserResponse ] = useState(null)
     const [ clientsResponse, setClientsResponse ] = useState(null) 
 
     // index of data
@@ -111,7 +124,8 @@ const Home = () => {
             setLogin, token, setToken, 
             orderResponse, setOrderResponse, singleOrderResponse, setSingleOrderResponse, 
             productResponse, setProductResponse, singleProductResponse, setSingleProductResponse,
-            userResponse,setUserResponse, clientsResponse, setClientsResponse, 
+            userResponse,setUserResponse, singleUserResponse, setSingleUserResponse,
+            clientsResponse, setClientsResponse, 
             indexOfData, setIndexOfData,
             editable, setEditable
         }}>
@@ -130,6 +144,7 @@ const Home = () => {
                             attnAddNewOrder, setAttnAddNewOrder,
                             titleAddNewOrder, setTitleAddNewOrder,
                             telAddNewOrder, setTelAddNewOrder,
+                            dateAddNewOrder, setDateAddNewOrder,
                             emailAddNewOrder, setEmailAddNewOrder,
                             ordernumberAddNewOrder, setOrdernumberAddNewOrder,
                             faxAddNewOrder, setFaxAddNewOrder,
@@ -160,15 +175,26 @@ const Home = () => {
                         </OrderContext.Provider>
 
                         {/* user */}
-                        <Route exact path="/user">
-                            <User/> 
-                        </Route>
-                        <Route exact path="/addnewuser">
-                            <AddNewUser />
-                        </Route>
-                        <Route exact path="/edituser">
-                            <EditUser />
-                        </Route>
+                        <UserContext.Provider value={{
+                            loginNameUser, setLoginNameUser,
+                            emailUser, setEmailUser,
+                            passwordUser, setPasswordUser,
+                            confirmPasswordUser, setConfirmPasswordUser,
+                            firstNameUser, setFirstNameUser,
+                            lastNameUser, setLastNameUser,
+                            initialUser, setInitialUser,
+                            phoneUser, setPhoneUser
+                        }}>
+                            <Route exact path="/user">
+                                <User/> 
+                            </Route>
+                            <Route exact path="/addnewuser">
+                                <AddNewUser />
+                            </Route>
+                            <Route exact path="/edituser">
+                                <EditUser />
+                            </Route>
+                        </UserContext.Provider>
 
                         {/* clients */}
                         <Route exact path="/clients">
@@ -182,7 +208,7 @@ const Home = () => {
                         </Route>
 
                         {/* product */}
-                        <UserContext.Provider value={{ 
+                        <ProductContext.Provider value={{ 
                             wtcCode, setWtcCode,
                             luziCode, setLuziCode,
                             customerCode, setCustomerCode,
@@ -221,7 +247,7 @@ const Home = () => {
                             <Route exact path="/editproduct">
                                 <EditProduct/>
                             </Route>
-                        </UserContext.Provider>
+                        </ProductContext.Provider>
                     </LoginContext.Provider>
                     {/* <Route path="/try" exact component={Client} /> */}
                 </Switch>

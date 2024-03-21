@@ -42,7 +42,19 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
     } = useContext(OrderContext);
 
     const { orderResponse, singleOrderResponse, indexOfData, editable } = useContext(GetContext); 
-    // console.log(orderResponse.find(order => order.salesOrderId === 44))
+
+    useEffect(()=>{
+        setWtcCode(singleOrderResponse.customerCode)
+        setLuziCode(singleOrderResponse.poNo)
+        setCustomerCode(singleOrderResponse.attn)
+        setGender(singleOrderResponse.title)
+        setName(singleOrderResponse.tel)
+        setNameCN(singleOrderResponse.issueDate)
+        setInspiredByDesigner(singleOrderResponse.email)
+        setInspiredByDesignerCN(singleOrderResponse.designerSC)
+        setInspiredByBrand(singleOrderResponse.fax)
+    },[])
+
     const thisOrder = 'order'
     // const thisOrder = orderResponse.find(order => order.salesOrderId === indexOfData);
 

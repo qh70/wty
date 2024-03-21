@@ -8,7 +8,7 @@ import { Button } from "@mui/material"
 import { API_HOST } from "../../../global/constants"
 
 import { GetContext } from "../../../GetContext";
-import { UserContext } from "../../../UserContext";
+import { ProductContext } from "../../../ProductContext";
 
 
 const AddNewProduct = () => {
@@ -56,7 +56,7 @@ const AddNewProduct = () => {
       fileFragranceProfileAddNewProduct,
       fileIfraCertAddNewProduct,
       fileAllergyListAddNewProduct
-     } = useContext(UserContext);
+     } = useContext(ProductContext);
 
     // async function saveNewProduct () {
     //   const res = await fetch(`${API_HOST}/product`, {

@@ -38,6 +38,7 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
         attnAddNewOrder, setAttnAddNewOrder,
         titleAddNewOrder, setTitleAddNewOrder,
         telAddNewOrder, setTelAddNewOrder,
+        dateAddNewOrder, setDateAddNewOrder,
         emailAddNewOrder, setEmailAddNewOrder,
         ordernumberAddNewOrder, setOrdernumberAddNewOrder,
         faxAddNewOrder, setFaxAddNewOrder,
@@ -94,6 +95,10 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
     }
     const telAddNewOrderOnchange = (e) => {
         setTelAddNewOrder(e.target.value)
+    }
+    const dateAddNewOrderOnchange = (e) => {
+        setDateAddNewOrder(e.$D+','+e.$M+','+e.$y);
+        console.log(dateAddNewOrder);
     }
     const emailAddNewOrderOnchange = (e) => {
         setEmailAddNewOrder(e.target.value)
@@ -208,10 +213,8 @@ const ListAddNewOrder = ({ setOpen, setShowAddProduct, setDeletepopup, stateAllI
                                 label="Select the date"
                                 openTo="day"
                                 views={['year', 'month', 'day']}
-                                value={value}
-                                onChange={(newValue) => {
-                                    setValue(newValue);
-                                }}
+                                value={dateAddNewOrder}
+                                onChange={dateAddNewOrderOnchange}
                                 renderInput={(params) => 
                                     <TextField 
                                         className="textFieldInAddNewOrder"

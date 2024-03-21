@@ -98,7 +98,7 @@ const ProductList = () => {
                                     }
                                   })
                                   .then((response) => response.json())
-                                  .then((data) => {setSingleProductResponse(data);console.log(data);goToEditProduct()
+                                  .then((data) => {setSingleProductResponse(data);goToEditProduct()
                                 });
                             }}
                         >

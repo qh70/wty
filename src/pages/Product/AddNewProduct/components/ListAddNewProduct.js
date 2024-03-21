@@ -21,7 +21,7 @@ import Box from '@mui/material/Box';
 import DateRangeIcon from '@mui/icons-material/DateRange';
 
 // useContext
-import { UserContext } from "../../../../UserContext"
+import { ProductContext } from "../../../../ProductContext"
 
 
 const ListAddNewProduct = ({ setShowAddProduct }) => {
@@ -52,7 +52,7 @@ const ListAddNewProduct = ({ setShowAddProduct }) => {
         fileFragranceProfileAddNewProduct, setFileFragranceProfileAddNewProduct,
         fileIfraCertAddNewProduct, setFileIfraCertAddNewProduct,
         fileAllergyListAddNewProduct, setFileAllergyListAddNewProduct
-    } = useContext(UserContext);
+    } = useContext(ProductContext);
 
     function wtcCodeChange(e) {
         setWtcCode(e.target.value)

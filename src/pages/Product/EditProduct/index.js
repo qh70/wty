@@ -5,7 +5,7 @@ import { Button } from "@mui/material"
 import Delete from "../../../components/Dialog/Delete"
 
 import { GetContext } from "../../../GetContext";
-import { UserContext } from "../../../UserContext";
+import { ProductContext } from "../../../ProductContext";
 
 
 
@@ -37,7 +37,7 @@ const AddNewProduct = () => {
     fileFragranceProfileEditProduct,
     fileIfraCertEditProduct,
     fileAllergyListEditProduct
-  } = useContext(UserContext);
+  } = useContext(ProductContext);
 
     const [showAddProduct, setShowAddProduct] = useState(false);
 

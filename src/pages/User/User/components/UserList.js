@@ -10,16 +10,14 @@ import Stack from '@mui/material/Stack';
 import Pagination from '@mui/material/Pagination';
 import TextField from '@mui/material/TextField';
 
+// API網址
+import { API_HOST } from '../../../../global/constants';
+
 import { GetContext } from "../../../../GetContext";
 
 function createData( LoginName, UserName, Email, Role ) {
     return { LoginName, UserName, Email, Role };
 };
-
-const rows = [
-    createData("benny001", "Benny Wai", "bennywai@gmail.com", "Admin" ),
-    createData("benny001", "Benny Wai", "bennywai@gmail.com", "Admin" ),
-];
 
 const BtnNPurchaseOrderList = () => {
 
@@ -35,7 +33,7 @@ const BtnNPurchaseOrderList = () => {
         history.push("/edituser")
     }
 
-    const { userResponse } = useContext(GetContext); 
+    const { token, userResponse, singleUserResponse, setSingleUserResponse, setIndexOfData } = useContext(GetContext);
 
     return (
         <div>
@@ -85,11 +83,24 @@ const BtnNPurchaseOrderList = () => {
                         {userResponse.map((row) => (
                         <TableRow
                             key={row.name}
+                            onClick={() => {
+                                console.log(row.userId)
+                                setIndexOfData(row.userId);
+                                fetch(`${API_HOST}/users/${row.userId}`, {
+                                    method: "GET",
+                                    headers: {
+                                      "Authorization": `Bearer ${token}`
+                                    }
+                                  })
+                                  .then((response) => response.json())
+                                  .then((data) => {setSingleUserResponse(data);console.log(singleUserResponse);goToEditUser()
+                                });
+                            }}
                         >
-                            <TableCell className="tableCellInOrder pointer" component="th" scope="row" onClick={goToEditUser}>{row.name}</TableCell>
-                            <TableCell className="tableCellInOrder pointer" align="left" onClick={goToEditUser}>{row.username}</TableCell>
-                            <TableCell className="tableCellInOrder pointer" align="left" onClick={goToEditUser}>{row.email}</TableCell>
-                            <TableCell className="tableCellInOrder pointer" align="left" onClick={goToEditUser}>{row.userRoleId}</TableCell>
+                            <TableCell className="tableCellInOrder pointer" component="th" scope="row">{row.name}</TableCell>
+                            <TableCell className="tableCellInOrder pointer" align="left">{row.username}</TableCell>
+                            <TableCell className="tableCellInOrder pointer" align="left">{row.email}</TableCell>
+                            <TableCell className="tableCellInOrder pointer" align="left">{row.userRoleId}</TableCell>
                         </TableRow>
                         ))}
                     </TableBody>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import { TextField } from "@mui/material"
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
@@ -20,6 +20,9 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import DateRangeIcon from '@mui/icons-material/DateRange';
 
+import { GetContext } from "../../../../GetContext"
+import { UserContext } from "../../../../UserContext"
+
 
 const ListEditUser = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder, reset, setReset }) => {
     
@@ -28,6 +31,32 @@ const ListEditUser = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder, reset
     const [value, setValue] = useState(new Date());
     
     const handleClickOpen = () => {setOpen(true);};
+
+    const { singleUserResponse, indexOfData, editable } = useContext(GetContext); 
+
+    const { 
+        loginNameUser, setLoginNameUser,
+        emailUser, setEmailUser,
+        passwordUser, setPasswordUser,
+        confirmPasswordUser, setConfirmPasswordUser,
+        firstNameUser, setFirstNameUser,
+        lastNameUser, setLastNameUser,
+        initialUser, setInitialUser,
+        phoneUser, setPhoneUser
+    } = useContext(UserContext)
+
+    console.log(singleUserResponse)
+
+    useEffect(()=>{
+        // setLoginNameUser(singleUserResponse.wyt)
+        setEmailUser(singleUserResponse.email)
+        setPasswordUser(singleUserResponse.password)
+        // setConfirmPasswordUser(singleUserResponse.sex)
+        setFirstNameUser(singleUserResponse.firstName)
+        setLastNameUser(singleUserResponse.lastName)
+        setInitialUser(singleUserResponse.initial)
+        setPhoneUser(singleUserResponse.phone)
+    },[])
 
   return (
     <div className="listInAddNewOrder">
@@ -39,37 +68,72 @@ const ListEditUser = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder, reset
                         {/* <div className="rowInListForOrder"> */}
                         <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                             <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Login Name" variant="standard" fullWidth="50%"
+                                // value={loginNameUser}
                                 disabled={stateAllInAddNewOrder}
+                                InputProps={{
+                                    readOnly: !editable,
+                                    disableUnderline: !editable
+                                }}
                             />
                         </Grid>
                         <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                             <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Email" variant="standard" fullWidth
+                                value={emailUser}
                                 disabled={stateAllInAddNewOrder}
+                                InputProps={{
+                                    readOnly: !editable,
+                                    disableUnderline: !editable
+                                }}
                             />
                         </Grid>
                         <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                             <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Password" variant="standard" fullWidth
+                                value={passwordUser}
                                 disabled={stateAllInAddNewOrder}
+                                InputProps={{
+                                    readOnly: !editable,
+                                    disableUnderline: !editable
+                                }}
                             />
                         </Grid>
                         <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                             <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Confirm Password" variant="standard" fullWidth="50%"
+                                // value={confirmPasswordUser}
                                 disabled={stateAllInAddNewOrder}
+                                InputProps={{
+                                    readOnly: !editable,
+                                    disableUnderline: !editable
+                                }}
                             />
                         </Grid>
                         <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                             <TextField className="textFieldInAddNewOrder" id="standard-basic" label="First Name" variant="standard" fullWidth
+                                value={firstNameUser}
                                 disabled={stateAllInAddNewOrder}
+                                InputProps={{
+                                    readOnly: !editable,
+                                    disableUnderline: !editable
+                                }}
                             />
                         </Grid>
                         <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                             <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Last Name" variant="standard" fullWidth
+                                value={lastNameUser}
                                 disabled={stateAllInAddNewOrder}
+                                InputProps={{
+                                    readOnly: !editable,
+                                    disableUnderline: !editable
+                                }}
                             />
                         </Grid>
                         <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                             <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Initial" variant="standard" fullWidth
+                                value={initialUser}
                                 disabled={stateAllInAddNewOrder}
+                                InputProps={{
+                                    readOnly: !editable,
+                                    disableUnderline: !editable
+                                }}
                             />
                         </Grid>
                         <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
@@ -82,6 +146,10 @@ const ListEditUser = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder, reset
                                     // onChange={handleChange}
                                     label="Age"
                                     disabled={stateAllInAddNewOrder}
+                                    InputProps={{
+                                        readOnly: !editable,
+                                        disableUnderline: !editable
+                                    }}
                                 >
                                     <MenuItem value="Male">Male</MenuItem>
                                     <MenuItem value="Female">Female</MenuItem>
@@ -98,6 +166,10 @@ const ListEditUser = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder, reset
                                     // onChange={handleChange}
                                     label="Age"
                                     disabled={stateAllInAddNewOrder}
+                                    InputProps={{
+                                        readOnly: !editable,
+                                        disableUnderline: !editable
+                                    }}
                                 >
                                     <MenuItem value="Male">Male</MenuItem>
                                     <MenuItem value="Female">Female</MenuItem>
@@ -108,7 +180,12 @@ const ListEditUser = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder, reset
                             <TextField 
                                 className="textFieldInAddNewOrder" 
                                 id="standard-basic" label="Phone" variant="standard" 
+                                value={phoneUser}    
                                 disabled={stateAllInAddNewOrder}
+                                InputProps={{
+                                    readOnly: !editable,
+                                    disableUnderline: !editable
+                                }}
                                 fullWidth
                             />
                         </Grid>
@@ -122,6 +199,10 @@ const ListEditUser = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder, reset
                                     // onChange={handleChange}
                                     label="Age"
                                     disabled={stateAllInAddNewOrder}
+                                    InputProps={{
+                                        readOnly: !editable,
+                                        disableUnderline: !editable
+                                    }}
                                 >
                                     <MenuItem value="Male">Male</MenuItem>
                                     <MenuItem value="Female">Female</MenuItem>
@@ -140,16 +221,28 @@ const ListEditUser = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder, reset
                         <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                             <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Login Name" variant="standard" fullWidth="50%"
                                 disabled={stateAllInAddNewOrder}
+                                InputProps={{
+                                    readOnly: !editable,
+                                    disableUnderline: !editable
+                                }}
                             />
                         </Grid>
                         <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                             <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Email" variant="standard" fullWidth
                                 disabled={stateAllInAddNewOrder}
+                                InputProps={{
+                                    readOnly: !editable,
+                                    disableUnderline: !editable
+                                }}
                             />
                         </Grid>
                         <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                             <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Existing Password" variant="standard" fullWidth="50%"
                                 disabled={stateAllInAddNewOrder}
+                                InputProps={{
+                                    readOnly: !editable,
+                                    disableUnderline: !editable
+                                }}
                                 type="password"
                             />
                         </Grid>
@@ -158,12 +251,20 @@ const ListEditUser = ({ setOpen, setShowAddProduct, stateAllInAddNewOrder, reset
                         <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                             <TextField className="textFieldInAddNewOrder" id="standard-basic" label="New Password" variant="standard" fullWidth
                                 disabled={stateAllInAddNewOrder}
+                                InputProps={{
+                                    readOnly: !editable,
+                                    disableUnderline: !editable
+                                }}
                                 type="password"
                             />
                         </Grid>
                         <Grid className="gridsInAddNewOrder" item xs={12} sm={6}>
                             <TextField className="textFieldInAddNewOrder" id="standard-basic" label="Confirm New Password" variant="standard" fullWidth
                                 disabled={stateAllInAddNewOrder}
+                                InputProps={{
+                                    readOnly: !editable,
+                                    disableUnderline: !editable
+                                }}
                                 type="password"
                             />
                         </Grid>
